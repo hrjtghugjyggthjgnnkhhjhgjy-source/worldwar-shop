@@ -8,19 +8,36 @@
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: Tahoma, sans-serif; }
 body { background: #0a0a0a; color: #fff; min-height: 100vh; padding: 20px; }
 .container { max-width: 500px; margin: 0 auto; }
+.top-bar { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
+.logo { color: #d4af37; font-size: 20px; font-weight: bold; }
+.account-btn { background: #1a1a1a; border: 1px solid #333; color: #d4af37; padding: 10px 15px; border-radius: 10px; cursor: pointer; font-size: 18px; }
 .header { text-align: center; padding: 40px 0; }
-h1 { font-size: 36px; color: #d4af37; margin-bottom: 10px; letter-spacing: 3px; }
+h1 { font-size: 36px; color: #d4af37; margin-bottom: 10px; }
 .subtitle { color: #666; font-size: 14px; margin-bottom: 40px; }
-.btn { display: block; width: 100%; padding: 18px; background: linear-gradient(135deg, #d4af37, #f4cf5e); color: #000; border-radius: 12px; font-size: 18px; font-weight: bold; text-decoration: none; text-align: center; margin-bottom: 30px; transition: 0.3s; }
-.btn:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4); }
+.btn { display: block; width: 100%; padding: 18px; background: linear-gradient(135deg, #d4af37, #f4cf5e); color: #000; border-radius: 12px; font-size: 18px; font-weight: bold; text-decoration: none; text-align: center; margin-bottom: 30px; }
 .links { border-top: 1px solid #222; padding-top: 30px; }
-.links a { display: block; color: #d4af37; text-decoration: none; padding: 15px; font-size: 16px; border-bottom: 1px solid #1a1a1a; transition: 0.3s; }
-.links a:hover { background: #1a1a1a; padding-right: 25px; }
+.links a { display: block; color: #d4af37; text-decoration: none; padding: 15px; font-size: 16px; border-bottom: 1px solid #1a1a1a; }
 .footer { text-align: center; color: #444; font-size: 12px; margin-top: 40px; }
+/* حساب کاربری */
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 100; }
+.modal.active { display: flex; align-items: center; justify-content: center; }
+.modal-content { background: #1a1a1a; border: 1px solid #333; border-radius: 20px; padding: 30px; width: 90%; max-width: 400px; }
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1px solid #333; padding-bottom: 15px; }
+.modal-title { color: #d4af37; font-size: 20px; }
+.close-btn { background: none; border: none; color: #666; font-size: 24px; cursor: pointer; }
+.info-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #222; }
+.info-label { color: #888; }
+.info-value { color: #fff; font-weight: bold; }
+.login-btn { display: block; width: 100%; padding: 15px; background: #d4af37; color: #000; border: none; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 20px; }
 </style>
 </head>
 <body>
 <div class="container">
+<div class="top-bar">
+<button class="account-btn" onclick="openAccount()">👤</button>
+<div class="logo">⚜️ World War</div>
+</div>
+
 <div class="header">
 <h1>⚜️ World War ⚜️</h1>
 <p class="subtitle">به میدان جنگ خوش اومدی</p>
@@ -38,5 +55,37 @@ h1 { font-size: 36px; color: #d4af37; margin-bottom: 10px; letter-spacing: 3px; 
 <p>© 2026 World War</p>
 </div>
 </div>
+
+<!-- مودال حساب کاربری -->
+<div class="modal" id="accountModal">
+<div class="modal-content">
+<div class="modal-header">
+<div class="modal-title">👤 حساب کاربری</div>
+<button class="close-btn" onclick="closeAccount()">✖️</button>
+</div>
+<div class="info-row">
+<span class="info-label">نام:</span>
+<span class="info-value">---</span>
+</div>
+<div class="info-row">
+<span class="info-label">سطح:</span>
+<span class="info-value">۱</span>
+</div>
+<div class="info-row">
+<span class="info-label">اعتبار:</span>
+<span class="info-value">۰ تومان</span>
+</div>
+<button class="login-btn">ورود / ثبت‌نام</button>
+</div>
+</div>
+
+<script>
+function openAccount() {
+document.getElementById('accountModal').classList.add('active');
+}
+function closeAccount() {
+document.getElementById('accountModal').classList.remove('active');
+}
+</script>
 </body>
 </html>
