@@ -3,157 +3,207 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>World War</title>
+<title>⚜️ WORLD WAR | فروشگاه فرماندهان</title>
+<link rel="icon" href="https://hrjtghugjyggthjgnnkhhjhgjy-source.github.io/worldwar-shop/images/war-logo.jpg">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: Tahoma, sans-serif; }
-body { background: #0a0a0a; color: #fff; min-height: 100vh; padding: 20px; }
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: Tahoma, sans-serif; }
 
-/* ============ هدر بالا ============ */
-.top-header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 15px 0;
-margin-bottom: 40px;
-}
-.header-right { display: flex; align-items: center; gap: 10px; }
-.logo-box {
-width: 40px; height: 40px;
-background: #1a1a1a;
-border: 1px solid #d4af37;
-border-radius: 50%;
-display: flex; align-items: center; justify-content: center;
-font-size: 20px;
-color: #d4af37;
-}
-.brand { display: flex; flex-direction: column; }
-.brand-name { color: #fff; font-size: 16px; font-weight: bold; }
-.brand-sub { color: #666; font-size: 11px; }
-.header-left { display: flex; gap: 10px; }
-.icon-btn {
-background: #1a1a1a;
-border: 1px solid #333;
-color: #d4af37;
-width: 40px; height: 40px;
-border-radius: 50%;
-cursor: pointer;
-font-size: 18px;
-display: flex; align-items: center; justify-content: center;
-transition: 0.3s;
-}
-.icon-btn:hover { border-color: #d4af37; transform: scale(1.1); }
-.icon-btn.spinning { animation: spin 0.6s linear; }
-@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  body {
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at 50% 20%, rgba(212,175,55,0.18), transparent 60%),
+      linear-gradient(rgba(0,0,0,0.88), rgba(0,0,0,0.96)),
+      url('https://hrjtghugjyggthjgnnkhhjhgjy-source.github.io/worldwar-shop/images/war-logo.jpg') center/cover fixed no-repeat;
+    color: #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px 50px;
+    overflow-x: hidden;
+  }
 
-/* ============ محتوا ============ */
-.container { max-width: 400px; margin: 0 auto; }
-.title {
-font-size: 32px;
-color: #d4af37;
-text-align: center;
-margin-bottom: 10px;
-letter-spacing: 3px;
-text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-}
-.subtitle { color: #666; text-align: center; font-size: 13px; margin-bottom: 50px; }
+  /* ===== نوار ساعت بالا ===== */
+  .top-bar {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #d4af37;
+    margin-bottom: 20px;
+  }
+  .top-bar .clock { font-weight: bold; letter-spacing: 1px; }
+  .top-bar .user { opacity: 0.8; }
 
-.btn {
-display: block;
-width: 100%;
-padding: 18px;
-background: linear-gradient(135deg, #d4af37, #f4cf5e);
-color: #000;
-border-radius: 12px;
-font-size: 18px;
-font-weight: bold;
-text-decoration: none;
-text-align: center;
-margin-bottom: 40px;
-transition: 0.3s;
-}
-.btn:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4); }
+  /* ===== لوگو ===== */
+  .logo-wrap {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 3px solid #d4af37;
+    box-shadow:
+      0 0 30px rgba(212,175,55,0.6),
+      0 0 70px rgba(212,175,55,0.3);
+    overflow: hidden;
+    animation: glow 3s ease-in-out infinite alternate;
+    margin-bottom: 25px;
+  }
+  .logo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  @keyframes glow {
+    from { box-shadow: 0 0 25px rgba(212,175,55,0.5), 0 0 60px rgba(212,175,55,0.2); }
+    to   { box-shadow: 0 0 45px rgba(212,175,55,0.9), 0 0 100px rgba(212,175,55,0.4); }
+  }
 
-.links { border-top: 1px solid #1a1a1a; padding-top: 10px; }
-.links a {
-display: flex;
-align-items: center;
-justify-content: space-between;
-color: #d4af37;
-text-decoration: none;
-padding: 16px 15px;
-font-size: 15px;
-border-bottom: 1px solid #1a1a1a;
-transition: 0.3s;
-}
-.links a:hover { background: #1a1a1a; padding-right: 25px; }
+  /* ===== عنوان ===== */
+  h1 {
+    font-size: 2rem;
+    color: #d4af37;
+    text-shadow: 0 0 20px rgba(212,175,55,0.6), 2px 2px 4px #000;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  .subtitle {
+    font-size: 1.05rem;
+    color: #bbb;
+    margin-bottom: 30px;
+    text-align: center;
+  }
 
-/* ============ ساعت پایین ============ */
-.clock-bottom {
-text-align: center;
-color: #333;
-font-size: 12px;
-margin-top: 40px;
-}
+  /* ===== دکمه ربات (اصلی) ===== */
+  .btn-bot-main {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 18px 30px;
+    background: linear-gradient(135deg, #d4af37, #b8860b);
+    color: #0a0a0a;
+    font-weight: bold;
+    font-size: 1.15rem;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 0 30px rgba(212,175,55,0.6);
+    transition: 0.3s;
+    margin-bottom: 35px;
+  }
+  .btn-bot-main:hover {
+    background: linear-gradient(135deg, #ffd700, #d4af37);
+    transform: translateY(-3px);
+    box-shadow: 0 0 45px rgba(255,215,0,0.9);
+  }
+
+  /* ===== لینک‌های منو ===== */
+  .menu {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .menu a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 22px;
+    background: rgba(20,20,20,0.85);
+    border: 1px solid #3a2f10;
+    border-radius: 14px;
+    color: #e8e8e8;
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: bold;
+    transition: 0.3s;
+    backdrop-filter: blur(8px);
+  }
+  .menu a:hover {
+    border-color: #d4af37;
+    background: rgba(40,33,10,0.9);
+    transform: translateX(-5px);
+    box-shadow: 0 0 20px rgba(212,175,55,0.3);
+  }
+  .menu a .label { display: flex; align-items: center; gap: 10px; }
+  .menu a .arrow { color: #d4af37; font-size: 1.3rem; }
+
+  /* ===== فوتر ===== */
+  footer {
+    margin-top: 45px;
+    font-size: 0.85rem;
+    color: #666;
+    text-align: center;
+  }
+  footer span { color: #d4af37; }
+
+  @media (max-width: 480px) {
+    .logo-wrap { width: 170px; height: 170px; }
+    h1 { font-size: 1.5rem; letter-spacing: 2px; }
+    .subtitle { font-size: 0.95rem; }
+    .btn-bot-main { font-size: 1rem; padding: 16px 20px; }
+  }
 </style>
 </head>
 <body>
 
-<div class="container">
+  <!-- نوار بالا: ساعت و کاربر -->
+  <div class="top-bar">
+    <span class="user">👤 فرمانده</span>
+    <span class="clock" id="clock">--:--:--</span>
+  </div>
 
-<!-- هدر بالا -->
-<div class="top-header">
-<div class="header-right">
-<div class="logo-box">⚜️</div>
-<div class="brand">
-<div class="brand-name">WORLD WAR</div>
-<div class="brand-sub">فروشگاه فرماندهان</div>
-</div>
-</div>
-<div class="header-left">
-<button class="icon-btn" onclick="refreshSite(this)">🔄</button>
-<button class="icon-btn" onclick="alert('حساب کاربری')">👤</button>
-</div>
-</div>
+  <!-- لوگو -->
+  <div class="logo-wrap">
+    <img src="https://hrjtghugjyggthjgnnkhhjhgjy-source.github.io/worldwar-shop/images/war-logo.jpg" alt="World War Logo">
+  </div>
 
-<!-- عنوان -->
-<div class="title">⚜️𝐖𝐎𝐑𝐋𝐃 𝐖𝐀𝐑⚜️</div>
-<div class="subtitle">به میدان جنگ خوش اومدی</div>
+  <!-- عنوان -->
+  <h1>⚜️ WORLD WAR ⚜️</h1>
+  <p class="subtitle">فروشگاه فرماندهان — به میدان جنگ خوش اومدی</p>
 
-<!-- دکمه اصلی -->
-<a href="https://ble.ir/worldwar2037bot" class="btn">🤖 ورود به ربات</a>
+  <!-- دکمه ربات -->
+  <a href="https://t.me/YourBot" class="btn-bot-main" target="_blank">
+    🤖 ورود به ربات
+  </a>
 
-<!-- لینک‌ها -->
-<div class="links">
-<a href="https://ble.ir/worldwar2037"><span>💬 گپ رسمی</span><span>›</span></a>
-<a href="https://ble.ir/worldwar2036"><span>📢 کانال رسمی</span><span>›</span></a>
-<a href="https://ble.ir/MohammadMahdi2037"><span>📞 پشتیبانی</span><span>›</span></a>
-</div>
+  <!-- منوی لینک‌ها -->
+  <nav class="menu">
+    <a href="https://t.me/YourGroup" target="_blank">
+      <span class="label">💬 گپ رسمی</span>
+      <span class="arrow">‹</span>
+    </a>
+    <a href="https://t.me/YourChannel" target="_blank">
+      <span class="label">📢 کانال رسمی</span>
+      <span class="arrow">‹</span>
+    </a>
+    <a href="https://t.me/YourSupport" target="_blank">
+      <span class="label">📞 پشتیبانی</span>
+      <span class="arrow">‹</span>
+    </a>
+  </nav>
 
-<!-- ساعت -->
-<div class="clock-bottom" id="clock">۰۰:۰۰:۰۰</div>
+  <footer>
+    © 2025 <span>World War Shop</span> — تمامی حقوق محفوظ است.
+  </footer>
 
-</div>
+  <!-- ساعت زنده -->
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2, '0');
+      const m = String(now.getMinutes()).padStart(2, '0');
+      const s = String(now.getSeconds()).padStart(2, '0');
+      document.getElementById('clock').textContent = `${h}:${m}:${s}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
 
-<script>
-// ============ ساعت ============
-function updateClock() {
-const now = new Date();
-const h = String(now.getHours()).padStart(2, '0');
-const m = String(now.getMinutes()).padStart(2, '0');
-const s = String(now.getSeconds()).padStart(2, '0');
-document.getElementById('clock').innerText = h + ':' + m + ':' + s;
-}
-setInterval(updateClock, 1000);
-updateClock();
-
-// ============ دکمه بروزرسانی ============
-function refreshSite(btn) {
-btn.classList.add('spinning');
-setTimeout(() => {
-btn.classList.remove('spinning');
-location.reload();
-}, 600);
-}
-</script>
 </body>
 </html>
