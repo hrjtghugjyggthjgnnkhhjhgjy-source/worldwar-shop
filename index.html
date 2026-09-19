@@ -3,332 +3,482 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>⚜️ جنگ جهانی ⚜️</title>
+<title>⚜️ جنگ جهانی | Unlimited</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; font-family: Tahoma, sans-serif; }
 
   body {
     min-height: 100vh;
-    background: #0b0b0d;
+    background: #08080d;
     color: #d8d8d8;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 20px;
+    overflow-x: hidden;
   }
 
-  .screen {
-    width: 100%;
-    max-width: 460px;
-    display: none;
-    flex-direction: column;
+  /* ===== نوار بالا ===== */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    animation: fadeIn 0.5s ease;
+    padding: 14px 18px;
+    background: rgba(10,10,18,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #1a1a2a;
   }
-  .screen.active { display: flex; }
+  .topbar .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.05rem;
+  }
+  .topbar .brand-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    overflow: hidden;
+  }
+  .topbar .brand-icon img { width: 100%; height: 100%; object-fit: cover; }
+  .topbar .menu-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: #14141f;
+    border: 1px solid #23232e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.3rem;
+    cursor: pointer;
+  }
+
+  /* ===== صفحه ۱: Hero ===== */
+  .hero {
+    padding: 50px 22px 60px;
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto;
+    animation: fadeIn 0.5s;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    background: #14141f;
+    border: 1px solid #23232e;
+    border-radius: 30px;
+    color: #c4b5fd;
+    font-size: 0.85rem;
+    margin-bottom: 25px;
+  }
+  .badge .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 10px #22c55e;
+  }
+  .hero h1 {
+    font-size: 2rem;
+    line-height: 1.5;
+    font-weight: bold;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #a78bfa, #f0abfc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero p {
+    color: #9ca3af;
+    line-height: 2;
+    font-size: 0.98rem;
+    margin-bottom: 30px;
+  }
+
+  .summary {
+    background: linear-gradient(160deg, #14141f, #0f0f18);
+    border: 1px solid #23232e;
+    border-radius: 18px;
+    padding: 22px;
+    text-align: right;
+    margin-bottom: 30px;
+    line-height: 2;
+    font-size: 0.92rem;
+    color: #b0b0b8;
+  }
+  .summary strong { color: #c4b5fd; }
+
+  .btn-primary {
+    width: 100%;
+    padding: 17px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.05rem;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: 0.25s;
+    box-shadow: 0 8px 25px rgba(99,102,241,0.35);
+    font-family: Tahoma, sans-serif;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(99,102,241,0.5);
+  }
+  .btn-outline {
+    width: 100%;
+    padding: 17px;
+    background: transparent;
+    color: #d8d8d8;
+    font-weight: bold;
+    font-size: 1rem;
+    border: 1px solid #2a2a3a;
+    border-radius: 14px;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: 0.25s;
+    font-family: Tahoma, sans-serif;
+  }
+  .btn-outline:hover {
+    border-color: #6366f1;
+    color: #c4b5fd;
+  }
+
+  .checks {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    color: #9ca3af;
+  }
+  .checks span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .checks .tick { color: #22c55e; font-weight: bold; }
+
+  /* ===== صفحه ۲: انتخاب نسخه ===== */
+  .versions {
+    padding: 40px 22px 60px;
+    max-width: 560px;
+    margin: 0 auto;
+    display: none;
+    animation: fadeIn 0.5s;
+  }
+  .versions.show { display: block; }
+
+  .versions h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  .versions .lead {
+    text-align: center;
+    color: #9ca3af;
+    font-size: 0.92rem;
+    line-height: 1.9;
+    margin-bottom: 35px;
+  }
+
+  .version-card {
+    background: linear-gradient(160deg, #14141f, #0d0d15);
+    border: 1px solid #23232e;
+    border-radius: 20px;
+    padding: 28px 22px;
+    margin-bottom: 18px;
+    position: relative;
+    transition: 0.3s;
+  }
+  .version-card:hover {
+    border-color: #3a3a52;
+    transform: translateY(-3px);
+  }
+  .version-card .pop-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: linear-gradient(135deg, #f97316, #ef4444);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: bold;
+    padding: 5px 12px;
+    border-radius: 20px;
+  }
+
+  .v-icon {
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    margin: 0 auto 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    position: relative;
+  }
+  .v-icon::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 1px solid #23232e;
+  }
+  .v-icon.ble      { background: radial-gradient(circle, #06b6d4, #0891b2); }
+  .v-icon.telegram { background: radial-gradient(circle, #3b82f6, #1d4ed8); }
+  .v-icon.rubika   { background: radial-gradient(circle, #a855f7, #7c3aed); }
+
+  .version-card h3 {
+    text-align: center;
+    font-size: 1.3rem;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .version-card .v-sub {
+    text-align: center;
+    color: #8a8a96;
+    font-size: 0.85rem;
+    margin-bottom: 18px;
+  }
+  .version-card .v-desc {
+    color: #a8a8b0;
+    font-size: 0.9rem;
+    line-height: 2;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 22px;
+  }
+  .tags span {
+    padding: 6px 14px;
+    background: #1a1a26;
+    border: 1px solid #26263a;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    color: #b0b0c0;
+  }
+
+  .btn-enter {
+    width: 100%;
+    padding: 15px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    transition: 0.25s;
+  }
+  .btn-enter.ble      { background: linear-gradient(135deg, #06b6d4, #0ea5e9); box-shadow: 0 6px 20px rgba(6,182,212,0.3); }
+  .btn-enter.telegram { background: linear-gradient(135deg, #3b82f6, #6366f1); box-shadow: 0 6px 20px rgba(59,130,246,0.3); }
+  .btn-enter.rubika   { background: linear-gradient(135deg, #a855f7, #8b5cf6); box-shadow: 0 6px 20px rgba(168,85,247,0.3); }
+  .btn-enter:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
+  .btn-back {
+    display: block;
+    margin: 30px auto 0;
+    padding: 12px 28px;
+    background: transparent;
+    border: 1px solid #2a2a3a;
+    color: #9a9aa8;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-family: Tahoma, sans-serif;
+    transition: 0.25s;
+  }
+  .btn-back:hover { border-color: #6366f1; color: #c4b5fd; }
 
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(15px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  .logo-wrap {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    border: 1px solid #3a3020;
-    overflow: hidden;
-    margin-bottom: 25px;
-    background: #0f0f12;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .logo-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-  .main-title {
-    font-size: 1.9rem;
-    color: #c9a84c;
-    font-weight: 600;
-    letter-spacing: 3px;
-    margin-bottom: 14px;
-    text-align: center;
-  }
-  .subtitle {
-    font-size: 0.95rem;
-    color: #8a8a8a;
-    margin-bottom: 42px;
-    text-align: center;
-    line-height: 1.8;
-  }
-
-  .platforms {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .platform {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px 22px;
-    background: #101012;
-    border: 1px solid #202024;
-    border-radius: 14px;
-    color: #dcdcdc;
-    text-decoration: none;
-    font-size: 1.05rem;
-    font-weight: 600;
-    transition: 0.25s ease;
-    cursor: pointer;
-  }
-  .platform:hover {
-    border-color: #c9a84c;
-    background: #16161a;
-  }
-  .platform .right {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .platform .icon {
-    width: 42px;
-    height: 42px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.3rem;
-  }
-  .platform .arrow { color: #6b5a2a; font-size: 1.3rem; }
-
-  .platform.ble      .icon { background: #0e2a44; }
-  .platform.telegram .icon { background: #10344f; }
-  .platform.rubika   .icon { background: #3a1040; }
-
-  .platform-title {
-    font-size: 1.5rem;
-    color: #c9a84c;
-    letter-spacing: 3px;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  .platform-sub {
-    font-size: 0.92rem;
-    color: #8a8a8a;
-    margin-bottom: 38px;
-    text-align: center;
-  }
-
-  .menu {
-    width: 100%;
-    max-width: 420px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .menu a {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 20px;
-    background: #101012;
-    border: 1px solid #202024;
-    border-radius: 12px;
-    color: #cfcfcf;
-    text-decoration: none;
-    font-size: 0.98rem;
-    transition: 0.25s ease;
-  }
-  .menu a:hover {
-    border-color: #4a3d1f;
-    background: #16161a;
-  }
-  .menu a .label { display: flex; align-items: center; gap: 10px; }
-  .menu a .arrow { color: #6b5a2a; font-size: 1.1rem; }
-
-  .btn-main {
-    width: 100%;
-    max-width: 420px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 16px 30px;
-    background: #c9a84c;
-    color: #0b0b0d;
-    font-weight: bold;
-    font-size: 1.05rem;
-    border-radius: 12px;
-    text-decoration: none;
-    transition: 0.25s ease;
-    margin-bottom: 25px;
-  }
-  .btn-main:hover { background: #ddb95c; }
-
-  .back-btn {
-    margin-top: 25px;
-    padding: 12px 28px;
-    background: transparent;
-    border: 1px solid #2a2a2e;
-    color: #8a8a8a;
-    border-radius: 10px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    font-family: Tahoma, sans-serif;
-    transition: 0.25s;
-  }
-  .back-btn:hover { border-color: #c9a84c; color: #c9a84c; }
-
-  footer {
-    margin-top: 45px;
-    font-size: 0.9rem;
-    color: #c9a84c;
-    letter-spacing: 2px;
-  }
-
   @media (max-width: 480px) {
-    .logo-wrap { width: 130px; height: 130px; }
-    .main-title { font-size: 1.5rem; letter-spacing: 2px; }
-    .subtitle { font-size: 0.88rem; margin-bottom: 32px; }
-    .platform { padding: 15px 18px; font-size: 0.98rem; }
+    .hero h1 { font-size: 1.5rem; }
+    .hero p { font-size: 0.9rem; }
+    .version-card { padding: 24px 18px; }
+    .v-icon { width: 68px; height: 68px; font-size: 1.7rem; }
   }
 </style>
 </head>
 <body>
 
-  <!-- ============ صفحه ۱: انتخاب نسخه ============ -->
-  <div class="screen active" id="screen-choice">
+  <!-- ===== نوار بالا ===== -->
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-icon">
+        <img src="war-logo.jpg" alt="logo"
+             onerror="this.style.display='none'; this.parentElement.innerHTML='⚜️';">
+      </div>
+      <span>جنگ جهانی</span>
+    </div>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+  </div>
 
-    <div class="logo-wrap">
-      <img src="war-logo.jpg"
-           alt="World War"
-           onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=&quot;font-size:3rem;color:#c9a84c;&quot;>⚜️</span>';">
+  <!-- ===== صفحه ۱: معرفی ===== -->
+  <section class="hero" id="heroScreen">
+
+    <div class="badge">
+      <span class="dot"></span>
+      نسخه‌های Unlimited آماده‌ی نصب
     </div>
 
-    <h1 class="main-title">⚜️ جنگ جهانی ⚜️</h1>
-    <p class="subtitle">انتخاب کن کدوم نسخه جنگ جهانی رو میخوای بازی کنی</p>
+    <h1>⚜️ جنگ جهانی ⚜️<br>مدیریت هوشمند گروه</h1>
 
-    <div class="platforms">
+    <p>
+      قدرتمندترین ابزار مدیریت گروه با بیش از ۴۵ قفل هوشمند،
+      ۹ بازی گروهی، سیستم XP و امکانات حرفه‌ای.
+      اکنون در سه نسخه اختصاصی برای شما.
+    </p>
 
-      <a href="javascript:void(0)" class="platform ble" onclick="showPlatform('ble')">
-        <span class="right">
-          <span class="icon">🟦</span>
-          <span>بله</span>
-        </span>
-        <span class="arrow">‹</span>
-      </a>
-
-      <a href="javascript:void(0)" class="platform telegram" onclick="showPlatform('telegram')">
-        <span class="right">
-          <span class="icon">✈️</span>
-          <span>تلگرام</span>
-        </span>
-        <span class="arrow">‹</span>
-      </a>
-
-      <a href="javascript:void(0)" class="platform rubika" onclick="showPlatform('rubika')">
-        <span class="right">
-          <span class="icon">🟪</span>
-          <span>روبیکا</span>
-        </span>
-        <span class="arrow">‹</span>
-      </a>
-
+    <div class="summary">
+      <strong>خلاصه:</strong> جنگ جهانی یک ربات <strong>رایگان</strong> برای
+      مدیریت گروه در <strong>بله، تلگرام و روبیکا</strong> است
+      که با امکاناتی مثل <strong>۴۵+ قفل هوشمند</strong>،
+      <strong>۹ بازی گروهی</strong>، <strong>سیستم XP</strong>
+      و <strong>پشتیبانی ۲۴ ساعته</strong> در اختیار مدیران گروه قرار می‌گیرد.
     </div>
 
-    <footer>⚜️ جنگ جهانی ⚜️</footer>
-  </div>
+    <button class="btn-primary" onclick="showVersions()">
+      ↓ انتخاب نسخه
+    </button>
 
-  <!-- ============ صفحه ۲: بله ============ -->
-  <div class="screen" id="screen-ble">
-    <h2 class="platform-title">⚜️ بله ⚜️</h2>
-    <p class="platform-sub">نسخه بله جنگ جهانی</p>
+    <button class="btn-outline" onclick="alert('به زودی...')">
+      کشف قابلیت‌ها
+    </button>
 
-    <a href="https://ble.ir/worldwar2037Bot" class="btn-main" target="_blank">🤖 ورود به ربات</a>
+    <div class="checks">
+      <span><span class="tick">✓</span> ۱۰۰٪ رایگان برای شروع</span>
+      <span><span class="tick">✓</span> نصب در کمتر از ۳۰ ثانیه</span>
+    </div>
 
-    <nav class="menu">
-      <a href="https://ble.ir/worldwar2037" target="_blank">
-        <span class="label">💬 گپ رسمی</span>
-        <span class="arrow">‹</span>
+  </section>
+
+  <!-- ===== صفحه ۲: انتخاب نسخه ===== -->
+  <section class="versions" id="versionsScreen">
+
+    <h2>در کدام پیام‌رسان فعالیت می‌کنید؟</h2>
+    <p class="lead">
+      هر سه نسخه از یک هسته‌ی قدرتمند استفاده می‌کنند
+      و تجربه‌ای یکپارچه را فراهم می‌آورند.
+    </p>
+
+    <!-- بله -->
+    <div class="version-card">
+      <span class="pop-badge">🔥 محبوب</span>
+      <div class="v-icon ble">✓</div>
+      <h3>نسخه بله</h3>
+      <p class="v-sub">مخصوص پیام‌رسان بله</p>
+      <p class="v-desc">
+        با تمام قفل‌ها، بازی‌ها و سیستم XP.
+        مناسب برای مدیران گروه‌های بله که به دنبال کنترل کامل و امنیت پیشرفته هستند.
+      </p>
+      <div class="tags">
+        <span>+۴۵ قفل</span>
+        <span>ضد اسپم</span>
+        <span>۹ بازی</span>
+        <span>بکاپ‌گیری</span>
+        <span>سیستم XP</span>
+        <span>VIP</span>
+      </div>
+      <a href="https://ble.ir/worldwar2037Bot" class="btn-enter ble" target="_blank">
+        ← ورود به نسخه بله
       </a>
-      <a href="https://ble.ir/worldwar2036" target="_blank">
-        <span class="label">📢 کانال رسمی</span>
-        <span class="arrow">‹</span>
+    </div>
+
+    <!-- تلگرام -->
+    <div class="version-card">
+      <div class="v-icon telegram">✈</div>
+      <h3>نسخه تلگرام</h3>
+      <p class="v-sub">مخصوص پیام‌رسان تلگرام</p>
+      <p class="v-desc">
+        اختصاصی برای تلگرام با قابلیت‌های مشابه و بهینه‌سازی‌شده.
+        مدیریت گروه‌های تلگرامی را به سطح جدیدی ببرید.
+      </p>
+      <div class="tags">
+        <span>+۴۵ قفل</span>
+        <span>ضد اسپم</span>
+        <span>۹ بازی</span>
+        <span>بکاپ‌گیری</span>
+        <span>سیستم XP</span>
+        <span>VIP</span>
+      </div>
+      <a href="https://t.me/worldwar2037Bot" class="btn-enter telegram" target="_blank">
+        ← ورود به نسخه تلگرام
       </a>
-      <a href="https://ble.ir/MohammadMahdi2037" target="_blank">
-        <span class="label">📞 پشتیبانی</span>
-        <span class="arrow">‹</span>
+    </div>
+
+    <!-- روبیکا -->
+    <div class="version-card">
+      <div class="v-icon rubika">🎮</div>
+      <h3>نسخه روبیکا</h3>
+      <p class="v-sub">مخصوص پیام‌رسان روبیکا</p>
+      <p class="v-desc">
+        تمام امکانات Unlimited در روبیکا.
+        مدیریت حرفه‌ای گروه با قفل‌های هوشمند و بازی‌های متنوع.
+      </p>
+      <div class="tags">
+        <span>+۴۵ قفل</span>
+        <span>ضد اسپم</span>
+        <span>۹ بازی</span>
+        <span>بکاپ‌گیری</span>
+        <span>سیستم XP</span>
+        <span>VIP</span>
+      </div>
+      <a href="https://rubika.ir/worldwar2037Bot" class="btn-enter rubika" target="_blank">
+        ← ورود به نسخه روبیکا
       </a>
-    </nav>
+    </div>
 
-    <button class="back-btn" onclick="goBack()">← بازگشت</button>
-  </div>
+    <button class="btn-back" onclick="backToHero()">← بازگشت به صفحه اصلی</button>
 
-  <!-- ============ صفحه ۳: تلگرام ============ -->
-  <div class="screen" id="screen-telegram">
-    <h2 class="platform-title">⚜️ تلگرام ⚜️</h2>
-    <p class="platform-sub">نسخه تلگرام جنگ جهانی</p>
-
-    <a href="https://t.me/worldwar2037Bot" class="btn-main" target="_blank">🤖 ورود به ربات</a>
-
-    <nav class="menu">
-      <a href="https://t.me/worldwar2037" target="_blank">
-        <span class="label">💬 گپ رسمی</span>
-        <span class="arrow">‹</span>
-      </a>
-      <a href="https://t.me/worldwar2036" target="_blank">
-        <span class="label">📢 کانال رسمی</span>
-        <span class="arrow">‹</span>
-      </a>
-      <a href="https://t.me/MohammadMahdi2037" target="_blank">
-        <span class="label">📞 پشتیبانی</span>
-        <span class="arrow">‹</span>
-      </a>
-    </nav>
-
-    <button class="back-btn" onclick="goBack()">← بازگشت</button>
-  </div>
-
-  <!-- ============ صفحه ۴: روبیکا ============ -->
-  <div class="screen" id="screen-rubika">
-    <h2 class="platform-title">⚜️ روبیکا ⚜️</h2>
-    <p class="platform-sub">نسخه روبیکا جنگ جهانی</p>
-
-    <a href="https://rubika.ir/worldwar2037Bot" class="btn-main" target="_blank">🤖 ورود به ربات</a>
-
-    <nav class="menu">
-      <a href="https://rubika.ir/joing/BBGFDAEHI0HVFFLLRUUKEMJFQUKDBAVU" target="_blank">
-        <span class="label">💬 گپ رسمی</span>
-        <span class="arrow">‹</span>
-      </a>
-      <a href="https://rubika.ir/worldwar2037" target="_blank">
-        <span class="label">📢 کانال رسمی</span>
-        <span class="arrow">‹</span>
-      </a>
-      <a href="https://rubika.ir/mohammadmahdi2037" target="_blank">
-        <span class="label">📞 پشتیبانی</span>
-        <span class="arrow">‹</span>
-      </a>
-    </nav>
-
-    <button class="back-btn" onclick="goBack()">← بازگشت</button>
-  </div>
+  </section>
 
   <script>
-    function showPlatform(name) {
-      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-      document.getElementById('screen-' + name).classList.add('active');
+    function showVersions() {
+      document.getElementById('heroScreen').style.display = 'none';
+      document.getElementById('versionsScreen').classList.add('show');
       window.scrollTo(0, 0);
     }
-
-    function goBack() {
-      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-      document.getElementById('screen-choice').classList.add('active');
+    function backToHero() {
+      document.getElementById('versionsScreen').classList.remove('show');
+      document.getElementById('heroScreen').style.display = 'block';
       window.scrollTo(0, 0);
+    }
+    function toggleMenu() {
+      const v = document.getElementById('versionsScreen');
+      if (v.classList.contains('show')) backToHero();
+      else showVersions();
     }
   </script>
 
