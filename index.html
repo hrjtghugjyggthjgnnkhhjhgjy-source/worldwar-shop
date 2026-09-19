@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>⚜️ جنگ جهانی | Unlimited</title>
+<title>⚜️ World War Shop | فروشگاه جنگ جهانی</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; font-family: Tahoma, sans-serif; }
 
   body {
     min-height: 100vh;
-    background: #08080d;
+    background: #0a0a0d;
     color: #d8d8d8;
     overflow-x: hidden;
   }
@@ -23,7 +23,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 14px 18px;
-    background: rgba(10,10,18,0.85);
+    background: rgba(10,10,18,0.9);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid #1a1a2a;
   }
@@ -33,7 +33,7 @@
     gap: 10px;
     color: #fff;
     font-weight: bold;
-    font-size: 1.05rem;
+    font-size: 1rem;
   }
   .topbar .brand-icon {
     width: 38px;
@@ -47,265 +47,221 @@
     overflow: hidden;
   }
   .topbar .brand-icon img { width: 100%; height: 100%; object-fit: cover; }
-  .topbar .menu-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    background: #14141f;
-    border: 1px solid #23232e;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 1.3rem;
-    cursor: pointer;
+
+  /* ===== صفحه اصلی ===== */
+  .screen { display: none; animation: fadeIn 0.4s; }
+  .screen.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
-  /* ===== صفحه ۱: Hero ===== */
+  /* ===== صفحه اول: Hero ===== */
   .hero {
-    padding: 50px 22px 60px;
+    padding: 40px 22px 50px;
     text-align: center;
     max-width: 560px;
     margin: 0 auto;
-    animation: fadeIn 0.5s;
   }
-  .badge {
-    display: inline-flex;
+  .logo-wrap {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 2px solid #4a3d1f;
+    overflow: hidden;
+    margin: 0 auto 22px;
+    background: #141414;
+    display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 8px 18px;
+    justify-content: center;
+  }
+  .logo-wrap img { width: 100%; height: 100%; object-fit: cover; }
+
+  .main-title {
+    font-size: 1.8rem;
+    color: #c9a84c;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+  }
+  .main-sub {
+    color: #8a8a8a;
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+    line-height: 1.9;
+  }
+
+  .section-label {
+    font-size: 1.1rem;
+    color: #d8d8d8;
+    margin-bottom: 18px;
+    text-align: right;
+  }
+
+  /* انتخاب پیام‌رسان */
+  .platforms {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 45px;
+  }
+  .platform-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 22px;
+    background: #101012;
+    border: 1px solid #202024;
+    border-radius: 14px;
+    color: #dcdcdc;
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 600;
+    transition: 0.25s;
+    cursor: pointer;
+  }
+  .platform-btn:hover {
+    border-color: #c9a84c;
+    background: #16161a;
+  }
+  .platform-btn .right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .platform-btn .icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+  }
+  .platform-btn.ble      .icon { background: #0e2a44; }
+  .platform-btn.telegram .icon { background: #10344f; }
+  .platform-btn.rubika   .icon { background: #3a1040; }
+  .platform-btn .arrow { color: #6b5a2a; font-size: 1.3rem; }
+
+  /* ===== صفحه فروشگاه ===== */
+  .shop-header {
+    padding: 30px 22px 20px;
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .shop-header .badge {
+    display: inline-block;
+    padding: 7px 16px;
     background: #14141f;
     border: 1px solid #23232e;
     border-radius: 30px;
     color: #c4b5fd;
-    font-size: 0.85rem;
-    margin-bottom: 25px;
+    font-size: 0.82rem;
+    margin-bottom: 15px;
   }
-  .badge .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #22c55e;
-    box-shadow: 0 0 10px #22c55e;
-  }
-  .hero h1 {
-    font-size: 2rem;
-    line-height: 1.5;
-    font-weight: bold;
-    margin-bottom: 20px;
-    background: linear-gradient(135deg, #a78bfa, #f0abfc);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .hero p {
-    color: #9ca3af;
-    line-height: 2;
-    font-size: 0.98rem;
-    margin-bottom: 30px;
-  }
-
-  .summary {
-    background: linear-gradient(160deg, #14141f, #0f0f18);
-    border: 1px solid #23232e;
-    border-radius: 18px;
-    padding: 22px;
-    text-align: right;
-    margin-bottom: 30px;
-    line-height: 2;
-    font-size: 0.92rem;
-    color: #b0b0b8;
-  }
-  .summary strong { color: #c4b5fd; }
-
-  .btn-primary {
-    width: 100%;
-    padding: 17px;
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
-    color: #fff;
-    font-weight: bold;
-    font-size: 1.05rem;
-    border: none;
-    border-radius: 14px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    transition: 0.25s;
-    box-shadow: 0 8px 25px rgba(99,102,241,0.35);
-    font-family: Tahoma, sans-serif;
-  }
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 35px rgba(99,102,241,0.5);
-  }
-  .btn-outline {
-    width: 100%;
-    padding: 17px;
-    background: transparent;
-    color: #d8d8d8;
-    font-weight: bold;
-    font-size: 1rem;
-    border: 1px solid #2a2a3a;
-    border-radius: 14px;
-    cursor: pointer;
-    margin-top: 12px;
-    transition: 0.25s;
-    font-family: Tahoma, sans-serif;
-  }
-  .btn-outline:hover {
-    border-color: #6366f1;
-    color: #c4b5fd;
-  }
-
-  .checks {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 30px;
-    flex-wrap: wrap;
-    font-size: 0.85rem;
-    color: #9ca3af;
-  }
-  .checks span {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .checks .tick { color: #22c55e; font-weight: bold; }
-
-  /* ===== صفحه ۲: انتخاب نسخه ===== */
-  .versions {
-    padding: 40px 22px 60px;
-    max-width: 560px;
-    margin: 0 auto;
-    display: none;
-    animation: fadeIn 0.5s;
-  }
-  .versions.show { display: block; }
-
-  .versions h2 {
-    text-align: center;
+  .shop-header h2 {
     font-size: 1.5rem;
-    color: #fff;
-    margin-bottom: 12px;
+    color: #c9a84c;
+    margin-bottom: 8px;
   }
-  .versions .lead {
-    text-align: center;
-    color: #9ca3af;
-    font-size: 0.92rem;
-    line-height: 1.9;
-    margin-bottom: 35px;
+  .shop-header p {
+    color: #8a8a8a;
+    font-size: 0.9rem;
+    line-height: 1.8;
   }
 
-  .version-card {
+  /* گرید محصولات */
+  .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    padding: 20px 22px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .product {
     background: linear-gradient(160deg, #14141f, #0d0d15);
     border: 1px solid #23232e;
-    border-radius: 20px;
-    padding: 28px 22px;
-    margin-bottom: 18px;
-    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
     transition: 0.3s;
-  }
-  .version-card:hover {
-    border-color: #3a3a52;
-    transform: translateY(-3px);
-  }
-  .version-card .pop-badge {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    background: linear-gradient(135deg, #f97316, #ef4444);
-    color: #fff;
-    font-size: 0.72rem;
-    font-weight: bold;
-    padding: 5px 12px;
-    border-radius: 20px;
-  }
-
-  .v-icon {
-    width: 78px;
-    height: 78px;
-    border-radius: 50%;
-    margin: 0 auto 18px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    position: relative;
+    flex-direction: column;
   }
-  .v-icon::before {
-    content: '';
-    position: absolute;
-    inset: -8px;
-    border-radius: 50%;
-    border: 1px solid #23232e;
+  .product:hover {
+    border-color: #c9a84c;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(201,168,76,0.15);
   }
-  .v-icon.ble      { background: radial-gradient(circle, #06b6d4, #0891b2); }
-  .v-icon.telegram { background: radial-gradient(circle, #3b82f6, #1d4ed8); }
-  .v-icon.rubika   { background: radial-gradient(circle, #a855f7, #7c3aed); }
-
-  .version-card h3 {
-    text-align: center;
-    font-size: 1.3rem;
-    color: #fff;
-    margin-bottom: 6px;
-  }
-  .version-card .v-sub {
-    text-align: center;
-    color: #8a8a96;
-    font-size: 0.85rem;
-    margin-bottom: 18px;
-  }
-  .version-card .v-desc {
-    color: #a8a8b0;
-    font-size: 0.9rem;
-    line-height: 2;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: center;
-    margin-bottom: 22px;
-  }
-  .tags span {
-    padding: 6px 14px;
-    background: #1a1a26;
-    border: 1px solid #26263a;
-    border-radius: 20px;
-    font-size: 0.78rem;
-    color: #b0b0c0;
-  }
-
-  .btn-enter {
+  .product .p-image {
     width: 100%;
-    padding: 15px;
-    color: #fff;
-    font-weight: bold;
-    font-size: 1rem;
-    border: none;
-    border-radius: 14px;
-    cursor: pointer;
+    height: 160px;
+    background: #1a1a24;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    font-size: 3rem;
+    overflow: hidden;
+  }
+  .product .p-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .product .p-body {
+    padding: 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .product h3 {
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .product .p-desc {
+    color: #9a9aa8;
+    font-size: 0.85rem;
+    line-height: 1.8;
+    margin-bottom: 14px;
+    flex: 1;
+  }
+  .product .p-price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #23232e;
+  }
+  .product .p-price .label { color: #8a8a8a; font-size: 0.8rem; }
+  .product .p-price .value { color: #c9a84c; font-weight: bold; font-size: 1rem; }
+
+  .btn-buy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px;
+    background: #c9a84c;
+    color: #0b0b0d;
+    font-weight: bold;
+    font-size: 0.95rem;
+    border-radius: 10px;
     text-decoration: none;
     transition: 0.25s;
   }
-  .btn-enter.ble      { background: linear-gradient(135deg, #06b6d4, #0ea5e9); box-shadow: 0 6px 20px rgba(6,182,212,0.3); }
-  .btn-enter.telegram { background: linear-gradient(135deg, #3b82f6, #6366f1); box-shadow: 0 6px 20px rgba(59,130,246,0.3); }
-  .btn-enter.rubika   { background: linear-gradient(135deg, #a855f7, #8b5cf6); box-shadow: 0 6px 20px rgba(168,85,247,0.3); }
-  .btn-enter:hover { transform: translateY(-2px); filter: brightness(1.1); }
+  .btn-buy:hover { background: #ddb95c; }
+  .btn-buy.telegram { background: linear-gradient(135deg, #3b82f6, #6366f1); color: #fff; }
+  .btn-buy.telegram:hover { filter: brightness(1.15); }
+  .btn-buy.rubika { background: linear-gradient(135deg, #a855f7, #8b5cf6); color: #fff; }
+  .btn-buy.rubika:hover { filter: brightness(1.15); }
 
   .btn-back {
     display: block;
-    margin: 30px auto 0;
+    margin: 0 auto 40px;
     padding: 12px 28px;
     background: transparent;
     border: 1px solid #2a2a3a;
@@ -316,18 +272,19 @@
     font-family: Tahoma, sans-serif;
     transition: 0.25s;
   }
-  .btn-back:hover { border-color: #6366f1; color: #c4b5fd; }
+  .btn-back:hover { border-color: #c9a84c; color: #c9a84c; }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(15px); }
-    to   { opacity: 1; transform: translateY(0); }
+  .empty {
+    text-align: center;
+    padding: 40px 20px;
+    color: #6a6a78;
+    font-size: 0.9rem;
   }
 
   @media (max-width: 480px) {
-    .hero h1 { font-size: 1.5rem; }
-    .hero p { font-size: 0.9rem; }
-    .version-card { padding: 24px 18px; }
-    .v-icon { width: 68px; height: 68px; font-size: 1.7rem; }
+    .main-title { font-size: 1.4rem; }
+    .logo-wrap { width: 110px; height: 110px; }
+    .products { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -340,147 +297,251 @@
         <img src="war-logo.jpg" alt="logo"
              onerror="this.style.display='none'; this.parentElement.innerHTML='⚜️';">
       </div>
-      <span>جنگ جهانی</span>
+      <span>World War Shop</span>
     </div>
-    <div class="menu-btn" onclick="toggleMenu()">☰</div>
   </div>
 
-  <!-- ===== صفحه ۱: معرفی ===== -->
-  <section class="hero" id="heroScreen">
+  <!-- ===== صفحه ۱: صفحه اصلی ===== -->
+  <div class="screen active" id="screen-home">
+    <div class="hero">
 
-    <div class="badge">
-      <span class="dot"></span>
-      نسخه‌های Unlimited آماده‌ی نصب
-    </div>
-
-    <h1>⚜️ جنگ جهانی ⚜️<br>مدیریت هوشمند گروه</h1>
-
-    <p>
-      قدرتمندترین ابزار مدیریت گروه با بیش از ۴۵ قفل هوشمند،
-      ۹ بازی گروهی، سیستم XP و امکانات حرفه‌ای.
-      اکنون در سه نسخه اختصاصی برای شما.
-    </p>
-
-    <div class="summary">
-      <strong>خلاصه:</strong> جنگ جهانی یک ربات <strong>رایگان</strong> برای
-      مدیریت گروه در <strong>بله، تلگرام و روبیکا</strong> است
-      که با امکاناتی مثل <strong>۴۵+ قفل هوشمند</strong>،
-      <strong>۹ بازی گروهی</strong>، <strong>سیستم XP</strong>
-      و <strong>پشتیبانی ۲۴ ساعته</strong> در اختیار مدیران گروه قرار می‌گیرد.
-    </div>
-
-    <button class="btn-primary" onclick="showVersions()">
-      ↓ انتخاب نسخه
-    </button>
-
-    <button class="btn-outline" onclick="alert('به زودی...')">
-      کشف قابلیت‌ها
-    </button>
-
-    <div class="checks">
-      <span><span class="tick">✓</span> ۱۰۰٪ رایگان برای شروع</span>
-      <span><span class="tick">✓</span> نصب در کمتر از ۳۰ ثانیه</span>
-    </div>
-
-  </section>
-
-  <!-- ===== صفحه ۲: انتخاب نسخه ===== -->
-  <section class="versions" id="versionsScreen">
-
-    <h2>در کدام پیام‌رسان فعالیت می‌کنید؟</h2>
-    <p class="lead">
-      هر سه نسخه از یک هسته‌ی قدرتمند استفاده می‌کنند
-      و تجربه‌ای یکپارچه را فراهم می‌آورند.
-    </p>
-
-    <!-- بله -->
-    <div class="version-card">
-      <span class="pop-badge">🔥 محبوب</span>
-      <div class="v-icon ble">✓</div>
-      <h3>نسخه بله</h3>
-      <p class="v-sub">مخصوص پیام‌رسان بله</p>
-      <p class="v-desc">
-        با تمام قفل‌ها، بازی‌ها و سیستم XP.
-        مناسب برای مدیران گروه‌های بله که به دنبال کنترل کامل و امنیت پیشرفته هستند.
-      </p>
-      <div class="tags">
-        <span>+۴۵ قفل</span>
-        <span>ضد اسپم</span>
-        <span>۹ بازی</span>
-        <span>بکاپ‌گیری</span>
-        <span>سیستم XP</span>
-        <span>VIP</span>
+      <div class="logo-wrap">
+        <img src="war-logo.jpg" alt="logo"
+             onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=&quot;font-size:3rem;color:#c9a84c;&quot;>⚜️</span>';">
       </div>
-      <a href="https://ble.ir/worldwar2037Bot" class="btn-enter ble" target="_blank">
-        ← ورود به نسخه بله
-      </a>
-    </div>
 
-    <!-- تلگرام -->
-    <div class="version-card">
-      <div class="v-icon telegram">✈</div>
-      <h3>نسخه تلگرام</h3>
-      <p class="v-sub">مخصوص پیام‌رسان تلگرام</p>
-      <p class="v-desc">
-        اختصاصی برای تلگرام با قابلیت‌های مشابه و بهینه‌سازی‌شده.
-        مدیریت گروه‌های تلگرامی را به سطح جدیدی ببرید.
+      <h1 class="main-title">⚜️ World War Shop ⚜️</h1>
+      <p class="main-sub">
+        فروشگاه تخصصی محصولات و آیتم‌های کلکسیونی جنگ جهانی<br>
+        انتخاب کن از کدوم پیام‌رسان میخوای خرید کنی
       </p>
-      <div class="tags">
-        <span>+۴۵ قفل</span>
-        <span>ضد اسپم</span>
-        <span>۹ بازی</span>
-        <span>بکاپ‌گیری</span>
-        <span>سیستم XP</span>
-        <span>VIP</span>
+
+      <p class="section-label">🛒 فروشگاه‌ها:</p>
+
+      <div class="platforms">
+
+        <a href="javascript:void(0)" class="platform-btn ble" onclick="showShop('ble')">
+          <span class="right">
+            <span class="icon">🟦</span>
+            <span>فروشگاه بله</span>
+          </span>
+          <span class="arrow">‹</span>
+        </a>
+
+        <a href="javascript:void(0)" class="platform-btn telegram" onclick="showShop('telegram')">
+          <span class="right">
+            <span class="icon">✈️</span>
+            <span>فروشگاه تلگرام</span>
+          </span>
+          <span class="arrow">‹</span>
+        </a>
+
+        <a href="javascript:void(0)" class="platform-btn rubika" onclick="showShop('rubika')">
+          <span class="right">
+            <span class="icon">🟪</span>
+            <span>فروشگاه روبیکا</span>
+          </span>
+          <span class="arrow">‹</span>
+        </a>
+
       </div>
-      <a href="https://t.me/worldwar2037Bot" class="btn-enter telegram" target="_blank">
-        ← ورود به نسخه تلگرام
-      </a>
+
+    </div>
+  </div>
+
+  <!-- ===== صفحه ۲: فروشگاه بله ===== -->
+  <div class="screen" id="screen-ble">
+    <div class="shop-header">
+      <div class="badge">🟦 فروشگاه بله</div>
+      <h2>آیتم‌های World War</h2>
+      <p>روی هر آیتم بزن تا از طریق ربات بله خرید کنی</p>
     </div>
 
-    <!-- روبیکا -->
-    <div class="version-card">
-      <div class="v-icon rubika">🎮</div>
-      <h3>نسخه روبیکا</h3>
-      <p class="v-sub">مخصوص پیام‌رسان روبیکا</p>
-      <p class="v-desc">
-        تمام امکانات Unlimited در روبیکا.
-        مدیریت حرفه‌ای گروه با قفل‌های هوشمند و بازی‌های متنوع.
-      </p>
-      <div class="tags">
-        <span>+۴۵ قفل</span>
-        <span>ضد اسپم</span>
-        <span>۹ بازی</span>
-        <span>بکاپ‌گیری</span>
-        <span>سیستم XP</span>
-        <span>VIP</span>
+    <div class="products">
+
+      <div class="product">
+        <div class="p-image">⚔️</div>
+        <div class="p-body">
+          <h3>شمشیر فرمانده</h3>
+          <p class="p-desc">شمشیر افسانه‌ای فرماندهان با طراحی طلایی.</p>
+          <div class="p-price">
+            <span class="label">قیمت:</span>
+            <span class="value">۲۵۰,۰۰۰ تومان</span>
+          </div>
+          <a href="https://ble.ir/worldwar2037Bot" class="btn-buy" target="_blank">
+            🛒 خرید از ربات
+          </a>
+        </div>
       </div>
-      <a href="https://rubika.ir/worldwar2037Bot" class="btn-enter rubika" target="_blank">
-        ← ورود به نسخه روبیکا
-      </a>
+
+      <div class="product">
+        <div class="p-image">🛡️</div>
+        <div class="p-body">
+          <h3>سپر سلطنتی</h3>
+          <p class="p-desc">سپر مقاوم با نشان شیر و تاج طلایی.</p>
+          <div class="p-price">
+            <span class="label">قیمت:</span>
+            <span class="value">۱۸۰,۰۰۰ تومان</span>
+          </div>
+          <a href="https://ble.ir/worldwar2037Bot" class="btn-buy" target="_blank">
+            🛒 خرید از ربات
+          </a>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="p-image">👑</div>
+        <div class="p-body">
+          <h3>تاج پادشاهی</h3>
+          <p class="p-desc">تاج ویژه فرماندهان با جواهرات درخشان.</p>
+          <div class="p-price">
+            <span class="label">قیمت:</span>
+            <span class="value">۴۵۰,۰۰۰ تومان</span>
+          </div>
+          <a href="https://ble.ir/worldwar2037Bot" class="btn-buy" target="_blank">
+            🛒 خرید از ربات
+          </a>
+        </div>
+      </div>
+
     </div>
 
-    <button class="btn-back" onclick="backToHero()">← بازگشت به صفحه اصلی</button>
+    <button class="btn-back" onclick="goHome()">← بازگشت به صفحه اصلی</button>
+  </div>
 
-  </section>
+  <!-- ===== صفحه ۳: فروشگاه تلگرام ===== -->
+  <div class="screen" id="screen-telegram">
+    <div class="shop-header">
+      <div class="badge">✈️ فروشگاه تلگرام</div>
+      <h2>آیتم‌های World War</h2>
+      <p>روی هر آیتم بزن تا از طریق ربات تلگرام خرید کنی</p>
+    </div>
+
+    <div class="products">
+
+      <div class="product">
+        <div class="p-image">⚔️</div>
+        <div class="p-body">
+          <h3>شمشیر فرمانده</h3>
+          <p class="p-desc">شمشیر افسانه‌ای فرماندهان با طراحی طلایی.</p>
+          <div class="p-price">
+            <span class="label">قیمت:</span>
+            <span class="value">۲۵۰,۰۰۰ تومان</span>
+          </div>
+          <a href="https://t.me/worldwar2037Bot" class="btn-buy telegram" target="_blank">
+            🛒 خرید از ربات
+          </a>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="p-image">🛡️</div>
+        <div class="p-body">
+          <h3>سپر سلطنتی</h3>
+          <p class="p-desc">سپر مقاوم با نشان شیر و تاج طلایی.</p>
+          <div class="p-price">
+            <span class="label">قیمت:</span>
+            <span class="value">۱۸۰,۰۰۰ تومان</span>
+          </div>
+          <a href="https://t.me/worldwar2037Bot" class="btn-buy telegram" target="_blank">
+            🛒 خرید از ربات
+          </a>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="p-image">👑</div>
+        <div class="p-body">
+          <h3>تاج پادشاهی</h3>
+          <p class="p-desc">تاج ویژه فرماندهان با جواهرات درخشان.</p>
+          <div class="p-price">
+            <span class="label">قیمت:</span>
+            <span class="value">۴۵۰,۰۰۰ تومان</span>
+          </div>
+          <a href="https://t.me/worldwar2037Bot" class="btn-buy telegram" target="_blank">
+            🛒 خرید از ربات
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="btn-back" onclick="goHome()">← بازگشت به صفحه اصلی</button>
+  </div>
+
+  <!-- ===== صفحه ۴: فروشگاه روبیکا ===== -->
+  <div class="screen" id="screen-rubika">
+    <div class="shop-header">
+      <div class="badge">🟪 فروشگاه روبیکا</div>
+      <h2>آیتم‌های World War</h2>
+      <p>روی هر آیتم بزن تا از طریق ربات روبیکا خرید کنی</p>
+    </div>
+
+    <div class="products">
+
+      <div class="product">
+        <div class="p-image">⚔️</div>
+        <div class="p-body">
+          <h3>شمشیر فرمانده</h3>
+          <p class="p-desc">شمشیر افسانه‌ای فرماندهان با طراحی طلایی.</p>
+          <div class="p-price">
+            <span class="label">قیمت:</span>
+            <span class="value">۲۵۰,۰۰۰ تومان</span>
+          </div>
+          <a href="https://rubika.ir/worldwar2037Bot" class="btn-buy rubika" target="_blank">
+            🛒 خرید از ربات
+          </a>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="p-image">🛡️</div>
+        <div class="p-body">
+          <h3>سپر سلطنتی</h3>
+          <p class="p-desc">سپر مقاوم با نشان شیر و تاج طلایی.</p>
+          <div class="p-price">
+            <span class="label">قیمت:</span>
+            <span class="value">۱۸۰,۰۰۰ تومان</span>
+          </div>
+          <a href="https://rubika.ir/worldwar2037Bot" class="btn-buy rubika" target="_blank">
+            🛒 خرید از ربات
+          </a>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="p-image">👑</div>
+        <div class="p-body">
+          <h3>تاج پادشاهی</h3>
+          <p class="p-desc">تاج ویژه فرماندهان با جواهرات درخشان.</p>
+          <div class="p-price">
+            <span class="label">قیمت:</span>
+            <span class="value">۴۵۰,۰۰۰ تومان</span>
+          </div>
+          <a href="https://rubika.ir/worldwar2037Bot" class="btn-buy rubika" target="_blank">
+            🛒 خرید از ربات
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="btn-back" onclick="goHome()">← بازگشت به صفحه اصلی</button>
+  </div>
 
   <script>
-    function showVersions() {
-      document.getElementById('heroScreen').style.display = 'none';
-      document.getElementById('versionsScreen').classList.add('show');
+    function showShop(name) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById('screen-' + name).classList.add('active');
       window.scrollTo(0, 0);
     }
-    function backToHero() {
-      document.getElementById('versionsScreen').classList.remove('show');
-      document.getElementById('heroScreen').style.display = 'block';
+
+    function goHome() {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById('screen-home').classList.add('active');
       window.scrollTo(0, 0);
-    }
-    function toggleMenu() {
-      const v = document.getElementById('versionsScreen');
-      if (v.classList.contains('show')) backToHero();
-      else showVersions();
     }
   </script>
 
 </body>
-</html>
+           </html>
