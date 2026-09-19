@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>⚜️ WORLD WAR | فروشگاه فرماندهان</title>
-<link rel="icon" href="https://hrjtghugjyggthjgnnkhhjhgjy-source.github.io/worldwar-shop/images/war-logo.jpg">
+<title>⚜️ جنگ جهانی ⚜️</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; font-family: Tahoma, sans-serif; }
 
@@ -15,80 +14,150 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px 20px 50px;
+    justify-content: center;
+    padding: 40px 20px;
   }
 
-  /* ===== نوار ساعت بالا ===== */
-  .top-bar {
+  /* ===== صفحه اول: انتخاب نسخه ===== */
+  .screen {
     width: 100%;
     max-width: 460px;
-    display: flex;
-    justify-content: space-between;
+    display: none;
+    flex-direction: column;
     align-items: center;
-    font-size: 0.82rem;
-    color: #8a8a8a;
-    margin-bottom: 35px;
+    animation: fadeIn 0.5s ease;
   }
-  .top-bar .clock { font-weight: bold; letter-spacing: 1px; color: #b89446; }
+  .screen.active { display: flex; }
 
-  /* ===== لوگو (ملایم، بدون درخشش شدید) ===== */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== لوگو ===== */
   .logo-wrap {
-    width: 170px;
-    height: 170px;
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
     border: 1.5px solid #4a3d1f;
     overflow: hidden;
-    margin-bottom: 28px;
+    margin-bottom: 25px;
     background: #141414;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .logo-wrap img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    opacity: 0.92;
   }
 
-  /* ===== عنوان ===== */
-  h1 {
-    font-size: 1.7rem;
+  /* ===== تیتر ===== */
+  .main-title {
+    font-size: 2rem;
     color: #c9a84c;
     font-weight: 600;
+    letter-spacing: 4px;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  .subtitle {
+    font-size: 1rem;
+    color: #9a9a9a;
+    margin-bottom: 45px;
+    text-align: center;
+    line-height: 1.8;
+  }
+
+  /* ===== کارت‌های انتخاب نسخه ===== */
+  .platforms {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .platform {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 22px;
+    background: #141416;
+    border: 1px solid #232326;
+    border-radius: 14px;
+    color: #dcdcdc;
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 600;
+    transition: 0.25s ease;
+    cursor: pointer;
+  }
+  .platform:hover {
+    border-color: #c9a84c;
+    background: #1a1a1d;
+    transform: translateX(-4px);
+  }
+  .platform .right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .platform .icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    background: #1e1e22;
+  }
+  .platform .arrow {
+    color: #6b5a2a;
+    font-size: 1.4rem;
+  }
+
+  /* رنگ آیکون هر پلتفرم */
+  .platform.ble .icon    { background: #1e3a5f; }
+  .platform.telegram .icon { background: #1e4d6b; }
+  .platform.rubika .icon { background: #4a1e3a; }
+  .platform.shenavar .icon { background: #2d3a1e; }
+
+  /* ===== دکمه بازگشت ===== */
+  .back-btn {
+    margin-top: 25px;
+    padding: 12px 28px;
+    background: transparent;
+    border: 1px solid #333;
+    color: #9a9a9a;
+    border-radius: 10px;
+    font-size: 0.92rem;
+    cursor: pointer;
+    transition: 0.25s;
+    font-family: Tahoma, sans-serif;
+  }
+  .back-btn:hover {
+    border-color: #c9a84c;
+    color: #c9a84c;
+  }
+
+  /* ===== صفحه دوم: داخل هر پلتفرم ===== */
+  .platform-title {
+    font-size: 1.6rem;
+    color: #c9a84c;
     letter-spacing: 3px;
     margin-bottom: 10px;
     text-align: center;
   }
-  .subtitle {
+  .platform-sub {
     font-size: 0.95rem;
     color: #8a8a8a;
-    margin-bottom: 38px;
-    text-align: center;
-    line-height: 1.7;
-  }
-
-  /* ===== دکمه ربات (اصلی) ===== */
-  .btn-bot-main {
-    width: 100%;
-    max-width: 420px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 16px 30px;
-    background: #c9a84c;
-    color: #0b0b0d;
-    font-weight: bold;
-    font-size: 1.05rem;
-    border-radius: 12px;
-    text-decoration: none;
-    transition: background 0.25s ease;
     margin-bottom: 40px;
-  }
-  .btn-bot-main:hover {
-    background: #ddb95c;
+    text-align: center;
   }
 
-  /* ===== لینک‌های منو ===== */
   .menu {
     width: 100%;
     max-width: 420px;
@@ -107,7 +176,7 @@
     color: #cfcfcf;
     text-decoration: none;
     font-size: 0.98rem;
-    transition: border-color 0.25s ease, background 0.25s ease;
+    transition: 0.25s ease;
   }
   .menu a:hover {
     border-color: #4a3d1f;
@@ -116,69 +185,201 @@
   .menu a .label { display: flex; align-items: center; gap: 10px; }
   .menu a .arrow { color: #6b5a2a; font-size: 1.1rem; }
 
-  /* ===== فوتر ===== */
-  footer {
-    margin-top: 45px;
-    font-size: 0.78rem;
-    color: #555;
-    text-align: center;
+  /* دکمه اصلی ربات */
+  .btn-main {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 30px;
+    background: #c9a84c;
+    color: #0b0b0d;
+    font-weight: bold;
+    font-size: 1.05rem;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: 0.25s ease;
+    margin-bottom: 25px;
   }
+  .btn-main:hover { background: #ddb95c; }
 
   @media (max-width: 480px) {
-    .logo-wrap { width: 140px; height: 140px; }
-    h1 { font-size: 1.35rem; letter-spacing: 2px; }
-    .subtitle { font-size: 0.88rem; margin-bottom: 30px; }
-    .btn-bot-main { font-size: 1rem; padding: 15px 20px; }
+    .logo-wrap { width: 130px; height: 130px; }
+    .main-title { font-size: 1.5rem; letter-spacing: 3px; }
+    .subtitle { font-size: 0.9rem; margin-bottom: 30px; }
+    .platform { padding: 15px 18px; font-size: 0.98rem; }
   }
 </style>
 </head>
 <body>
 
-  <div class="top-bar">
-    <span>👤 فرمانده</span>
-    <span class="clock" id="clock">--:--:--</span>
+  <!-- ============ صفحه ۱: انتخاب نسخه ============ -->
+  <div class="screen active" id="screen-choice">
+
+    <div class="logo-wrap">
+      <img src="images/war-logo.jpg"
+           alt="World War"
+           onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=&quot;font-size:3rem;color:#c9a84c;&quot;>⚜️</span>';">
+    </div>
+
+    <h1 class="main-title">⚜️ جنگ جهانی ⚜️</h1>
+    <p class="subtitle">انتخاب کن کدوم نسخه جنگ جهانی رو میخوای بازی کنی</p>
+
+    <div class="platforms">
+
+      <!-- بله -->
+      <a href="javascript:void(0)" class="platform ble" onclick="showPlatform('ble')">
+        <span class="right">
+          <span class="icon">🟦</span>
+          <span>بله</span>
+        </span>
+        <span class="arrow">‹</span>
+      </a>
+
+      <!-- تلگرام -->
+      <a href="javascript:void(0)" class="platform telegram" onclick="showPlatform('telegram')">
+        <span class="right">
+          <span class="icon">✈️</span>
+          <span>تلگرام</span>
+        </span>
+        <span class="arrow">‹</span>
+      </a>
+
+      <!-- روبیکا -->
+      <a href="javascript:void(0)" class="platform rubika" onclick="showPlatform('rubika')">
+        <span class="right">
+          <span class="icon">🟪</span>
+          <span>روبیکا</span>
+        </span>
+        <span class="arrow">‹</span>
+      </a>
+
+      <!-- شناور -->
+      <a href="javascript:void(0)" class="platform shenavar" onclick="showPlatform('shenavar')">
+        <span class="right">
+          <span class="icon">🟩</span>
+          <span>شناور</span>
+        </span>
+        <span class="arrow">‹</span>
+      </a>
+
+    </div>
   </div>
 
-  <div class="logo-wrap">
-    <img src="https://hrjtghugjyggthjgnnkhhjhgjy-source.github.io/worldwar-shop/images/war-logo.jpg" alt="World War Logo">
+  <!-- ============ صفحه ۲: بله ============ -->
+  <div class="screen" id="screen-ble">
+    <h2 class="platform-title">⚜️ بله ⚜️</h2>
+    <p class="platform-sub">نسخه بله جنگ جهانی</p>
+
+    <a href="https://ble.ir/YourBot" class="btn-main" target="_blank">🤖 ورود به ربات</a>
+
+    <nav class="menu">
+      <a href="https://ble.ir/YourGroup" target="_blank">
+        <span class="label">💬 گپ رسمی</span>
+        <span class="arrow">‹</span>
+      </a>
+      <a href="https://ble.ir/YourChannel" target="_blank">
+        <span class="label">📢 کانال رسمی</span>
+        <span class="arrow">‹</span>
+      </a>
+      <a href="https://ble.ir/YourUsername" target="_blank">
+        <span class="label">📞 پشتیبانی</span>
+        <span class="arrow">‹</span>
+      </a>
+    </nav>
+
+    <button class="back-btn" onclick="goBack()">← بازگشت</button>
   </div>
 
-  <h1>WORLD WAR</h1>
-  <p class="subtitle">فروشگاه فرماندهان — به میدان جنگ خوش اومدی</p>
+  <!-- ============ صفحه ۳: تلگرام ============ -->
+  <div class="screen" id="screen-telegram">
+    <h2 class="platform-title">⚜️ تلگرام ⚜️</h2>
+    <p class="platform-sub">نسخه تلگرام جنگ جهانی</p>
 
-  <a href="https://t.me/YourBot" class="btn-bot-main" target="_blank">
-    🤖 ورود به ربات
-  </a>
+    <a href="https://t.me/YourBot" class="btn-main" target="_blank">🤖 ورود به ربات</a>
 
-  <nav class="menu">
-    <a href="https://t.me/YourGroup" target="_blank">
-      <span class="label">💬 گپ رسمی</span>
-      <span class="arrow">‹</span>
-    </a>
-    <a href="https://t.me/YourChannel" target="_blank">
-      <span class="label">📢 کانال رسمی</span>
-      <span class="arrow">‹</span>
-    </a>
-    <a href="https://t.me/YourSupport" target="_blank">
-      <span class="label">📞 پشتیبانی</span>
-      <span class="arrow">‹</span>
-    </a>
-  </nav>
+    <nav class="menu">
+      <a href="https://t.me/YourGroup" target="_blank">
+        <span class="label">💬 گپ رسمی</span>
+        <span class="arrow">‹</span>
+      </a>
+      <a href="https://t.me/YourChannel" target="_blank">
+        <span class="label">📢 کانال رسمی</span>
+        <span class="arrow">‹</span>
+      </a>
+      <a href="https://t.me/YourUsername" target="_blank">
+        <span class="label">📞 پشتیبانی</span>
+        <span class="arrow">‹</span>
+      </a>
+    </nav>
 
-  <footer>
-    © 2025 World War Shop — تمامی حقوق محفوظ است.
-  </footer>
+    <button class="back-btn" onclick="goBack()">← بازگشت</button>
+  </div>
+
+  <!-- ============ صفحه ۴: روبیکا ============ -->
+  <div class="screen" id="screen-rubika">
+    <h2 class="platform-title">⚜️ روبیکا ⚜️</h2>
+    <p class="platform-sub">نسخه روبیکا جنگ جهانی</p>
+
+    <a href="https://rubika.ir/YourBot" class="btn-main" target="_blank">🤖 ورود به ربات</a>
+
+    <nav class="menu">
+      <a href="https://rubika.ir/YourGroup" target="_blank">
+        <span class="label">💬 گپ رسمی</span>
+        <span class="arrow">‹</span>
+      </a>
+      <a href="https://rubika.ir/YourChannel" target="_blank">
+        <span class="label">📢 کانال رسمی</span>
+        <span class="arrow">‹</span>
+      </a>
+      <a href="https://rubika.ir/YourUsername" target="_blank">
+        <span class="label">📞 پشتیبانی</span>
+        <span class="arrow">‹</span>
+      </a>
+    </nav>
+
+    <button class="back-btn" onclick="goBack()">← بازگشت</button>
+  </div>
+
+  <!-- ============ صفحه ۵: شناور ============ -->
+  <div class="screen" id="screen-shenavar">
+    <h2 class="platform-title">⚜️ شناور ⚜️</h2>
+    <p class="platform-sub">نسخه شناور جنگ جهانی</p>
+
+    <a href="https://shanaavar.ir/YourBot" class="btn-main" target="_blank">🤖 ورود به ربات</a>
+
+    <nav class="menu">
+      <a href="https://shanaavar.ir/YourGroup" target="_blank">
+        <span class="label">💬 گپ رسمی</span>
+        <span class="arrow">‹</span>
+      </a>
+      <a href="https://shanaavar.ir/YourChannel" target="_blank">
+        <span class="label">📢 کانال رسمی</span>
+        <span class="arrow">‹</span>
+      </a>
+      <a href="https://shanaavar.ir/YourUsername" target="_blank">
+        <span class="label">📞 پشتیبانی</span>
+        <span class="arrow">‹</span>
+      </a>
+    </nav>
+
+    <button class="back-btn" onclick="goBack()">← بازگشت</button>
+  </div>
 
   <script>
-    function updateClock() {
-      const now = new Date();
-      const h = String(now.getHours()).padStart(2, '0');
-      const m = String(now.getMinutes()).padStart(2, '0');
-      const s = String(now.getSeconds()).padStart(2, '0');
-      document.getElementById('clock').textContent = `${h}:${m}:${s}`;
+    function showPlatform(name) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById('screen-' + name).classList.add('active');
+      window.scrollTo(0, 0);
     }
-    setInterval(updateClock, 1000);
-    updateClock();
+
+    function goBack() {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById('screen-choice').classList.add('active');
+      window.scrollTo(0, 0);
+    }
   </script>
 
 </body>
