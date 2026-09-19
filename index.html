@@ -18,7 +18,6 @@
     padding: 40px 20px;
   }
 
-  /* ===== صفحه اول: انتخاب نسخه ===== */
   .screen {
     width: 100%;
     max-width: 460px;
@@ -34,44 +33,36 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  /* ===== لوگو ===== */
   .logo-wrap {
     width: 160px;
     height: 160px;
     border-radius: 50%;
-    border: 1.5px solid #4a3d1f;
+    border: 1px solid #3a3020;
     overflow: hidden;
     margin-bottom: 25px;
-    background: #141414;
+    background: #0f0f12;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .logo-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
+  .logo-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-  /* ===== تیتر ===== */
   .main-title {
-    font-size: 2rem;
+    font-size: 1.9rem;
     color: #c9a84c;
     font-weight: 600;
-    letter-spacing: 4px;
-    margin-bottom: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 14px;
     text-align: center;
   }
   .subtitle {
-    font-size: 1rem;
-    color: #9a9a9a;
-    margin-bottom: 45px;
+    font-size: 0.95rem;
+    color: #8a8a8a;
+    margin-bottom: 42px;
     text-align: center;
     line-height: 1.8;
   }
 
-  /* ===== کارت‌های انتخاب نسخه ===== */
   .platforms {
     width: 100%;
     display: flex;
@@ -84,8 +75,8 @@
     align-items: center;
     justify-content: space-between;
     padding: 18px 22px;
-    background: #141416;
-    border: 1px solid #232326;
+    background: #101012;
+    border: 1px solid #202024;
     border-radius: 14px;
     color: #dcdcdc;
     text-decoration: none;
@@ -96,8 +87,7 @@
   }
   .platform:hover {
     border-color: #c9a84c;
-    background: #1a1a1d;
-    transform: translateX(-4px);
+    background: #16161a;
   }
   .platform .right {
     display: flex;
@@ -112,49 +102,24 @@
     align-items: center;
     justify-content: center;
     font-size: 1.3rem;
-    background: #1e1e22;
   }
-  .platform .arrow {
-    color: #6b5a2a;
-    font-size: 1.4rem;
-  }
+  .platform .arrow { color: #6b5a2a; font-size: 1.3rem; }
 
-  /* رنگ آیکون هر پلتفرم */
-  .platform.ble .icon    { background: #1e3a5f; }
-  .platform.telegram .icon { background: #1e4d6b; }
-  .platform.rubika .icon { background: #4a1e3a; }
-  .platform.shenavar .icon { background: #2d3a1e; }
+  .platform.ble      .icon { background: #0e2a44; }
+  .platform.telegram .icon { background: #10344f; }
+  .platform.rubika   .icon { background: #3a1040; }
 
-  /* ===== دکمه بازگشت ===== */
-  .back-btn {
-    margin-top: 25px;
-    padding: 12px 28px;
-    background: transparent;
-    border: 1px solid #333;
-    color: #9a9a9a;
-    border-radius: 10px;
-    font-size: 0.92rem;
-    cursor: pointer;
-    transition: 0.25s;
-    font-family: Tahoma, sans-serif;
-  }
-  .back-btn:hover {
-    border-color: #c9a84c;
-    color: #c9a84c;
-  }
-
-  /* ===== صفحه دوم: داخل هر پلتفرم ===== */
   .platform-title {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     color: #c9a84c;
     letter-spacing: 3px;
     margin-bottom: 10px;
     text-align: center;
   }
   .platform-sub {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     color: #8a8a8a;
-    margin-bottom: 40px;
+    margin-bottom: 38px;
     text-align: center;
   }
 
@@ -170,8 +135,8 @@
     align-items: center;
     justify-content: space-between;
     padding: 15px 20px;
-    background: #141416;
-    border: 1px solid #232326;
+    background: #101012;
+    border: 1px solid #202024;
     border-radius: 12px;
     color: #cfcfcf;
     text-decoration: none;
@@ -180,12 +145,11 @@
   }
   .menu a:hover {
     border-color: #4a3d1f;
-    background: #1a1a1d;
+    background: #16161a;
   }
   .menu a .label { display: flex; align-items: center; gap: 10px; }
   .menu a .arrow { color: #6b5a2a; font-size: 1.1rem; }
 
-  /* دکمه اصلی ربات */
   .btn-main {
     width: 100%;
     max-width: 420px;
@@ -205,10 +169,31 @@
   }
   .btn-main:hover { background: #ddb95c; }
 
+  .back-btn {
+    margin-top: 25px;
+    padding: 12px 28px;
+    background: transparent;
+    border: 1px solid #2a2a2e;
+    color: #8a8a8a;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-family: Tahoma, sans-serif;
+    transition: 0.25s;
+  }
+  .back-btn:hover { border-color: #c9a84c; color: #c9a84c; }
+
+  footer {
+    margin-top: 45px;
+    font-size: 0.9rem;
+    color: #c9a84c;
+    letter-spacing: 2px;
+  }
+
   @media (max-width: 480px) {
     .logo-wrap { width: 130px; height: 130px; }
-    .main-title { font-size: 1.5rem; letter-spacing: 3px; }
-    .subtitle { font-size: 0.9rem; margin-bottom: 30px; }
+    .main-title { font-size: 1.5rem; letter-spacing: 2px; }
+    .subtitle { font-size: 0.88rem; margin-bottom: 32px; }
     .platform { padding: 15px 18px; font-size: 0.98rem; }
   }
 </style>
@@ -219,7 +204,7 @@
   <div class="screen active" id="screen-choice">
 
     <div class="logo-wrap">
-      <img src="images/war-logo.jpg"
+      <img src="war-logo.jpg"
            alt="World War"
            onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=&quot;font-size:3rem;color:#c9a84c;&quot;>⚜️</span>';">
     </div>
@@ -229,7 +214,6 @@
 
     <div class="platforms">
 
-      <!-- بله -->
       <a href="javascript:void(0)" class="platform ble" onclick="showPlatform('ble')">
         <span class="right">
           <span class="icon">🟦</span>
@@ -238,7 +222,6 @@
         <span class="arrow">‹</span>
       </a>
 
-      <!-- تلگرام -->
       <a href="javascript:void(0)" class="platform telegram" onclick="showPlatform('telegram')">
         <span class="right">
           <span class="icon">✈️</span>
@@ -247,7 +230,6 @@
         <span class="arrow">‹</span>
       </a>
 
-      <!-- روبیکا -->
       <a href="javascript:void(0)" class="platform rubika" onclick="showPlatform('rubika')">
         <span class="right">
           <span class="icon">🟪</span>
@@ -256,16 +238,9 @@
         <span class="arrow">‹</span>
       </a>
 
-      <!-- شناور -->
-      <a href="javascript:void(0)" class="platform shenavar" onclick="showPlatform('shenavar')">
-        <span class="right">
-          <span class="icon">🟩</span>
-          <span>شناور</span>
-        </span>
-        <span class="arrow">‹</span>
-      </a>
-
     </div>
+
+    <footer>⚜️ جنگ جهانی ⚜️</footer>
   </div>
 
   <!-- ============ صفحه ۲: بله ============ -->
@@ -273,18 +248,18 @@
     <h2 class="platform-title">⚜️ بله ⚜️</h2>
     <p class="platform-sub">نسخه بله جنگ جهانی</p>
 
-    <a href="https://ble.ir/YourBot" class="btn-main" target="_blank">🤖 ورود به ربات</a>
+    <a href="https://ble.ir/worldwar2037Bot" class="btn-main" target="_blank">🤖 ورود به ربات</a>
 
     <nav class="menu">
-      <a href="https://ble.ir/YourGroup" target="_blank">
+      <a href="https://ble.ir/worldwar2037" target="_blank">
         <span class="label">💬 گپ رسمی</span>
         <span class="arrow">‹</span>
       </a>
-      <a href="https://ble.ir/YourChannel" target="_blank">
+      <a href="https://ble.ir/worldwar2036" target="_blank">
         <span class="label">📢 کانال رسمی</span>
         <span class="arrow">‹</span>
       </a>
-      <a href="https://ble.ir/YourUsername" target="_blank">
+      <a href="https://ble.ir/MohammadMahdi2037" target="_blank">
         <span class="label">📞 پشتیبانی</span>
         <span class="arrow">‹</span>
       </a>
@@ -298,18 +273,18 @@
     <h2 class="platform-title">⚜️ تلگرام ⚜️</h2>
     <p class="platform-sub">نسخه تلگرام جنگ جهانی</p>
 
-    <a href="https://t.me/YourBot" class="btn-main" target="_blank">🤖 ورود به ربات</a>
+    <a href="https://t.me/worldwar2037Bot" class="btn-main" target="_blank">🤖 ورود به ربات</a>
 
     <nav class="menu">
-      <a href="https://t.me/YourGroup" target="_blank">
+      <a href="https://t.me/worldwar2037" target="_blank">
         <span class="label">💬 گپ رسمی</span>
         <span class="arrow">‹</span>
       </a>
-      <a href="https://t.me/YourChannel" target="_blank">
+      <a href="https://t.me/worldwar2036" target="_blank">
         <span class="label">📢 کانال رسمی</span>
         <span class="arrow">‹</span>
       </a>
-      <a href="https://t.me/YourUsername" target="_blank">
+      <a href="https://t.me/MohammadMahdi2037" target="_blank">
         <span class="label">📞 پشتیبانی</span>
         <span class="arrow">‹</span>
       </a>
@@ -323,43 +298,18 @@
     <h2 class="platform-title">⚜️ روبیکا ⚜️</h2>
     <p class="platform-sub">نسخه روبیکا جنگ جهانی</p>
 
-    <a href="https://rubika.ir/YourBot" class="btn-main" target="_blank">🤖 ورود به ربات</a>
+    <a href="https://rubika.ir/worldwar2037Bot" class="btn-main" target="_blank">🤖 ورود به ربات</a>
 
     <nav class="menu">
-      <a href="https://rubika.ir/YourGroup" target="_blank">
+      <a href="https://rubika.ir/joing/BBGFDAEHI0HVFFLLRUUKEMJFQUKDBAVU" target="_blank">
         <span class="label">💬 گپ رسمی</span>
         <span class="arrow">‹</span>
       </a>
-      <a href="https://rubika.ir/YourChannel" target="_blank">
+      <a href="https://rubika.ir/worldwar2037" target="_blank">
         <span class="label">📢 کانال رسمی</span>
         <span class="arrow">‹</span>
       </a>
-      <a href="https://rubika.ir/YourUsername" target="_blank">
-        <span class="label">📞 پشتیبانی</span>
-        <span class="arrow">‹</span>
-      </a>
-    </nav>
-
-    <button class="back-btn" onclick="goBack()">← بازگشت</button>
-  </div>
-
-  <!-- ============ صفحه ۵: شناور ============ -->
-  <div class="screen" id="screen-shenavar">
-    <h2 class="platform-title">⚜️ شناور ⚜️</h2>
-    <p class="platform-sub">نسخه شناور جنگ جهانی</p>
-
-    <a href="https://shanaavar.ir/YourBot" class="btn-main" target="_blank">🤖 ورود به ربات</a>
-
-    <nav class="menu">
-      <a href="https://shanaavar.ir/YourGroup" target="_blank">
-        <span class="label">💬 گپ رسمی</span>
-        <span class="arrow">‹</span>
-      </a>
-      <a href="https://shanaavar.ir/YourChannel" target="_blank">
-        <span class="label">📢 کانال رسمی</span>
-        <span class="arrow">‹</span>
-      </a>
-      <a href="https://shanaavar.ir/YourUsername" target="_blank">
+      <a href="https://rubika.ir/mohammadmahdi2037" target="_blank">
         <span class="label">📞 پشتیبانی</span>
         <span class="arrow">‹</span>
       </a>
