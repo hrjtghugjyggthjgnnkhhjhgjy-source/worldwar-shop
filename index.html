@@ -8,24 +8,17 @@
 </head>
 <body>
 
-<!-- ===== صفحه لودینگ پیشرفته ===== -->
+<!-- ===== لودینگ ===== -->
 <div id="loader">
-  <div class="loader-particles">
-    <span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span>
-  </div>
   <div class="loader-content">
-    <div class="loader-ring"></div>
     <div class="loader-logo">📱</div>
     <h1 class="loader-title">MobileIran</h1>
     <p class="loader-text">Please wait...</p>
-    <div class="loader-dots">
-      <span></span><span></span><span></span>
-    </div>
+    <div class="loader-spinner"></div>
   </div>
 </div>
 
-<!-- ===== محتوای سایت ===== -->
+<!-- ===== محتوا ===== -->
 <div id="main-content" class="hidden">
 
 <div class="bg-blobs">
@@ -34,48 +27,66 @@
   <div class="blob blob3"></div>
 </div>
 
+<!-- ===== هدر ===== -->
 <header>
   <div class="container header-box glass">
     <div class="logo">📱 MobileIran</div>
     <nav>
       <a href="#products">محصولات</a>
-      <a href="#about">درباره ما</a>
-      <a href="#contact">تماس</a>
+      <a href="#new">جدیدترین</a>
+      <a href="#best">پرفروش‌ها</a>
+      <a href="#compare">مقایسه</a>
+      <a href="#orders">سفارشات من</a>
       <a href="https://ble.ir/MobileIran2037Bot" class="btn-bot">🛒 خرید از بله</a>
     </nav>
   </div>
 </header>
 
+<!-- ===== بنر ===== -->
 <section class="hero">
   <div class="container hero-box glass">
     <h1>به <span>MobileIran</span> خوش آمدید</h1>
     <p>فروشگاه تخصصی موبایل — اورجینال، گارانتی معتبر، ارسال سریع</p>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="🔍 جستجوی محصول...">
+      <button onclick="searchProduct()">جستجو</button>
+    </div>
     <a href="#products" class="btn-main">مشاهده محصولات</a>
   </div>
 </section>
 
-<section id="products" class="products">
+<!-- ===== محصولات جدید ===== -->
+<section id="new" class="products">
   <div class="container">
-    <h2>محصولات ما</h2>
+    <h2>🆕 جدیدترین محصولات</h2>
     <div class="grid">
-      <div class="card glass float1">
+      <div class="card glass float1" data-name="سامسونگ A54">
+        <button class="wish-btn" onclick="toggleWish(this)">🤍</button>
+        <div class="badge new">جدید</div>
         <div class="card-img">📱</div>
         <h3>سامسونگ A54</h3>
         <p>۶ ماه گارانتی — اورجینال</p>
+        <div class="rating">⭐⭐⭐⭐⭐ (۴.۸)</div>
         <div class="price">۱۵,۰۰۰,۰۰۰ تومان</div>
         <a href="https://ble.ir/MobileIran2037Bot" class="btn-buy">خرید</a>
       </div>
-      <div class="card glass float2">
+      <div class="card glass float2" data-name="شیائومی Note 13">
+        <button class="wish-btn" onclick="toggleWish(this)">🤍</button>
+        <div class="badge new">جدید</div>
         <div class="card-img">📱</div>
         <h3>شیائومی Note 13</h3>
         <p>اورجینال — ارسال سریع</p>
+        <div class="rating">⭐⭐⭐⭐ (۴.۵)</div>
         <div class="price">۹,۵۰۰,۰۰۰ تومان</div>
         <a href="https://ble.ir/MobileIran2037Bot" class="btn-buy">خرید</a>
       </div>
-      <div class="card glass float3">
+      <div class="card glass float3" data-name="آیفون 13">
+        <button class="wish-btn" onclick="toggleWish(this)">🤍</button>
+        <div class="badge new">جدید</div>
         <div class="card-img">📱</div>
         <h3>آیفون 13</h3>
         <p>اکتیو — سلامت ۱۰۰٪</p>
+        <div class="rating">⭐⭐⭐⭐⭐ (۵.۰)</div>
         <div class="price">۴۵,۰۰۰,۰۰۰ تومان</div>
         <a href="https://ble.ir/MobileIran2037Bot" class="btn-buy">خرید</a>
       </div>
@@ -83,25 +94,118 @@
   </div>
 </section>
 
-<section id="about" class="about">
-  <div class="container about-box glass">
-    <h2>درباره ما</h2>
-    <p>MobileIran یه فروشگاه تخصصی موبایله که با هدف ارائه گوشی‌های اورجینال با گارانتی معتبر و قیمت مناسب راه‌اندازی شده.</p>
-    <div class="features">
-      <div class="feature">✅ اورجینال</div>
-      <div class="feature">✅ گارانتی معتبر</div>
-      <div class="feature">✅ ارسال سریع</div>
-      <div class="feature">✅ پشتیبانی ۲۴/۷</div>
+<!-- ===== پرفروش‌ها ===== -->
+<section id="best" class="products">
+  <div class="container">
+    <h2>🔥 پرفروش‌ترین‌ها</h2>
+    <div class="grid">
+      <div class="card glass" data-name="سامسونگ S23">
+        <button class="wish-btn" onclick="toggleWish(this)">🤍</button>
+        <div class="badge hot">پرفروش</div>
+        <div class="card-img">📱</div>
+        <h3>سامسونگ S23</h3>
+        <p>پرچمدار سامسونگ</p>
+        <div class="rating">⭐⭐⭐⭐⭐ (۴.۹)</div>
+        <div class="price">۳۵,۰۰۰,۰۰۰ تومان</div>
+        <a href="https://ble.ir/MobileIran2037Bot" class="btn-buy">خرید</a>
+      </div>
+      <div class="card glass" data-name="آیفون 14">
+        <button class="wish-btn" onclick="toggleWish(this)">🤍</button>
+        <div class="badge hot">پرفروش</div>
+        <div class="card-img">📱</div>
+        <h3>آیفون 14</h3>
+        <p>پرچمدار اپل</p>
+        <div class="rating">⭐⭐⭐⭐⭐ (۴.۷)</div>
+        <div class="price">۵۵,۰۰۰,۰۰۰ تومان</div>
+        <a href="https://ble.ir/MobileIran2037Bot" class="btn-buy">خرید</a>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- ===== دسته‌بندی ===== -->
+<section id="products" class="products">
+  <div class="container">
+    <h2>📊 دسته‌بندی محصولات</h2>
+    <div class="filters">
+      <button class="filter-btn active" onclick="filterProducts('all', this)">همه</button>
+      <button class="filter-btn" onclick="filterProducts('samsung', this)">سامسونگ</button>
+      <button class="filter-btn" onclick="filterProducts('xiaomi', this)">شیائومی</button>
+      <button class="filter-btn" onclick="filterProducts('apple', this)">اپل</button>
+    </div>
+    <div class="grid" id="productGrid">
+      <div class="card glass" data-brand="samsung" data-name="سامسونگ A54">
+        <button class="wish-btn" onclick="toggleWish(this)">🤍</button>
+        <div class="card-img">📱</div>
+        <h3>سامسونگ A54</h3>
+        <p>۶ ماه گارانتی</p>
+        <div class="price">۱۵,۰۰۰,۰۰۰ تومان</div>
+        <a href="https://ble.ir/MobileIran2037Bot" class="btn-buy">خرید</a>
+      </div>
+      <div class="card glass" data-brand="xiaomi" data-name="شیائومی Note 13">
+        <button class="wish-btn" onclick="toggleWish(this)">🤍</button>
+        <div class="card-img">📱</div>
+        <h3>شیائومی Note 13</h3>
+        <p>اورجینال</p>
+        <div class="price">۹,۵۰۰,۰۰۰ تومان</div>
+        <a href="https://ble.ir/MobileIran2037Bot" class="btn-buy">خرید</a>
+      </div>
+      <div class="card glass" data-brand="apple" data-name="آیفون 13">
+        <button class="wish-btn" onclick="toggleWish(this)">🤍</button>
+        <div class="card-img">📱</div>
+        <h3>آیفون 13</h3>
+        <p>اکتیو</p>
+        <div class="price">۴۵,۰۰۰,۰۰۰ تومان</div>
+        <a href="https://ble.ir/MobileIran2037Bot" class="btn-buy">خرید</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== مقایسه ===== -->
+<section id="compare" class="products">
+  <div class="container">
+    <h2>⚖️ مقایسه محصولات</h2>
+    <div class="compare-box glass">
+      <select id="compare1">
+        <option value="">محصول اول...</option>
+        <option>سامسونگ A54</option>
+        <option>شیائومی Note 13</option>
+        <option>آیفون 13</option>
+      </select>
+      <select id="compare2">
+        <option value="">محصول دوم...</option>
+        <option>سامسونگ A54</option>
+        <option>شیائومی Note 13</option>
+        <option>آیفون 13</option>
+      </select>
+      <button onclick="compareProducts()" class="btn-main">مقایسه کن</button>
+      <div id="compareResult"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== سفارشات من ===== -->
+<section id="orders" class="products">
+  <div class="container">
+    <h2>📦 سفارشات من</h2>
+    <div class="orders-box glass">
+      <p>هنوز سفارشی ثبت نکردی!</p>
+      <p>از طریق ربات بله سفارش بده:</p>
+      <a href="https://ble.ir/MobileIran2037Bot" class="btn-buy">ورود به ربات</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== تماس ===== -->
 <section id="contact" class="contact">
   <div class="container contact-box glass">
-    <h2>تماس با ما</h2>
-    <p>💬 پشتیبانی: <a href="https://ble.ir/MohammadMahdi2037">@MohammadMahdi2037</a></p>
-    <p>📢 کانال: <a href="https://ble.ir/MobileIran2037">@MobileIran2037</a></p>
-    <p>🤖 ربات خرید: <a href="https://ble.ir/MobileIran2037Bot">ورود به ربات</a></p>
+    <h2>📞 تماس با ما</h2>
+    <div class="contact-buttons">
+      <a href="https://ble.ir/MohammadMahdi2037" class="contact-btn">💬 پشتیبانی</a>
+      <a href="https://ble.ir/MobileIran2037" class="contact-btn">📢 کانال</a>
+      <a href="https://ble.ir/MobileIran2037Bot" class="contact-btn">🤖 ربات</a>
+    </div>
   </div>
 </section>
 
@@ -114,19 +218,74 @@
 </div>
 
 <script>
-  window.addEventListener('load', () => {
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').style.opacity = '0';
+    document.getElementById('loader').style.transition = 'opacity 0.5s';
     setTimeout(() => {
-      document.getElementById('loader').style.opacity = '0';
-      document.getElementById('loader').style.transition = 'opacity 0.6s';
-      setTimeout(() => {
-        document.getElementById('loader').style.display = 'none';
-        const main = document.getElementById('main-content');
-        main.classList.remove('hidden');
-        main.style.opacity = '1';
-        main.style.transition = 'opacity 0.8s';
-      }, 600);
-    }, 2500);
+      document.getElementById('loader').style.display = 'none';
+      const main = document.getElementById('main-content');
+      main.classList.remove('hidden');
+      main.style.opacity = '1';
+      main.style.transition = 'opacity 0.8s';
+    }, 500);
+  }, 2000);
+});
+
+function toggleWish(btn) {
+  if (btn.textContent === '🤍') {
+    btn.textContent = '❤️';
+  } else {
+    btn.textContent = '🤍';
+  }
+}
+
+function searchProduct() {
+  const input = document.getElementById('searchInput').value.trim();
+  if (!input) return;
+  const cards = document.querySelectorAll('.card');
+  let found = false;
+  cards.forEach(c => {
+    if (c.dataset.name && c.dataset.name.includes(input)) {
+      c.scrollIntoView({behavior: 'smooth', block: 'center'});
+      c.style.border = '2px solid #3b82f6';
+      setTimeout(() => c.style.border = '', 2000);
+      found = true;
+    }
   });
+  if (!found) alert('محصولی با این نام پیدا نشد!');
+}
+
+function filterProducts(brand, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#productGrid .card').forEach(c => {
+    if (brand === 'all' || c.dataset.brand === brand) {
+      c.style.display = '';
+    } else {
+      c.style.display = 'none';
+    }
+  });
+}
+
+function compareProducts() {
+  const p1 = document.getElementById('compare1').value;
+  const p2 = document.getElementById('compare2').value;
+  const result = document.getElementById('compareResult');
+  if (!p1 || !p2) {
+    result.innerHTML = '⚠️ لطفاً هر دو محصول را انتخاب کنید.';
+    return;
+  }
+  result.innerHTML = `
+    <table class="compare-table">
+      <tr><th>ویژگی</th><th>${p1}</th><th>${p2}</th></tr>
+      <tr><td>قیمت</td><td>—</td><td>—</td></tr>
+      <tr><td>دوربین</td><td>—</td><td>—</td></tr>
+      <tr><td>باتری</td><td>—</td><td>—</td></tr>
+      <tr><td>حافظه</td><td>—</td><td>—</td></tr>
+    </table>
+  `;
+}
 </script>
 
 </body>
