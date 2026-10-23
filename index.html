@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World War | جنگ جهانی</title>
     <style>
-        /* تنظیمات کلی */
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap');
 
         body {
@@ -19,11 +18,11 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            /* فاصله از پایین برای اینکه منو روی محتوا نیفته */
             padding-bottom: 100px; 
             box-sizing: border-box;
         }
 
+        /* کارت اصلی وسط */
         .container {
             text-align: center;
             padding: 40px 25px;
@@ -37,7 +36,6 @@
             box-sizing: border-box;
         }
 
-        /* لوگو و متن */
         .logo {
             width: 120px;
             height: 120px;
@@ -53,6 +51,7 @@
             font-size: 1.9rem;
             margin: 10px 0;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            direction: ltr; /* برای اینکه آیکون های گل سمت درست باشن */
         }
 
         p {
@@ -62,27 +61,27 @@
             margin-bottom: 20px;
         }
 
-        /* ------------------ منوی پایین (Bottom Nav) ------------------ */
+        /* ------------------ منوی پایین ------------------ */
         .bottom-nav {
             position: fixed;
-            bottom: 20px;
+            bottom: 25px;
             left: 50%;
             transform: translateX(-50%);
-            width: 90%;
+            width: 92%;
             max-width: 420px;
             
-            /* استایل شیشه‌ای منو */
-            background: rgba(15, 23, 42, 0.65); /* رنگ آبی تیره شبیه عکس */
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 40px; /* کپسولی */
+            /* استایل شیشه‌ای */
+            background: rgba(15, 23, 42, 0.7); 
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 50px; 
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
             
             display: flex;
             justify-content: space-around;
             align-items: center;
-            padding: 10px 5px;
+            padding: 10px 15px;
             box-sizing: border-box;
             z-index: 1000;
         }
@@ -97,13 +96,12 @@
             font-size: 0.75rem;
             font-weight: 700;
             transition: all 0.3s ease;
-            width: 60px;
+            width: 65px;
         }
 
         .nav-item .icon {
             font-size: 1.4rem;
             margin-bottom: 4px;
-            transition: all 0.3s ease;
         }
 
         /* استایل دکمه فعال (خرید آیتم) */
@@ -112,35 +110,33 @@
         }
 
         .nav-item.active .icon {
-            background: #1d4ed8; /* رنگ آبی دکمه فعال */
-            width: 45px;
-            height: 45px;
+            background: #1d4ed8; /* آبی */
+            width: 48px;
+            height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            box-shadow: 0 0 15px rgba(29, 78, 216, 0.5);
-            margin-top: -20px; /* بیرون زدگی دکمه */
-            border: 3px solid #0b0e14;
-        }
-
-        .nav-item:not(.active):hover {
-            color: #d4af37;
+            box-shadow: 0 0 20px rgba(29, 78, 216, 0.7); /* هاله آبی */
+            margin-top: -25px; /* بیرون زدگی */
+            border: 3px solid #0b0e14; /* حاشیه هم رنگ پس زمینه */
         }
 
     </style>
 </head>
 <body>
 
-    <!-- محتوای اصلی صفحه -->
     <div class="container">
-        <img src="https://i.imgur.com/your-logo.png" alt="World War Logo" class="logo" onerror="this.src='https://via.placeholder.com/120?text=WW'">
+        <!-- لوگو -->
+        <img src="https://i.imgur.com/your-logo.png" alt="WW" class="logo" onerror="this.src='https://via.placeholder.com/120?text=WW'">
         
+        <!-- تایتل دقیقا مثل عکس -->
         <h1>⚜️WORLD WAR⚜️</h1>
-        <p>فرماندهی را به دست بگیر! ارتش خود را بساز، منابع جمع کن و در نبردهای جهانی پیروز شو. آیا آماده‌ای؟</p>
+        
+        <p></p>
     </div>
 
-    <!-- منوی شیشه‌ای پایین صفحه -->
+    <!-- منوی پایین شبیه عکس جدیدت -->
     <nav class="bottom-nav">
         
         <!-- سایر -->
@@ -161,7 +157,7 @@
             پروفایل
         </a>
 
-        <!-- خرید آیتم (دکمه فعال) -->
+        <!-- خرید آیتم (فعال) -->
         <a href="#" class="nav-item active">
             <span class="icon">🏪</span>
             خرید آیتم
