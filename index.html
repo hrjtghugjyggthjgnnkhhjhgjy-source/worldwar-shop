@@ -29,10 +29,11 @@
             user-select: none;
             -webkit-touch-callout: none;
             
-            /* حذف هایلایت آبی پیش‌فرض مرورگر */
+            /* حذف هایلایت آبی پیش‌فرض مرورگر در کل صفحه */
             -webkit-tap-highlight-color: transparent; 
         }
 
+        /* بنر جنگنده */
         .hero-banner {
             width: 100%; max-width: 500px; aspect-ratio: 21 / 9; 
             background-color: #060910; 
@@ -41,6 +42,7 @@
             border: none; 
         }
 
+        /* کارت پروفایل */
         .profile-card {
             width: 90%; max-width: 460px; background: #0d121c; border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 16px; margin-top: 20px; display: flex; flex-direction: column; overflow: hidden;
@@ -58,6 +60,7 @@
         .wallet-title { color: #8b949e; font-size: 0.85rem; margin-bottom: 15px; display: flex; align-items: center; gap: 5px; }
         .wallet-title svg { width: 16px; height: 16px; color: #d4af37; }
 
+        /* منابع (سکه، جم، نفت) */
         .resources-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
         .resource-box {
             background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05);
@@ -85,39 +88,15 @@
         
         .nav-icon { width: 24px; height: 24px; margin-bottom: 5px; transition: all 0.3s ease; }
         
+        /* وقتی دکمه فعال میشه (سفید میشه) */
         .nav-item.active { color: #ffffff; }
         .nav-item.active .nav-icon { color: #ffffff; transform: scale(1.1); }
-
-        /* ------------------ دکمه آهنگ (شبیه دکمه‌های پایین) ------------------ */
-        .music-btn {
-            position: fixed; top: 15px; left: 15px; z-index: 9999;
-            width: 45px; height: 45px; 
-            background: rgba(13, 18, 28, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.1); 
-            border-radius: 12px; 
-            display: flex; align-items: center; justify-content: center; 
-            cursor: pointer; backdrop-filter: blur(10px); 
-            transition: all 0.3s ease;
-            font-size: 1.3rem; 
-            -webkit-tap-highlight-color: transparent; /* حذف هایلایت پیش‌فرض */
-        }
-        
-        /* افکت لمس آبی (دقیقاً مثل بقیه دکمه‌ها) */
-        .music-btn:active {
-            background: #1d4ed8; 
-            border-color: #1d4ed8;
-        }
 
     </style>
 </head>
 <body>
 
-    <!-- دکمه آهنگ با ایموجی بلندگو -->
-    <div class="music-btn" id="musicBtn" onclick="toggleMusic()">
-        🔊
-    </div>
-
-    <!-- بنر -->
+    <!-- بنر جنگنده -->
     <div class="hero-banner"></div>
 
     <!-- کارت پروفایل -->
@@ -151,6 +130,7 @@
     <!-- ================= منوی پایین ================= -->
     <nav class="bottom-nav">
         
+        <!-- 1. سایر (آیکون سه خط) -->
         <div class="nav-item" onclick="setActive(this)">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="4" y1="6" x2="20" y2="6"></line>
@@ -160,31 +140,30 @@
             سایر
         </div>
 
+        <!-- 2. تنظیمات -->
         <div class="nav-item" onclick="setActive(this)">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
             تنظیمات
         </div>
 
+        <!-- 3. فروشگاه (چرخ خرید) -->
         <div class="nav-item" onclick="setActive(this)">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
             فروشگاه
         </div>
 
+        <!-- 4. خرید آیتم (جعبه هدیه) -->
         <div class="nav-item" onclick="setActive(this)">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
             خرید آیتم
         </div>
 
+        <!-- 5. منو اصلی (خانه - پیش فرض فعال) -->
         <div class="nav-item active" onclick="setActive(this)">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
             منو اصلی
         </div>
     </nav>
-
-    <!-- آهنگ واقعی و حماسی (Pixabay) -->
-    <audio id="bgMusic" loop>
-        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=epic-cinematic-trailer-113858.mp3" type="audio/mpeg">
-    </audio>
 
     <script>
         const tg = window.Telegram.WebApp;
@@ -192,42 +171,18 @@
         tg.setHeaderColor('#060910'); 
         tg.setBackgroundColor('#060910');
 
-        // درخواست دسترسی برای پخش صدا (برای بعضی نسخه‌های تلگرام)
-        if (tg.requestWriteAccess) {
-            tg.requestWriteAccess(); 
-        }
-
         const user = tg.initDataUnsafe?.user;
         if (user) {
             document.getElementById('user-name').innerText = user.first_name;
         }
 
-        // ------------------ کدهای مربوط به آهنگ ------------------
-        const music = document.getElementById('bgMusic');
-        const btn = document.getElementById('musicBtn');
-        let isPlaying = false;
-
-        function toggleMusic() {
-            if (isPlaying) {
-                music.pause();
-                // وقتی قطع میشه، شفافیت ایموجی رو کم میکنیم که معلوم بشه قطعه
-                btn.style.opacity = '0.5'; 
-            } else {
-                music.play().then(() => {
-                    // وقتی پخش میشه، شفافیت رو کامل میکنیم
-                    btn.style.opacity = '1'; 
-                }).catch(error => {
-                    console.log("خطا در پخش:", error);
-                    alert("لطفا دکمه پخش را دوباره لمس کنید.");
-                });
-            }
-            isPlaying = !isPlaying;
-        }
-
-        // ------------------ کدهای مربوط به منوی پایین ------------------
+        // ------------------ کدهای مربوط به سفید شدن دکمه‌ها ------------------
         function setActive(element) {
+            // اول همه دکمه‌ها رو از حالت فعال خارج کن (خاکستری بشن)
             const items = document.querySelectorAll('.nav-item');
             items.forEach(item => item.classList.remove('active'));
+            
+            // بعد فقط دکمه‌ای که کلیک شده رو فعال کن (سفید بشه)
             element.classList.add('active');
         }
     </script>
