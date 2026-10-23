@@ -22,7 +22,6 @@
             box-sizing: border-box;
         }
 
-        /* ------------------ کانتینر اصلی ------------------ */
         .container {
             text-align: center;
             padding: 40px 25px;
@@ -78,7 +77,7 @@
             display: flex;
             justify-content: space-around;
             align-items: center;
-            padding: 10px 5px;
+            padding: 12px 5px; /* پدینگ متعادل */
             box-sizing: border-box;
             z-index: 1000;
         }
@@ -89,7 +88,7 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            color: #8b949e; /* رنگ خاکستری برای آیکون‌های غیرفعال */
+            color: #8b949e; /* خاکستری برای غیر فعال */
             font-size: 0.75rem;
             font-weight: 700;
             transition: all 0.3s ease;
@@ -97,7 +96,6 @@
             cursor: pointer;
         }
 
-        /* استایل آیکون‌های SVG */
         .nav-icon {
             width: 24px;
             height: 24px;
@@ -105,54 +103,31 @@
             transition: all 0.3s ease;
         }
 
-        /* دکمه فعال (خرید آیتم) */
+        /* دکمه فعال (خرید آیتم) - بدون دایره و هاله */
         .nav-item.active {
-            color: #fff;
-        }
-
-        .nav-item.active .nav-icon-wrapper {
-            background: #1d4ed8;
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            box-shadow: 0 0 20px rgba(29, 78, 216, 0.7);
-            margin-top: -25px;
-            border: 3px solid #0b0e14;
+            color: #d4af37; /* رنگ طلایی برای دکمه فعال */
         }
 
         .nav-item.active .nav-icon {
-            color: #fff;
-            width: 26px;
-            height: 26px;
-            margin-bottom: 0;
+            color: #d4af37; /* آیکون هم طلایی میشه */
+            transform: scale(1.1); /* کمی بزرگتر میشه */
         }
 
-        /* هاور روی دکمه‌های غیرفعال */
+        /* افکت هاور */
         .nav-item:not(.active):hover {
-            color: #d4af37;
+            color: #e6edf3;
         }
-        .nav-item:not(.active):hover .nav-icon {
-            transform: translateY(-3px);
-        }
-
-        /* ------------------ تنظیمات مخفی کردن صفحات ------------------ */
-        .hidden { display: none !important; }
 
     </style>
 </head>
 <body>
 
-    <!-- صفحه اصلی -->
-    <div id="home-page" class="container">
+    <div class="container">
         <img src="https://i.imgur.com/your-logo.png" alt="WW" class="logo" onerror="this.src='https://via.placeholder.com/120?text=WW'">
         <h1>⚜️ WORLD WAR ⚜️</h1>
         <p>فرماندهی را به دست بگیر! ارتش خود را بساز، منابع جمع کن و در نبردهای جهانی پیروز شو. آیا آماده‌ای؟</p>
     </div>
 
-    <!-- منوی پایین -->
     <nav class="bottom-nav">
         
         <!-- سایر -->
@@ -185,13 +160,11 @@
 
         <!-- خرید آیتم (فعال) -->
         <a href="#" class="nav-item active">
-            <div class="nav-icon-wrapper">
-                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="9" cy="21" r="1"></circle>
-                    <circle cx="20" cy="21" r="1"></circle>
-                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                </svg>
-            </div>
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
             خرید آیتم
         </a>
 
