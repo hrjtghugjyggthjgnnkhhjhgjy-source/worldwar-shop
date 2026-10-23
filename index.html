@@ -68,8 +68,8 @@
             transform: translateX(-50%);
             width: 92%;
             max-width: 420px;
-            background: rgba(15, 23, 42, 0.75); 
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(16, 24, 40, 0.9); 
+            border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 50px; 
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
@@ -77,7 +77,7 @@
             display: flex;
             justify-content: space-around;
             align-items: center;
-            padding: 12px 5px; /* پدینگ متعادل */
+            padding: 12px 5px;
             box-sizing: border-box;
             z-index: 1000;
         }
@@ -103,14 +103,14 @@
             transition: all 0.3s ease;
         }
 
-        /* دکمه فعال (خرید آیتم) - بدون دایره و هاله */
+        /* دکمه فعال (خرید آیتم) */
         .nav-item.active {
-            color: #d4af37; /* رنگ طلایی برای دکمه فعال */
+            color: #ffffff; /* رنگ سفید */
         }
 
         .nav-item.active .nav-icon {
-            color: #d4af37; /* آیکون هم طلایی میشه */
-            transform: scale(1.1); /* کمی بزرگتر میشه */
+            color: #ffffff; 
+            transform: scale(1.1); /* کمی بزرگتر */
         }
 
         /* افکت هاور */
@@ -132,10 +132,9 @@
         
         <!-- سایر -->
         <a href="#" class="nav-item">
-            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="3" y1="12" x2="21" y2="12"></line>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <line x1="3" y1="18" x2="21" y2="18"></line>
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="4" y1="8" x2="20" y2="8"></line>
+                <line x1="4" y1="16" x2="20" y2="16"></line>
             </svg>
             سایر
         </a>
@@ -158,12 +157,14 @@
             پروفایل
         </a>
 
-        <!-- خرید آیتم (فعال) -->
+        <!-- خرید آیتم (چرخ فروشگاه) -->
         <a href="#" class="nav-item active">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                <!-- چرخ‌های سبد خرید -->
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <!-- بدنه سبد خرید -->
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
             </svg>
             خرید آیتم
         </a>
