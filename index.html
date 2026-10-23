@@ -22,7 +22,7 @@
             box-sizing: border-box;
             overflow-x: hidden;
             
-            /* قوانین طلایی: جلوگیری از کپی و حذف هایلایت */
+            /* قوانین طلایی */
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
@@ -31,7 +31,7 @@
             -webkit-tap-highlight-color: transparent; 
         }
 
-        /* بنر جنگنده (همیشه ثابت بالای صفحه) */
+        /* بنر جنگنده (فقط یکبار در بالای صفحه) */
         .hero-banner {
             width: 100%; max-width: 500px; aspect-ratio: 21 / 9; 
             background-color: #060910; 
@@ -40,16 +40,16 @@
             border: none; 
         }
 
-        /* ------------------ مدیریت صفحات (وسط صفحه) ------------------ */
+        /* ------------------ مدیریت صفحات ------------------ */
         .page-section {
             width: 90%; max-width: 460px;
-            display: none; /* همه مخفی */
+            display: none; 
             animation: fadeIn 0.3s ease-in-out;
             margin-top: 20px;
         }
 
         .page-section.active-page {
-            display: block; /* فقط فعال نمایش داده میشه */
+            display: block; 
         }
 
         @keyframes fadeIn {
@@ -70,50 +70,44 @@
         .info-value { color: #ffffff; font-size: 1.1rem; font-weight: 900; margin: 0; }
         .info-left { flex: 1; border-right: 1px solid rgba(255, 255, 255, 0.05); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; }
         .level-number { color: #ffffff; font-size: 1.8rem; font-weight: 900; }
-        
         .profile-bottom { padding: 20px; display: flex; flex-direction: column; }
         .wallet-title { color: #8b949e; font-size: 0.85rem; margin-bottom: 15px; display: flex; align-items: center; gap: 5px; }
         .wallet-title svg { width: 16px; height: 16px; color: #d4af37; }
-
         .resources-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-        .resource-box {
-            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px; padding: 12px 5px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
-        }
+        .resource-box { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 12px 5px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
         .resource-box .icon { font-size: 1.2rem; }
         .resource-box .amount { color: #ffffff; font-weight: 900; font-size: 0.95rem; }
         .resource-box .name { color: #8b949e; font-size: 0.7rem; }
 
-        /* ------------------ صفحه سایر (دکمه‌های گرید) ------------------ */
-        .other-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .other-btn {
-            background: #0d121c;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 25px 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: #ffffff;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-        }
-
-        .other-btn:hover {
-            border-color: #d4af37;
-            background: rgba(212, 175, 55, 0.05);
-        }
-
+        /* ------------------ صفحه سایر (دکمه‌ها) ------------------ */
+        .other-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .other-btn { background: #0d121c; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 25px 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; color: #ffffff; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
+        .other-btn:hover { border-color: #d4af37; background: rgba(212, 175, 55, 0.05); }
         .other-btn .emoji { font-size: 2.5rem; margin-bottom: 15px; }
         .other-btn .title { font-size: 0.95rem; font-weight: bold; }
+
+        /* ------------------ صفحه لیدربورد (جدید) ------------------ */
+        .leaderboard-list { background: #0d121c; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
+        .leaderboard-item { display: flex; align-items: center; padding: 15px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .leaderboard-item:last-child { border-bottom: none; }
+        .rank { font-size: 1.2rem; font-weight: 900; width: 40px; color: #8b949e; }
+        .rank.top-1 { color: #ffd700; font-size: 1.5rem; } /* طلایی */
+        .rank.top-2 { color: #c0c0c0; font-size: 1.4rem; } /* نقره‌ای */
+        .rank.top-3 { color: #cd7f32; font-size: 1.3rem; } /* برنزی */
+        .player-name { flex: 1; color: #ffffff; font-weight: bold; font-size: 0.95rem; }
+        .player-score { color: #d4af37; font-weight: 900; font-size: 0.9rem; }
+
+        /* ------------------ صفحه تنظیمات ------------------ */
+        .settings-list { background: #0d121c; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
+        .setting-item { display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); cursor: pointer; }
+        .setting-item:last-child { border-bottom: none; }
+        .setting-info { display: flex; align-items: center; gap: 10px; color: #ffffff; font-size: 0.95rem; font-weight: bold; }
+        .setting-info span { font-size: 1.2rem; }
+        .toggle-switch { width: 44px; height: 24px; background: #2a3446; border-radius: 20px; position: relative; transition: all 0.3s; }
+        .toggle-switch::after { content: ''; position: absolute; top: 3px; right: 3px; width: 18px; height: 18px; background: #8b949e; border-radius: 50%; transition: all 0.3s; }
+        .toggle-switch.on { background: #d4af37; }
+        .toggle-switch.on::after { right: calc(100% - 21px); background: #fff; }
+        .setting-arrow { color: #8b949e; font-size: 1.2rem; }
 
         /* ------------------ منوی پایین ------------------ */
         .bottom-nav {
@@ -123,15 +117,8 @@
             display: flex; justify-content: space-around; align-items: center; padding: 12px 5px; z-index: 1000;
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
-        
-        .nav-item { 
-            display: flex; flex-direction: column; align-items: center; 
-            color: #8b949e; font-size: 0.7rem; font-weight: 700; width: 60px; 
-            cursor: pointer; transition: all 0.3s ease;
-        }
-        
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: #8b949e; font-size: 0.7rem; font-weight: 700; width: 60px; cursor: pointer; transition: all 0.3s ease; text-decoration: none; }
         .nav-icon { width: 24px; height: 24px; margin-bottom: 5px; transition: all 0.3s ease; }
-        
         .nav-item.active { color: #ffffff; }
         .nav-item.active .nav-icon { color: #ffffff; transform: scale(1.1); }
 
@@ -139,10 +126,10 @@
 </head>
 <body>
 
-    <!-- بنر جنگنده (در همه صفحات ثابته) -->
+    <!-- بنر جنگنده -->
     <div class="hero-banner"></div>
 
-    <!-- ================= صفحه 1: منو اصلی (کارت پروفایل) ================= -->
+    <!-- ================= صفحه 1: منو اصلی ================= -->
     <div id="page-main" class="page-section active-page">
         <div class="profile-card">
             <div class="profile-top">
@@ -172,64 +159,119 @@
         </div>
     </div>
 
-    <!-- ================= صفحه 2: سایر (دکمه‌های گرید) ================= -->
+    <!-- ================= صفحه 2: سایر ================= -->
     <div id="page-other" class="page-section">
         <div class="other-grid">
-            <a href="#" class="other-btn">
+            <!-- دکمه لیدربورد که به صفحه لیدربورد وصل میشه -->
+            <div class="other-btn" onclick="switchPage('leaderboard', document.querySelector('.nav-item:nth-child(1)'))">
+                <span class="emoji">🏆</span>
+                <span class="title">رتبه‌بندی</span>
+            </div>
+            <div class="other-btn">
+                <span class="emoji">🎁</span>
+                <span class="title">جایزه روزانه</span>
+            </div>
+            <div class="other-btn">
+                <span class="emoji">🤝</span>
+                <span class="title">دعوت از دوستان</span>
+            </div>
+            <div class="other-btn">
                 <span class="emoji">💙</span>
                 <span class="title">کانال بله</span>
-            </a>
-            <a href="#" class="other-btn">
+            </div>
+            <div class="other-btn">
                 <span class="emoji">💬</span>
                 <span class="title">پشتیبانی</span>
-            </a>
-            <a href="#" class="other-btn">
-                <span class="emoji">📋</span>
-                <span class="title">قوانین و راهنما</span>
-            </a>
-            <a href="#" class="other-btn">
-                <span class="emoji">👥</span>
-                <span class="title">گروه گفتگو</span>
-            </a>
-            <a href="#" class="other-btn">
-                <span class="emoji">🟣</span>
-                <span class="title">کانال روبیکا</span>
-            </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= صفحه 3: لیدربورد ================= -->
+    <div id="page-leaderboard" class="page-section">
+        <div class="leaderboard-list">
+            <div class="leaderboard-item">
+                <div class="rank top-1">🥇</div>
+                <div class="player-name">فرمانده کل</div>
+                <div class="player-score">۱۵۰,۰۰۰</div>
+            </div>
+            <div class="leaderboard-item">
+                <div class="rank top-2">🥈</div>
+                <div class="player-name">ژنرال آتش</div>
+                <div class="player-score">۱۲۰,۵۰۰</div>
+            </div>
+            <div class="leaderboard-item">
+                <div class="rank top-3">🥉</div>
+                <div class="player-name">عقاب سیاه</div>
+                <div class="player-score">۹۸,۰۰۰</div>
+            </div>
+            <div class="leaderboard-item">
+                <div class="rank">4</div>
+                <div class="player-name">سرباز فداکار</div>
+                <div class="player-score">۸۵,۲۰۰</div>
+            </div>
+            <div class="leaderboard-item">
+                <div class="rank">5</div>
+                <div class="player-name">توپخانه چی</div>
+                <div class="player-score">۷۲,۱۰۰</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= صفحه 4: تنظیمات ================= -->
+    <div id="page-settings" class="page-section">
+        <div class="settings-list">
+            
+            <div class="setting-item">
+                <div class="setting-info"><span>🎵</span> موسیقی پس‌زمینه</div>
+                <div class="toggle-switch on" onclick="toggleSwitch(this)"></div>
+            </div>
+
+            <div class="setting-item">
+                <div class="setting-info"><span>🔊</span> افکت‌های صوتی</div>
+                <div class="toggle-switch on" onclick="toggleSwitch(this)"></div>
+            </div>
+
+            <div class="setting-item">
+                <div class="setting-info"><span>🔔</span> اعلان‌های بازی</div>
+                <div class="toggle-switch" onclick="toggleSwitch(this)"></div>
+            </div>
+
+            <div class="setting-item">
+                <div class="setting-info"><span>ℹ️</span> درباره بازی (نسخه ۱.۰.۰)</div>
+                <span class="setting-arrow">❮</span>
+            </div>
+
+            <div class="setting-item">
+                <div class="setting-info" style="color: #b91c1c;"><span>🚪</span> خروج از حساب</div>
+                <span class="setting-arrow" style="color: #b91c1c;">❮</span>
+            </div>
+
         </div>
     </div>
 
     <!-- ================= منوی پایین ================= -->
     <nav class="bottom-nav">
         
-        <!-- 1. سایر -->
         <div class="nav-item" onclick="switchPage('other', this)">
-            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="4" y1="6" x2="20" y2="6"></line>
-                <line x1="4" y1="12" x2="20" y2="12"></line>
-                <line x1="4" y1="18" x2="20" y2="18"></line>
-            </svg>
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
             سایر
         </div>
 
-        <!-- 2. تنظیمات -->
         <div class="nav-item" onclick="switchPage('settings', this)">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
             تنظیمات
         </div>
 
-        <!-- 3. فروشگاه -->
         <div class="nav-item" onclick="switchPage('shop', this)">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
             فروشگاه
         </div>
 
-        <!-- 4. خرید آیتم -->
         <div class="nav-item" onclick="switchPage('buy', this)">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
             خرید آیتم
         </div>
 
-        <!-- 5. منو اصلی -->
         <div class="nav-item active" onclick="switchPage('main', this)">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
             منو اصلی
@@ -237,36 +279,48 @@
     </nav>
 
     <script>
+        // اتصال به وب اپ تلگرام/بله
         const tg = window.Telegram.WebApp;
-        tg.expand(); 
-        tg.setHeaderColor('#060910'); 
-        tg.setBackgroundColor('#060910');
-
-        const user = tg.initDataUnsafe?.user;
-        if (user) {
-            document.getElementById('user-name').innerText = user.first_name;
+        if(tg) {
+            tg.expand(); 
+            tg.setHeaderColor('#060910'); 
+            tg.setBackgroundColor('#060910');
+            const user = tg.initDataUnsafe?.user;
+            if (user) {
+                document.getElementById('user-name').innerText = user.first_name;
+            }
         }
 
         // ------------------ تابع جابه‌جایی بین صفحات ------------------
         function switchPage(pageName, element) {
-            // الف) مخفی کردن همه محتواهای وسط
+            // مخفی کردن همه صفحات
             const pages = document.querySelectorAll('.page-section');
             pages.forEach(page => page.classList.remove('active-page'));
 
-            // ب) نمایش محتوای درخواستی
+            // نمایش صفحه درخواستی
             if (pageName === 'main') {
                 document.getElementById('page-main').classList.add('active-page');
             } else if (pageName === 'other') {
                 document.getElementById('page-other').classList.add('active-page');
+            } else if (pageName === 'settings') {
+                document.getElementById('page-settings').classList.add('active-page');
+            } else if (pageName === 'leaderboard') {
+                document.getElementById('page-leaderboard').classList.add('active-page');
             } else {
-                // برای بقیه دکمه‌ها فعلاً صفحه اصلی باز میشه (چون هنوز طراحی نشدن)
                 document.getElementById('page-main').classList.add('active-page');
             }
 
-            // ج) سفید کردن دکمه منوی پایین
-            const items = document.querySelectorAll('.nav-item');
-            items.forEach(item => item.classList.remove('active'));
-            element.classList.add('active');
+            // اگر عنصر دکمه منوی پایین پاس داده شده بود، رنگ دکمه‌ها رو تغییر بده
+            if (element && element.classList.contains('nav-item')) {
+                const items = document.querySelectorAll('.nav-item');
+                items.forEach(item => item.classList.remove('active'));
+                element.classList.add('active');
+            }
+        }
+
+        // ------------------ تابع روشن/خاموش کردن کلیدها ------------------
+        function toggleSwitch(element) {
+            element.classList.toggle('on');
         }
     </script>
 
