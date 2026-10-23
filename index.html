@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World War | جنگ جهانی</title>
+    <title>⚜️WORLD WAR⚜️</title>
     <style>
         /* تنظیمات کلی */
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap');
@@ -14,10 +14,8 @@
             font-family: 'Vazirmatn', sans-serif;
             background-color: #0d1117;
             color: #c9d1d9;
-            background-image: linear-gradient(rgba(13, 17, 23, 0.9), rgba(13, 17, 23, 0.9)), url('https://images.unsplash.com/photo-1534088568595-a066f410cbda?q=80&w=1920'); /* عکس پس‌زمینه جنگی */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            /* پس‌زمینه تیره با یه گرادیانت ملایم */
+            background-image: radial-gradient(circle at top, #1a202c 0%, #0d1117 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -26,105 +24,145 @@
 
         .container {
             text-align: center;
-            padding: 20px;
-            max-width: 500px;
-            background: rgba(22, 27, 34, 0.85);
-            border: 1px solid #30363d;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(8px);
+            padding: 30px 20px;
+            width: 100%;
+            max-width: 400px;
+            background: rgba(22, 27, 34, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            box-sizing: border-box;
         }
 
         .logo {
-            width: 120px;
-            height: 120px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
-            border: 3px solid #d4af37; /* طلایی */
+            border: 3px solid #d4af37;
             object-fit: cover;
             margin-bottom: 15px;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
         }
 
         h1 {
             color: #d4af37;
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin: 10px 0;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
         }
 
         p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             line-height: 1.6;
             color: #8b949e;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
-        .btn {
+        /* دکمه اصلی (قرمز) */
+        .btn-main {
             display: block;
             width: 100%;
             padding: 15px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
             color: #fff;
-            background: linear-gradient(135deg, #b91c1c, #7f1d1d); /* قرمز جنگی */
+            background: linear-gradient(135deg, #b91c1c, #7f1d1d);
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
             text-decoration: none;
             transition: transform 0.2s, box-shadow 0.2s;
             box-shadow: 0 4px 15px rgba(185, 28, 28, 0.4);
+            margin-bottom: 20px;
         }
 
-        .btn:hover {
+        .btn-main:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(185, 28, 28, 0.6);
         }
 
-        .features {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 30px;
-            border-top: 1px solid #30363d;
-            padding-top: 20px;
+        /* خط جداکننده */
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+            margin: 20px 0;
         }
 
-        .feature-item {
-            text-align: center;
-            font-size: 0.9rem;
+        /* کانتینر دکمه‌های شیشه‌ای */
+        .glass-buttons-container {
+            display: flex;
+            gap: 15px;
+            justify-content: space-between;
         }
-        
-        .feature-item span {
-            display: block;
+
+        /* استایل دکمه‌های شیشه‌ای */
+        .btn-glass {
+            flex: 1;
+            padding: 15px 10px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: #e6edf3;
+            text-decoration: none;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            
+            /* افکت شیشه‌ای */
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(212, 175, 55, 0.4); /* حاشیه طلایی موقع هاور */
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-glass span {
             font-size: 1.5rem;
-            margin-bottom: 5px;
         }
+
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- لوگوی بازی (لینک عکست رو بذار) -->
+        <!-- لوگوی بازی -->
         <img src="https://i.imgur.com/your-logo.png" alt="World War Logo" class="logo" onerror="this.src='https://via.placeholder.com/120?text=WW'">
         
         <h1>جنگ جهانی</h1>
-        <p>فرماندهی را به دست بگیر! ارتش خود را بساز، منابع جمع کن و در نبردهای جهانی پیروز شو. آیا آماده‌ای؟</p>
+        <p>فرماندهی را به دست بگیر! ارتش خود را بساز، منابع جمع کن و در نبردهای جهانی پیروز شو.</p>
         
-        <!-- لینک ورود به ربات تلگرام -->
-        <a href="https://t.me/YOUR_BOT_USERNAME" class="btn">🎖️ ورود به میدان نبرد</a>
+        <!-- دکمه اصلی -->
+        <a href="https://t.me/YOUR_BOT_USERNAME" class="btn-main">🎖️ ورود به میدان نبرد</a>
 
-        <div class="features">
-            <div class="feature-item">
-                <span>⚔️</span>
-                نبردها
-            </div>
-            <div class="feature-item">
-                <span>🛡️</span>
-                ارتش
-            </div>
-            <div class="feature-item">
-                <span>💰</span>
-                اقتصاد
-            </div>
+        <div class="divider"></div>
+
+        <!-- دکمه‌های شیشه‌ای پایین -->
+        <div class="glass-buttons-container">
+            
+            <!-- دکمه خرید آیتم -->
+            <a href="#" class="btn-glass">
+                <span>🏪</span>
+                خرید آیتم🏪
+            </a>
+
+            <!-- دکمه دوم (میتونی اسم و آیکونش رو عوض کنی) -->
+            <a href="#" class="btn-glass">
+                <span>⚙️</span>
+                تنظیمات
+            </a>
+
         </div>
     </div>
 
