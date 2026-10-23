@@ -12,7 +12,8 @@
             margin: 0;
             padding: 0;
             font-family: 'Vazirmatn', sans-serif;
-            background-color: #0b111e; /* رنگ پس زمینه اصلی */
+            /* رنگ پس‌زمینه دقیقاً مثل عکس تو */
+            background-color: #0b111e; 
             color: #c9d1d9;
             display: flex;
             flex-direction: column;
@@ -23,7 +24,7 @@
             overflow-x: hidden;
         }
 
-        /* ------------------ بنر جنگنده (بدون خط زرد و روشن تر) ------------------ */
+        /* ------------------ بنر جنگنده (بدون خط زرد) ------------------ */
         .hero-banner {
             width: 100%;
             max-width: 500px;
@@ -37,24 +38,26 @@
             background-position: center;
             background-repeat: no-repeat;
             
-            /* 👇 حذف خط زرد (بوردر) */
-            border-bottom: none; 
-            
-            /* 👇 روشن تر کردن عکس و شفافیت بیشتر */
-            filter: brightness(1.15) contrast(1.1); 
+            /* 👇 این خط باعث میشه خط زرد حذف بشه */
+            border: none; 
         }
 
         /* ------------------ کارت پروفایل ------------------ */
         .profile-card {
-            width: 90%; max-width: 460px; background: #151d2c;
-            border: 1px solid rgba(255, 255, 255, 0.08); /* خط دور کارت ملایم تر */
+            width: 90%; max-width: 460px; 
+            /* رنگ کارت پروفایل دقیقاً مثل عکس */
+            background: #0d1523; 
+            border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 16px;
-            margin-top: 20px; display: flex; flex-direction: column; overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* سایه برای عمق دادن */
+            margin-top: 20px; 
+            display: flex; 
+            flex-direction: column; 
+            overflow: hidden;
         }
         .profile-top { display: flex; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         .info-right { flex: 2; padding: 20px; display: flex; flex-direction: column; justify-content: center; }
         .info-label { color: #8b949e; font-size: 0.8rem; display: flex; align-items: center; gap: 5px; margin-bottom: 5px; }
+        /* آیکون‌های زرد */
         .info-label svg { width: 16px; height: 16px; color: #d4af37; }
         .info-value { color: #ffffff; font-size: 1.1rem; font-weight: 900; margin: 0; }
         .info-left { flex: 1; border-right: 1px solid rgba(255, 255, 255, 0.05); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; }
@@ -64,10 +67,11 @@
         /* ------------------ منوی پایین ------------------ */
         .bottom-nav {
             position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-            width: 95%; max-width: 460px; background: #151d2c;
-            border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 50px; backdrop-filter: blur(20px);
+            width: 95%; max-width: 460px; 
+            /* رنگ منوی پایین دقیقاً مثل عکس */
+            background: #0d1523;
+            border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 50px; backdrop-filter: blur(20px);
             display: flex; justify-content: space-around; align-items: center; padding: 10px 5px; z-index: 1000;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
         .nav-item { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: #8b949e; font-size: 0.7rem; font-weight: 700; width: 60px; cursor: pointer; }
         .nav-icon { width: 22px; height: 22px; margin-bottom: 5px; }
