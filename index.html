@@ -15,42 +15,44 @@
             color: #c9d1d9;
             background-image: radial-gradient(circle at top, #1a202c 0%, #0b0e14 100%);
             display: flex;
-            flex-direction: column; /* تغییر به ستونی برای قرارگیری هدر در بالا */
+            flex-direction: column;
             align-items: center;
             min-height: 100vh;
             padding-bottom: 100px; 
             box-sizing: border-box;
         }
 
-        /* ------------------ استایل هدر (بالای صفحه) ------------------ */
+        /* ------------------ هدر بالای صفحه ------------------ */
         .top-header {
             width: 100%;
             max-width: 400px;
             display: flex;
-            justify-content: flex-end; /* آیکون و متن سمت راست باشن */
+            justify-content: flex-start; /* چیدمان از سمت راست (چون کل سایت rtl هست) */
             align-items: center;
-            padding: 15px 20px;
+            padding: 20px 15px;
             box-sizing: border-box;
             gap: 12px;
         }
 
+        /* آیکون سمت راست (دقیقا مثل عکس) */
         .header-logo {
-            width: 45px;
-            height: 45px;
-            border-radius: 12px;
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
             border: 1px solid #d4af37;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: rgba(22, 27, 34, 0.8);
+            background: #12161f; /* رنگ تیره داخل کادر */
         }
 
         .header-logo svg {
-            width: 28px;
-            height: 28px;
+            width: 30px;
+            height: 30px;
             color: #d4af37;
         }
 
+        /* بخش متن‌ها */
         .header-text {
             display: flex;
             flex-direction: column;
@@ -59,17 +61,17 @@
 
         .header-title {
             color: #ffffff;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 900;
-            letter-spacing: 1px;
             margin: 0;
             line-height: 1.2;
+            letter-spacing: 1px;
         }
 
         .header-subtitle {
             color: #8b949e;
             font-size: 0.8rem;
-            margin: 0;
+            margin: 4px 0 0 0;
         }
 
         /* ------------------ کانتینر اصلی ------------------ */
@@ -168,22 +170,22 @@
 </head>
 <body>
 
-    <!-- هدر بالای صفحه (مثل عکس رقیب) -->
+    <!-- هدر بالای صفحه (سمت راست) -->
     <div class="top-header">
+        <!-- آیکون دقیقا شبیه عکسی که فرستادی -->
         <div class="header-logo">
-            <!-- آیکون دقیقا شبیه عکسی که فرستادی -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="4"></circle>
-                <circle cx="12" cy="12" r="1.5" fill="currentColor"></circle>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M16 8A6 6 0 0 1 12 18"></path>
                 <path d="M8 16A6 6 0 0 1 12 6"></path>
                 <circle cx="18" cy="6" r="1.5"></circle>
                 <circle cx="6" cy="18" r="1.5"></circle>
+                <circle cx="12" cy="12" r="2.5"></circle>
             </svg>
         </div>
+        
         <div class="header-text">
-            <h1 class="header-title">WORLD WAR</h1>
-            <p class="header-subtitle">جنگ جهانی</p>
+            <h1 class="header-title">⚜️ WORLD WAR ⚜️</h1>
+            <p class="header-subtitle">ویرایش سایت</p>
         </div>
     </div>
 
