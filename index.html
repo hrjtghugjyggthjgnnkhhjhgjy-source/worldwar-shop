@@ -12,7 +12,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Vazirmatn', sans-serif;
-            background-color: #060910; /* پس زمینه مشکی خیلی تیره و خفن */
+            background-color: #060910; /* مشکی تیره */
             color: #c9d1d9;
             display: flex;
             flex-direction: column;
@@ -23,26 +23,29 @@
             overflow-x: hidden;
         }
 
-        /* ------------------ بنر جنگنده (با استفاده از تگ img) ------------------ */
+        /* ------------------ بنر جنگنده (کیفیت اصلی) ------------------ */
         .hero-banner {
             width: 100%;
             max-width: 500px;
-            display: flex;
-            justify-content: center;
+            
+            /* 👇 نسبت تصویر رو دقیقا مثل عکس تو تنظیم کردم */
+            aspect-ratio: 21 / 9; 
+            
             background-color: #060910; 
-        }
-
-        .hero-banner img {
-            width: 100%;
-            height: auto;
-            display: block;
-            /* عکس با کیفیت اصلی خودش و بدون هیچ فیلتری نمایش داده میشه */
+            background-image: url('https://uploadkon.ir/uploads/5e4d23_26file-00000000922c8246908a4987443fcf6c.png'); 
+            
+            /* 👇 این دو خط باعث میشن عکس با کیفیت اصلی و کامل (بدون بریدگی) دیده بشه */
+            background-size: contain; 
+            background-position: center;
+            
+            background-repeat: no-repeat;
+            border: none; 
         }
 
         /* ------------------ کارت پروفایل ------------------ */
         .profile-card {
             width: 90%; max-width: 460px; 
-            background: #0d121c; /* رنگ کارت */
+            background: #0d121c; 
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 16px;
             margin-top: 20px; display: flex; flex-direction: column; overflow: hidden;
@@ -74,9 +77,7 @@
 <body>
 
     <!-- بنر جنگنده -->
-    <div class="hero-banner">
-        <img src="https://uploadkon.ir/uploads/5e4d23_26file-00000000922c8246908a4987443fcf6c.png" alt="World War Banner">
-    </div>
+    <div class="hero-banner"></div>
 
     <!-- کارت پروفایل -->
     <div class="profile-card">
