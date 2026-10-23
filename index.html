@@ -23,21 +23,15 @@
             overflow-x: hidden;
         }
 
-        /* ------------------ بنر جنگنده (کیفیت اصلی) ------------------ */
+        /* بنر (همون کد قبلی) */
         .hero-banner {
             width: 100%;
             max-width: 500px;
-            
-            /* 👇 نسبت تصویر رو دقیقا مثل عکس تو تنظیم کردم */
             aspect-ratio: 21 / 9; 
-            
             background-color: #060910; 
             background-image: url('https://uploadkon.ir/uploads/5e4d23_26file-00000000922c8246908a4987443fcf6c.png'); 
-            
-            /* 👇 این دو خط باعث میشن عکس با کیفیت اصلی و کامل (بدون بریدگی) دیده بشه */
             background-size: contain; 
             background-position: center;
-            
             background-repeat: no-repeat;
             border: none; 
         }
@@ -48,9 +42,14 @@
             background: #0d121c; 
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 16px;
-            margin-top: 20px; display: flex; flex-direction: column; overflow: hidden;
+            margin-top: 20px; 
+            display: flex; 
+            flex-direction: column; 
+            overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.6); 
         }
+
+        /* بخش بالایی (اسم و سطح) */
         .profile-top { display: flex; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         .info-right { flex: 2; padding: 20px; display: flex; flex-direction: column; justify-content: center; }
         .info-label { color: #8b949e; font-size: 0.8rem; display: flex; align-items: center; gap: 5px; margin-bottom: 5px; }
@@ -58,7 +57,46 @@
         .info-value { color: #ffffff; font-size: 1.1rem; font-weight: 900; margin: 0; }
         .info-left { flex: 1; border-right: 1px solid rgba(255, 255, 255, 0.05); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; }
         .level-number { color: #ffffff; font-size: 1.8rem; font-weight: 900; }
-        .profile-bottom { padding: 20px; display: flex; flex-direction: column; align-items: flex-start; }
+
+        /* ------------------ بخش پایینی (کیف پول و منابع) ------------------ */
+        .profile-bottom { 
+            padding: 20px; 
+            display: flex; 
+            flex-direction: column;
+        }
+
+        .wallet-title {
+            color: #8b949e;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .wallet-title svg { width: 16px; height: 16px; color: #d4af37; }
+
+        /* شبکه منابع (سکه، جم، نفت) */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr; /* سه ستون مساوی */
+            gap: 10px;
+        }
+
+        .resource-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 12px 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .resource-box .icon { font-size: 1.2rem; }
+        .resource-box .amount { color: #ffffff; font-weight: 900; font-size: 0.95rem; }
+        .resource-box .name { color: #8b949e; font-size: 0.7rem; }
 
         /* ------------------ منوی پایین ------------------ */
         .bottom-nav {
@@ -81,6 +119,8 @@
 
     <!-- کارت پروفایل -->
     <div class="profile-card">
+        
+        <!-- بخش بالا: اسم و لول -->
         <div class="profile-top">
             <div class="info-right">
                 <div class="info-label">
@@ -94,12 +134,39 @@
                 <div class="level-number">۲۱</div>
             </div>
         </div>
+
+        <!-- بخش پایین: کیف پول و منابع -->
         <div class="profile-bottom">
-            <div class="info-label">
+            
+            <div class="wallet-title">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                اعتبار
+                موجودی کیف پول
             </div>
-            <p class="info-value">۰ تومان</p>
+
+            <!-- شبکه منابع -->
+            <div class="resources-grid">
+                <!-- سکه -->
+                <div class="resource-box">
+                    <span class="icon">💰</span>
+                    <span class="amount">۵,۰۰۰</span>
+                    <span class="name">سکه</span>
+                </div>
+                
+                <!-- جم -->
+                <div class="resource-box">
+                    <span class="icon">💎</span>
+                    <span class="amount">۵۰</span>
+                    <span class="name">جم</span>
+                </div>
+
+                <!-- نفت -->
+                <div class="resource-box">
+                    <span class="icon">🛢️</span>
+                    <span class="amount">۱۲۰</span>
+                    <span class="name">نفت</span>
+                </div>
+            </div>
+
         </div>
     </div>
 
