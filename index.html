@@ -87,21 +87,27 @@
             margin: 0;
         }
 
-        /* ------------------ بنر جنگنده ------------------ */
+        /* ------------------ بنر جنگنده (تمام عکس) ------------------ */
         .hero-banner {
             width: 100%;
             max-width: 500px;
-            height: 220px;
+            
+            /* 👇 این خط کل عکس رو کامل نشون میده بدون بریدگی */
+            height: auto; 
+            
             background-color: #111;
             
-            /* لینک عکس تو اینجا قرار گرفت */
+            /* اینجا لینک عکست هست */
             background-image: url('https://uploadkon.ir/uploads/5e4d23_26file-00000000922c8246908a4987443fcf6c.png'); 
             
-            background-size: cover;
+            background-size: contain; /* عکس رو کامل جا میده */
             background-position: center;
             background-repeat: no-repeat;
             position: relative;
             border-bottom: 1px solid #d4af37;
+            
+            /* یک نسبت تصویر (Aspect Ratio) برای اینکه کادر با عکس هماهنگ باشه */
+            aspect-ratio: 21 / 9; 
         }
 
         /* ------------------ کارت پروفایل ------------------ */
