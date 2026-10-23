@@ -31,7 +31,7 @@
             -webkit-tap-highlight-color: transparent; 
         }
 
-        /* بنر جنگنده (فقط یکبار در بالای صفحه) */
+        /* بنر جنگنده */
         .hero-banner {
             width: 100%; max-width: 500px; aspect-ratio: 21 / 9; 
             background-color: #060910; 
@@ -40,7 +40,7 @@
             border: none; 
         }
 
-        /* ------------------ مدیریت صفحات ------------------ */
+        /* مدیریت صفحات */
         .page-section {
             width: 90%; max-width: 460px;
             display: none; 
@@ -48,16 +48,14 @@
             margin-top: 20px;
         }
 
-        .page-section.active-page {
-            display: block; 
-        }
+        .page-section.active-page { display: block; }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ------------------ کارت پروفایل (منو اصلی) ------------------ */
+        /* کارت پروفایل (منو اصلی) */
         .profile-card {
             width: 100%; background: #0d121c; border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 16px; display: flex; flex-direction: column; overflow: hidden;
@@ -79,25 +77,29 @@
         .resource-box .amount { color: #ffffff; font-weight: 900; font-size: 0.95rem; }
         .resource-box .name { color: #8b949e; font-size: 0.7rem; }
 
-        /* ------------------ صفحه سایر (دکمه‌ها) ------------------ */
+        /* صفحه سایر */
         .other-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .other-btn { background: #0d121c; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 25px 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; color: #ffffff; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
+        .other-btn { 
+            background: #0d121c; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 25px 10px; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; 
+            color: #ffffff; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        }
         .other-btn:hover { border-color: #d4af37; background: rgba(212, 175, 55, 0.05); }
         .other-btn .emoji { font-size: 2.5rem; margin-bottom: 15px; }
-        .other-btn .title { font-size: 0.95rem; font-weight: bold; }
+        .other-btn .title { font-size: 0.95rem; font-weight: bold; text-align: center; }
 
-        /* ------------------ صفحه لیدربورد (جدید) ------------------ */
+        /* لیدربورد */
         .leaderboard-list { background: #0d121c; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
         .leaderboard-item { display: flex; align-items: center; padding: 15px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         .leaderboard-item:last-child { border-bottom: none; }
         .rank { font-size: 1.2rem; font-weight: 900; width: 40px; color: #8b949e; }
-        .rank.top-1 { color: #ffd700; font-size: 1.5rem; } /* طلایی */
-        .rank.top-2 { color: #c0c0c0; font-size: 1.4rem; } /* نقره‌ای */
-        .rank.top-3 { color: #cd7f32; font-size: 1.3rem; } /* برنزی */
+        .rank.top-1 { color: #ffd700; font-size: 1.5rem; }
+        .rank.top-2 { color: #c0c0c0; font-size: 1.4rem; }
+        .rank.top-3 { color: #cd7f32; font-size: 1.3rem; }
         .player-name { flex: 1; color: #ffffff; font-weight: bold; font-size: 0.95rem; }
         .player-score { color: #d4af37; font-weight: 900; font-size: 0.9rem; }
 
-        /* ------------------ صفحه تنظیمات ------------------ */
+        /* تنظیمات */
         .settings-list { background: #0d121c; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
         .setting-item { display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); cursor: pointer; }
         .setting-item:last-child { border-bottom: none; }
@@ -109,7 +111,7 @@
         .toggle-switch.on::after { right: calc(100% - 21px); background: #fff; }
         .setting-arrow { color: #8b949e; font-size: 1.2rem; }
 
-        /* ------------------ منوی پایین ------------------ */
+        /* منوی پایین */
         .bottom-nav {
             position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
             width: 95%; max-width: 460px; background: rgba(13, 18, 28, 0.95);
@@ -162,7 +164,6 @@
     <!-- ================= صفحه 2: سایر ================= -->
     <div id="page-other" class="page-section">
         <div class="other-grid">
-            <!-- دکمه لیدربورد که به صفحه لیدربورد وصل میشه -->
             <div class="other-btn" onclick="switchPage('leaderboard', document.querySelector('.nav-item:nth-child(1)'))">
                 <span class="emoji">🏆</span>
                 <span class="title">رتبه‌بندی</span>
@@ -175,14 +176,20 @@
                 <span class="emoji">🤝</span>
                 <span class="title">دعوت از دوستان</span>
             </div>
-            <div class="other-btn">
-                <span class="emoji">💙</span>
-                <span class="title">کانال بله</span>
-            </div>
-            <div class="other-btn">
+            
+            <!-- دکمه‌های جدید با آیدی‌های ارسالی تو -->
+            <a href="https://ble.ir/worldwar2037" target="_blank" class="other-btn">
                 <span class="emoji">💬</span>
+                <span class="title">گپ رسمی</span>
+            </a>
+            <a href="https://ble.ir/worldwar2036" target="_blank" class="other-btn">
+                <span class="emoji">📢</span>
+                <span class="title">کانال رسمی</span>
+            </a>
+            <a href="https://ble.ir/MohammadMahdi2037" target="_blank" class="other-btn">
+                <span class="emoji">🆘</span>
                 <span class="title">پشتیبانی</span>
-            </div>
+            </a>
         </div>
     </div>
 
@@ -279,7 +286,6 @@
     </nav>
 
     <script>
-        // اتصال به وب اپ تلگرام/بله
         const tg = window.Telegram.WebApp;
         if(tg) {
             tg.expand(); 
@@ -291,13 +297,10 @@
             }
         }
 
-        // ------------------ تابع جابه‌جایی بین صفحات ------------------
         function switchPage(pageName, element) {
-            // مخفی کردن همه صفحات
             const pages = document.querySelectorAll('.page-section');
             pages.forEach(page => page.classList.remove('active-page'));
 
-            // نمایش صفحه درخواستی
             if (pageName === 'main') {
                 document.getElementById('page-main').classList.add('active-page');
             } else if (pageName === 'other') {
@@ -310,7 +313,6 @@
                 document.getElementById('page-main').classList.add('active-page');
             }
 
-            // اگر عنصر دکمه منوی پایین پاس داده شده بود، رنگ دکمه‌ها رو تغییر بده
             if (element && element.classList.contains('nav-item')) {
                 const items = document.querySelectorAll('.nav-item');
                 items.forEach(item => item.classList.remove('active'));
@@ -318,7 +320,6 @@
             }
         }
 
-        // ------------------ تابع روشن/خاموش کردن کلیدها ------------------
         function toggleSwitch(element) {
             element.classList.toggle('on');
         }
