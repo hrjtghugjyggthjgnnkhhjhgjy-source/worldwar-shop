@@ -8,12 +8,11 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap');
 
-        /* 👇 رنگ آبی تیره برای کل سایت (دقیقا مثل مینی اپ) */
         body {
             margin: 0;
             padding: 0;
             font-family: 'Vazirmatn', sans-serif;
-            background-color: #0f172a; 
+            background-color: #0b111e; /* رنگ سرمه ای */
             color: #c9d1d9;
             display: flex;
             flex-direction: column;
@@ -24,75 +23,50 @@
             overflow-x: hidden;
         }
 
-        /* ------------------ هدر بالا ------------------ */
-        .top-header {
-            width: 100%;
-            max-width: 500px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            box-sizing: border-box;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            background-color: #0f172a; 
-        }
-
-        .header-profile-btn {
-            width: 45px; height: 45px; background: #12161f; border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px; display: flex; justify-content: center; align-items: center; cursor: pointer;
-        }
-        .header-profile-btn svg { width: 22px; height: 22px; color: #8b949e; }
-        
-        .header-brand { display: flex; align-items: center; gap: 10px; }
-        .brand-icon {
-            width: 45px; height: 45px; background: #12161f; border: 1px solid #d4af37;
-            border-radius: 12px; display: flex; justify-content: center; align-items: center;
-        }
-        .brand-icon svg { width: 25px; height: 25px; color: #d4af37; }
-        .brand-text { display: flex; flex-direction: column; align-items: flex-start; }
-        .brand-title { color: #ffffff; font-size: 1.2rem; font-weight: 900; margin: 0; }
-        .brand-subtitle { color: #8b949e; font-size: 0.75rem; margin: 0; }
-
-        /* ------------------ بنر جنگنده (بزرگ و بدون بریدگی) ------------------ */
+        /* ------------------ بنر جنگنده (تمام صفحه بالا) ------------------ */
         .hero-banner {
             width: 100%;
             max-width: 500px;
-            height: 220px; /* ارتفاع بنر */
-            background-color: #0f172a; 
+            
+            /* این خط باعث میشه کادر دقیقا به اندازه عکس قد بکشه و چیزی بریده نشه */
+            height: auto; 
+            aspect-ratio: 21 / 9; /* نسبت تصویر عکس تو */
+            
+            background-color: #0b111e; 
             background-image: url('https://uploadkon.ir/uploads/5e4d23_26file-00000000922c8246908a4987443fcf6c.png'); 
             
-            /* 👇 این دو خط عکس رو بزرگ می‌کنه و از سمت راست تنظیم می‌کنه که متن دیده بشه */
-            background-size: cover;
-            background-position: right center;
-            
+            /* عکس رو کامل و وسط چین نشون بده */
+            background-size: contain; 
+            background-position: center;
             background-repeat: no-repeat;
+            
             border-bottom: 2px solid #d4af37;
         }
 
         /* ------------------ کارت پروفایل ------------------ */
         .profile-card {
-            width: 90%; max-width: 460px; background: rgba(30, 41, 59, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px;
+            width: 90%; max-width: 460px; background: #151d2c;
+            border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px;
             margin-top: 20px; display: flex; flex-direction: column; overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
-        .profile-top { display: flex; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+        .profile-top { display: flex; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         .info-right { flex: 2; padding: 20px; display: flex; flex-direction: column; justify-content: center; }
-        .info-label { color: #94a3b8; font-size: 0.8rem; display: flex; align-items: center; gap: 5px; margin-bottom: 5px; }
+        .info-label { color: #8b949e; font-size: 0.8rem; display: flex; align-items: center; gap: 5px; margin-bottom: 5px; }
         .info-label svg { width: 16px; height: 16px; color: #d4af37; }
         .info-value { color: #ffffff; font-size: 1.1rem; font-weight: 900; margin: 0; }
-        .info-left { flex: 1; border-right: 1px solid rgba(255, 255, 255, 0.08); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; }
+        .info-left { flex: 1; border-right: 1px solid rgba(255, 255, 255, 0.05); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; }
         .level-number { color: #ffffff; font-size: 1.8rem; font-weight: 900; }
         .profile-bottom { padding: 20px; display: flex; flex-direction: column; align-items: flex-start; }
 
         /* ------------------ منوی پایین ------------------ */
         .bottom-nav {
             position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-            width: 95%; max-width: 460px; background: rgba(30, 41, 59, 0.95);
+            width: 95%; max-width: 460px; background: #151d2c;
             border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 50px; backdrop-filter: blur(20px);
             display: flex; justify-content: space-around; align-items: center; padding: 10px 5px; z-index: 1000;
         }
-        .nav-item { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: #94a3b8; font-size: 0.7rem; font-weight: 700; width: 60px; cursor: pointer; }
+        .nav-item { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: #8b949e; font-size: 0.7rem; font-weight: 700; width: 60px; cursor: pointer; }
         .nav-icon { width: 22px; height: 22px; margin-bottom: 5px; }
         .nav-item.active { color: #ffffff; }
 
@@ -100,23 +74,7 @@
 </head>
 <body>
 
-    <!-- هدر بالا -->
-    <header class="top-header">
-        <div class="header-profile-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-        </div>
-        <div class="header-brand">
-            <div class="brand-text">
-                <h1 class="brand-title">WORLD WAR</h1>
-                <p class="brand-subtitle">مینی اپ جنگ جهانی</p>
-            </div>
-            <div class="brand-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 8A6 6 0 0 1 12 18"></path><path d="M8 16A6 6 0 0 1 12 6"></path><circle cx="18" cy="6" r="1.5"></circle><circle cx="6" cy="18" r="1.5"></circle><circle cx="12" cy="12" r="2.5"></circle></svg>
-            </div>
-        </div>
-    </header>
-
-    <!-- بنر جنگنده -->
+    <!-- بنر جنگنده (حالا بالاترین بخش صفحه هست) -->
     <div class="hero-banner"></div>
 
     <!-- کارت پروفایل -->
@@ -156,11 +114,10 @@
         const tg = window.Telegram.WebApp;
         tg.expand(); 
         
-        // 👇 این خط رنگ هدر تلگرام رو با سایت ست میکنه (متن اضافه بالای تلگرام حذف میشه)
-        tg.setHeaderColor('#0f172a'); 
-        tg.setBackgroundColor('#0f172a');
+        // ست کردن رنگ هدر تلگرام (برای اینکه بالا کاملا هم‌رنگ بشه)
+        tg.setHeaderColor('#0b111e'); 
+        tg.setBackgroundColor('#0b111e');
 
-        // گرفتن اسم کاربر
         const user = tg.initDataUnsafe?.user;
         if (user) {
             document.getElementById('user-name').innerText = user.first_name;
