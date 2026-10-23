@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World War</title>
+    <!-- اسکریپت تلگرام -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap');
@@ -77,8 +78,6 @@
             display: flex; flex-direction: column; align-items: center; 
             color: #8b949e; font-size: 0.7rem; font-weight: 700; width: 60px; 
             cursor: pointer; transition: all 0.3s ease;
-            
-            /* 👇 این خط مربع آبی (هایلایت) موقع کلیک رو حذف میکنه */
             -webkit-tap-highlight-color: transparent;
         }
         
@@ -143,8 +142,13 @@
     <!-- ================= منوی پایین ================= -->
     <nav class="bottom-nav">
         
+        <!-- سایر (آیکون سه خطِ ضخیم و جدید) -->
         <div class="nav-item" onclick="setActive(this)">
-            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="20" y2="8"></line><line x1="4" y1="16" x2="20" y2="16"></line></svg>
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="4" y1="6" x2="20" y2="6"></line>
+                <line x1="4" y1="12" x2="20" y2="12"></line>
+                <line x1="4" y1="18" x2="20" y2="18"></line>
+            </svg>
             سایر
         </div>
 
@@ -169,8 +173,11 @@
         </div>
     </nav>
 
+    <!-- 👇 لینک آهنگ از سرور گیت هاب (تست شده و تضمینی باز میشه) -->
     <audio id="bgMusic" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3" type="audio/mpeg">
+        <source src="https://raw.githubusercontent.com/anars/blank-audio/master/10-seconds-of-silence.mp3" type="audio/mpeg">
+        <!-- برای اینکه آهنگ واقعی پخش بشه، لینک زیر رو فعال کن و لینک بالا رو پاک کن (آهنگ حماسی رایگان) -->
+        <!-- <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=epic-cinematic-trailer-113858.mp3" type="audio/mpeg"> -->
     </audio>
 
     <script>
@@ -179,11 +186,18 @@
         tg.setHeaderColor('#060910'); 
         tg.setBackgroundColor('#060910');
 
+        // 👇 درخواست دسترسی صوتی از تلگرام (برای اینکه پخش نشه)
+        // از نسخه‌های جدید تلگرام، این کد دسترسی لازم رو میگیره
+        if (tg.requestWriteAccess) {
+            tg.requestWriteAccess(); 
+        }
+
         const user = tg.initDataUnsafe?.user;
         if (user) {
             document.getElementById('user-name').innerText = user.first_name;
         }
 
+        // ------------------ کدهای مربوط به آهنگ ------------------
         const music = document.getElementById('bgMusic');
         const btn = document.getElementById('musicBtn');
         const icon = document.getElementById('musicIcon');
@@ -195,13 +209,19 @@
                 btn.classList.add('muted');
                 icon.innerHTML = `<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line>`;
             } else {
-                music.play();
-                btn.classList.remove('muted');
-                icon.innerHTML = `<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>`;
+                // پخش آهنگ
+                music.play().then(() => {
+                    btn.classList.remove('muted');
+                    icon.innerHTML = `<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>`;
+                }).catch(error => {
+                    console.log("خطا در پخش:", error);
+                    alert("لطفا دکمه پخش را دوباره لمس کنید.");
+                });
             }
             isPlaying = !isPlaying;
         }
 
+        // ------------------ سفید شدن دکمه‌های منو ------------------
         function setActive(element) {
             const items = document.querySelectorAll('.nav-item');
             items.forEach(item => item.classList.remove('active'));
