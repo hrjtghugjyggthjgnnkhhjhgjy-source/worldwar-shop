@@ -8,7 +8,6 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap');
 
-        /* ------------------ تنظیمات کلی و جلوگیری از کپی ------------------ */
         body {
             margin: 0;
             padding: 0;
@@ -23,7 +22,7 @@
             box-sizing: border-box;
             overflow-x: hidden;
             
-            /* 👇 این سه خط کپی کردن و انتخاب متن رو غیرفعال میکنه */
+            /* جلوگیری از انتخاب و کپی شدن متن */
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
@@ -31,29 +30,17 @@
             -webkit-touch-callout: none;
         }
 
-        /* بنر جنگنده */
         .hero-banner {
-            width: 100%;
-            max-width: 500px;
-            aspect-ratio: 21 / 9; 
+            width: 100%; max-width: 500px; aspect-ratio: 21 / 9; 
             background-color: #060910; 
             background-image: url('https://uploadkon.ir/uploads/5e4d23_26file-00000000922c8246908a4987443fcf6c.png'); 
-            background-size: contain; 
-            background-position: center;
-            background-repeat: no-repeat;
+            background-size: contain; background-position: center; background-repeat: no-repeat;
             border: none; 
         }
 
-        /* کارت پروفایل */
         .profile-card {
-            width: 90%; max-width: 460px; 
-            background: #0d121c; 
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            margin-top: 20px; 
-            display: flex; 
-            flex-direction: column; 
-            overflow: hidden;
+            width: 90%; max-width: 460px; background: #0d121c; border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px; margin-top: 20px; display: flex; flex-direction: column; overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.6); 
         }
         .profile-top { display: flex; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
@@ -86,16 +73,15 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
         
+        /* 👇 تغییر از a به div برای جلوگیری از باز شدن منوی مرورگر */
         .nav-item { 
-            display: flex; flex-direction: column; align-items: center; text-decoration: none; 
-            color: #8b949e; /* خاکستری پیش‌فرض */
-            font-size: 0.7rem; font-weight: 700; width: 60px; cursor: pointer; 
-            transition: all 0.3s ease;
+            display: flex; flex-direction: column; align-items: center; 
+            color: #8b949e; font-size: 0.7rem; font-weight: 700; width: 60px; 
+            cursor: pointer; transition: all 0.3s ease;
         }
         
         .nav-icon { width: 24px; height: 24px; margin-bottom: 5px; transition: all 0.3s ease; }
         
-        /* 👇 کلاس فعال: وقتی دکمه‌ای سفید میشه */
         .nav-item.active { color: #ffffff; }
         .nav-item.active .nav-icon { color: #ffffff; transform: scale(1.1); }
 
@@ -115,7 +101,6 @@
 </head>
 <body>
 
-    <!-- دکمه پخش آهنگ -->
     <div class="music-btn" id="musicBtn" onclick="toggleMusic()">
         <svg class="music-icon" id="musicIcon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
@@ -124,10 +109,8 @@
         </svg>
     </div>
 
-    <!-- بنر جنگنده -->
     <div class="hero-banner"></div>
 
-    <!-- کارت پروفایل (منو اصلی) -->
     <div class="profile-card">
         <div class="profile-top">
             <div class="info-right">
@@ -148,60 +131,42 @@
                 موجودی کیف پول
             </div>
             <div class="resources-grid">
-                <div class="resource-box">
-                    <span class="icon">💰</span>
-                    <span class="amount">۵,۰۰۰</span>
-                    <span class="name">سکه</span>
-                </div>
-                <div class="resource-box">
-                    <span class="icon">💎</span>
-                    <span class="amount">۵۰</span>
-                    <span class="name">جم</span>
-                </div>
-                <div class="resource-box">
-                    <span class="icon">🛢️</span>
-                    <span class="amount">۱۲۰</span>
-                    <span class="name">نفت</span>
-                </div>
+                <div class="resource-box"><span class="icon">💰</span><span class="amount">۵,۰۰۰</span><span class="name">سکه</span></div>
+                <div class="resource-box"><span class="icon">💎</span><span class="amount">۵۰</span><span class="name">جم</span></div>
+                <div class="resource-box"><span class="icon">🛢️</span><span class="amount">۱۲۰</span><span class="name">نفت</span></div>
             </div>
         </div>
     </div>
 
-    <!-- ================= منوی پایین ================= -->
+    <!-- ================= منوی پایین (بدون لینک) ================= -->
     <nav class="bottom-nav">
         
-        <!-- 1. سایر -->
-        <a href="#" class="nav-item">
+        <div class="nav-item" onclick="setActive(this)">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="20" y2="8"></line><line x1="4" y1="16" x2="20" y2="16"></line></svg>
             سایر
-        </a>
+        </div>
 
-        <!-- 2. تنظیمات -->
-        <a href="#" class="nav-item">
+        <div class="nav-item" onclick="setActive(this)">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
             تنظیمات
-        </a>
+        </div>
 
-        <!-- 3. فروشگاه -->
-        <a href="#" class="nav-item">
+        <div class="nav-item" onclick="setActive(this)">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
             فروشگاه
-        </a>
+        </div>
 
-        <!-- 4. خرید آیتم -->
-        <a href="#" class="nav-item">
+        <div class="nav-item" onclick="setActive(this)">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
             خرید آیتم
-        </a>
+        </div>
 
-        <!-- 5. منو اصلی (پیش فرض فعال) -->
-        <a href="#" class="nav-item active">
+        <div class="nav-item active" onclick="setActive(this)">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
             منو اصلی
-        </a>
+        </div>
     </nav>
 
-    <!-- تگ آهنگ -->
     <audio id="bgMusic" loop>
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3" type="audio/mpeg">
     </audio>
@@ -217,7 +182,6 @@
             document.getElementById('user-name').innerText = user.first_name;
         }
 
-        // ------------------ کدهای مربوط به آهنگ ------------------
         const music = document.getElementById('bgMusic');
         const btn = document.getElementById('musicBtn');
         const icon = document.getElementById('musicIcon');
@@ -237,21 +201,14 @@
         }
 
         // ------------------ کدهای مربوط به سفید شدن دکمه‌ها ------------------
-        // گرفتن همه دکمه‌های منوی پایین
-        const navItems = document.querySelectorAll('.nav-item');
-
-        // برای هر دکمه یه شنونده کلیک میذاریم
-        navItems.forEach(item => {
-            item.addEventListener('click', function(e) {
-                e.preventDefault(); // جلوگیری از رفتار پیش‌فرض لینک
-
-                // اول همه رو خاکستری میکنیم (کلاس active رو پاک میکنیم)
-                navItems.forEach(nav => nav.classList.remove('active'));
-
-                // بعد فقط به دکمه‌ای که روش کلیک شده کلاس active (سفید) میدیم
-                this.classList.add('active');
-            });
-        });
+        function setActive(element) {
+            // اول همه دکمه‌ها رو از حالت فعال خارج کن (خاکستری بشن)
+            const items = document.querySelectorAll('.nav-item');
+            items.forEach(item => item.classList.remove('active'));
+            
+            // بعد فقط دکمه‌ای که کلیک شده رو فعال کن (سفید بشه)
+            element.classList.add('active');
+        }
     </script>
 
 </body>
