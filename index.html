@@ -22,7 +22,7 @@
             box-sizing: border-box;
         }
 
-        /* کارت اصلی وسط */
+        /* ------------------ کانتینر اصلی ------------------ */
         .container {
             text-align: center;
             padding: 40px 25px;
@@ -51,7 +51,7 @@
             font-size: 1.9rem;
             margin: 10px 0;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-            direction: ltr; /* برای اینکه آیکون های گل سمت درست باشن */
+            direction: ltr;
         }
 
         p {
@@ -69,19 +69,16 @@
             transform: translateX(-50%);
             width: 92%;
             max-width: 420px;
-            
-            /* استایل شیشه‌ای */
-            background: rgba(15, 23, 42, 0.7); 
+            background: rgba(15, 23, 42, 0.75); 
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 50px; 
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-            
             display: flex;
             justify-content: space-around;
             align-items: center;
-            padding: 10px 15px;
+            padding: 10px 5px;
             box-sizing: border-box;
             z-index: 1000;
         }
@@ -92,74 +89,109 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            color: #8b949e;
+            color: #8b949e; /* رنگ خاکستری برای آیکون‌های غیرفعال */
             font-size: 0.75rem;
             font-weight: 700;
             transition: all 0.3s ease;
             width: 65px;
+            cursor: pointer;
         }
 
-        .nav-item .icon {
-            font-size: 1.4rem;
-            margin-bottom: 4px;
+        /* استایل آیکون‌های SVG */
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 6px;
+            transition: all 0.3s ease;
         }
 
-        /* استایل دکمه فعال (خرید آیتم) */
+        /* دکمه فعال (خرید آیتم) */
         .nav-item.active {
             color: #fff;
         }
 
-        .nav-item.active .icon {
-            background: #1d4ed8; /* آبی */
+        .nav-item.active .nav-icon-wrapper {
+            background: #1d4ed8;
             width: 48px;
             height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            box-shadow: 0 0 20px rgba(29, 78, 216, 0.7); /* هاله آبی */
-            margin-top: -25px; /* بیرون زدگی */
-            border: 3px solid #0b0e14; /* حاشیه هم رنگ پس زمینه */
+            box-shadow: 0 0 20px rgba(29, 78, 216, 0.7);
+            margin-top: -25px;
+            border: 3px solid #0b0e14;
         }
+
+        .nav-item.active .nav-icon {
+            color: #fff;
+            width: 26px;
+            height: 26px;
+            margin-bottom: 0;
+        }
+
+        /* هاور روی دکمه‌های غیرفعال */
+        .nav-item:not(.active):hover {
+            color: #d4af37;
+        }
+        .nav-item:not(.active):hover .nav-icon {
+            transform: translateY(-3px);
+        }
+
+        /* ------------------ تنظیمات مخفی کردن صفحات ------------------ */
+        .hidden { display: none !important; }
 
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- لوگو -->
+    <!-- صفحه اصلی -->
+    <div id="home-page" class="container">
         <img src="https://i.imgur.com/your-logo.png" alt="WW" class="logo" onerror="this.src='https://via.placeholder.com/120?text=WW'">
-        
-        <!-- تایتل دقیقا مثل عکس -->
-        <h1>⚜️WORLD WAR⚜️</h1>
-        
-        <p></p>
+        <h1>⚜️ WORLD WAR ⚜️</h1>
+        <p>فرماندهی را به دست بگیر! ارتش خود را بساز، منابع جمع کن و در نبردهای جهانی پیروز شو. آیا آماده‌ای؟</p>
     </div>
 
-    <!-- منوی پایین شبیه عکس جدیدت -->
+    <!-- منوی پایین -->
     <nav class="bottom-nav">
         
         <!-- سایر -->
         <a href="#" class="nav-item">
-            <span class="icon">📁</span>
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
             سایر
         </a>
 
         <!-- تنظیمات -->
         <a href="#" class="nav-item">
-            <span class="icon">⚙️</span>
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
             تنظیمات
         </a>
 
         <!-- پروفایل -->
         <a href="#" class="nav-item">
-            <span class="icon">🪪</span>
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
             پروفایل
         </a>
 
         <!-- خرید آیتم (فعال) -->
         <a href="#" class="nav-item active">
-            <span class="icon">🏪</span>
+            <div class="nav-icon-wrapper">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+            </div>
             خرید آیتم
         </a>
 
