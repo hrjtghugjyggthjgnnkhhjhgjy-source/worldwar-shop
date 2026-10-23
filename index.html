@@ -12,7 +12,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Vazirmatn', sans-serif;
-            background-color: #0b111e; /* رنگ سرمه ای */
+            background-color: #0b111e; /* رنگ پس زمینه اصلی */
             color: #c9d1d9;
             display: flex;
             flex-direction: column;
@@ -23,32 +23,34 @@
             overflow-x: hidden;
         }
 
-        /* ------------------ بنر جنگنده (تمام صفحه بالا) ------------------ */
+        /* ------------------ بنر جنگنده (بدون خط زرد و روشن تر) ------------------ */
         .hero-banner {
             width: 100%;
             max-width: 500px;
-            
-            /* این خط باعث میشه کادر دقیقا به اندازه عکس قد بکشه و چیزی بریده نشه */
             height: auto; 
-            aspect-ratio: 21 / 9; /* نسبت تصویر عکس تو */
+            aspect-ratio: 21 / 9; 
             
             background-color: #0b111e; 
             background-image: url('https://uploadkon.ir/uploads/5e4d23_26file-00000000922c8246908a4987443fcf6c.png'); 
             
-            /* عکس رو کامل و وسط چین نشون بده */
             background-size: contain; 
             background-position: center;
             background-repeat: no-repeat;
             
-            border-bottom: 2px solid #d4af37;
+            /* 👇 حذف خط زرد (بوردر) */
+            border-bottom: none; 
+            
+            /* 👇 روشن تر کردن عکس و شفافیت بیشتر */
+            filter: brightness(1.15) contrast(1.1); 
         }
 
         /* ------------------ کارت پروفایل ------------------ */
         .profile-card {
             width: 90%; max-width: 460px; background: #151d2c;
-            border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08); /* خط دور کارت ملایم تر */
+            border-radius: 16px;
             margin-top: 20px; display: flex; flex-direction: column; overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* سایه برای عمق دادن */
         }
         .profile-top { display: flex; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         .info-right { flex: 2; padding: 20px; display: flex; flex-direction: column; justify-content: center; }
@@ -63,8 +65,9 @@
         .bottom-nav {
             position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
             width: 95%; max-width: 460px; background: #151d2c;
-            border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 50px; backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 50px; backdrop-filter: blur(20px);
             display: flex; justify-content: space-around; align-items: center; padding: 10px 5px; z-index: 1000;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
         .nav-item { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: #8b949e; font-size: 0.7rem; font-weight: 700; width: 60px; cursor: pointer; }
         .nav-icon { width: 22px; height: 22px; margin-bottom: 5px; }
@@ -74,7 +77,7 @@
 </head>
 <body>
 
-    <!-- بنر جنگنده (حالا بالاترین بخش صفحه هست) -->
+    <!-- بنر جنگنده -->
     <div class="hero-banner"></div>
 
     <!-- کارت پروفایل -->
@@ -114,7 +117,6 @@
         const tg = window.Telegram.WebApp;
         tg.expand(); 
         
-        // ست کردن رنگ هدر تلگرام (برای اینکه بالا کاملا هم‌رنگ بشه)
         tg.setHeaderColor('#0b111e'); 
         tg.setBackgroundColor('#0b111e');
 
