@@ -31,7 +31,7 @@
             -webkit-tap-highlight-color: transparent; 
         }
 
-        /* بنر جنگنده (ثابت در همه صفحات) */
+        /* بنر جنگنده (همیشه ثابت بالای صفحه) */
         .hero-banner {
             width: 100%; max-width: 500px; aspect-ratio: 21 / 9; 
             background-color: #060910; 
@@ -40,16 +40,16 @@
             border: none; 
         }
 
-        /* ------------------ استایل صفحات ------------------ */
+        /* ------------------ مدیریت صفحات (وسط صفحه) ------------------ */
         .page-section {
             width: 90%; max-width: 460px;
-            display: none; /* همه صفحات مخفی هستن */
+            display: none; /* همه مخفی */
             animation: fadeIn 0.3s ease-in-out;
             margin-top: 20px;
         }
 
         .page-section.active-page {
-            display: block; /* فقط صفحه فعال نمایش داده میشه */
+            display: block; /* فقط فعال نمایش داده میشه */
         }
 
         @keyframes fadeIn {
@@ -139,7 +139,7 @@
 </head>
 <body>
 
-    <!-- بنر جنگنده -->
+    <!-- بنر جنگنده (در همه صفحات ثابته) -->
     <div class="hero-banner"></div>
 
     <!-- ================= صفحه 1: منو اصلی (کارت پروفایل) ================= -->
@@ -175,27 +175,22 @@
     <!-- ================= صفحه 2: سایر (دکمه‌های گرید) ================= -->
     <div id="page-other" class="page-section">
         <div class="other-grid">
-            <!-- کانال بله -->
             <a href="#" class="other-btn">
                 <span class="emoji">💙</span>
                 <span class="title">کانال بله</span>
             </a>
-            <!-- پشتیبانی -->
             <a href="#" class="other-btn">
                 <span class="emoji">💬</span>
                 <span class="title">پشتیبانی</span>
             </a>
-            <!-- قوانین و راهنما -->
             <a href="#" class="other-btn">
                 <span class="emoji">📋</span>
                 <span class="title">قوانین و راهنما</span>
             </a>
-            <!-- گروه گفتگو -->
             <a href="#" class="other-btn">
                 <span class="emoji">👥</span>
                 <span class="title">گروه گفتگو</span>
             </a>
-            <!-- کانال روبیکا -->
             <a href="#" class="other-btn">
                 <span class="emoji">🟣</span>
                 <span class="title">کانال روبیکا</span>
@@ -252,23 +247,23 @@
             document.getElementById('user-name').innerText = user.first_name;
         }
 
-        // ------------------ تابع تغییر صفحات ------------------
+        // ------------------ تابع جابه‌جایی بین صفحات ------------------
         function switchPage(pageName, element) {
-            // ۱. مخفی کردن همه صفحات
+            // الف) مخفی کردن همه محتواهای وسط
             const pages = document.querySelectorAll('.page-section');
             pages.forEach(page => page.classList.remove('active-page'));
 
-            // ۲. نمایش صفحه درخواستی
+            // ب) نمایش محتوای درخواستی
             if (pageName === 'main') {
                 document.getElementById('page-main').classList.add('active-page');
             } else if (pageName === 'other') {
                 document.getElementById('page-other').classList.add('active-page');
             } else {
-                // برای بقیه صفحات فعلاً صفحه اصلی باز میشه (چون هنوز طراحیشون نکردیم)
+                // برای بقیه دکمه‌ها فعلاً صفحه اصلی باز میشه (چون هنوز طراحی نشدن)
                 document.getElementById('page-main').classList.add('active-page');
             }
 
-            // ۳. تغییر رنگ دکمه منوی پایین (سفید شدن)
+            // ج) سفید کردن دکمه منوی پایین
             const items = document.querySelectorAll('.nav-item');
             items.forEach(item => item.classList.remove('active'));
             element.classList.add('active');
