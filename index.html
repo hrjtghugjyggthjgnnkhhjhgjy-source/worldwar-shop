@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World War</title>
-    <!-- اسکریپت تلگرام -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap');
@@ -29,6 +28,9 @@
             -ms-user-select: none;
             user-select: none;
             -webkit-touch-callout: none;
+            
+            /* حذف هایلایت آبی پیش‌فرض مرورگر */
+            -webkit-tap-highlight-color: transparent; 
         }
 
         .hero-banner {
@@ -86,32 +88,39 @@
         .nav-item.active { color: #ffffff; }
         .nav-item.active .nav-icon { color: #ffffff; transform: scale(1.1); }
 
-        /* ------------------ دکمه آهنگ ------------------ */
+        /* ------------------ دکمه آهنگ (شبیه دکمه‌های پایین) ------------------ */
         .music-btn {
             position: fixed; top: 15px; left: 15px; z-index: 9999;
-            width: 45px; height: 45px; background: rgba(13, 18, 28, 0.8);
-            border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; cursor: pointer;
-            backdrop-filter: blur(10px); transition: all 0.3s ease;
+            width: 45px; height: 45px; 
+            background: rgba(13, 18, 28, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            border-radius: 12px; 
+            display: flex; align-items: center; justify-content: center; 
+            cursor: pointer; backdrop-filter: blur(10px); 
+            transition: all 0.3s ease;
+            font-size: 1.3rem; 
+            -webkit-tap-highlight-color: transparent; /* حذف هایلایت پیش‌فرض */
         }
-        .music-btn:hover { border-color: #d4af37; }
-        .music-icon { width: 22px; height: 22px; fill: none; stroke: #d4af37; stroke-width: 2; transition: all 0.3s ease; }
-        .music-btn.muted .music-icon { stroke: #555; }
+        
+        /* افکت لمس آبی (دقیقاً مثل بقیه دکمه‌ها) */
+        .music-btn:active {
+            background: #1d4ed8; 
+            border-color: #1d4ed8;
+        }
 
     </style>
 </head>
 <body>
 
+    <!-- دکمه آهنگ با ایموجی بلندگو -->
     <div class="music-btn" id="musicBtn" onclick="toggleMusic()">
-        <svg class="music-icon" id="musicIcon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-        </svg>
+        🔊
     </div>
 
+    <!-- بنر -->
     <div class="hero-banner"></div>
 
+    <!-- کارت پروفایل -->
     <div class="profile-card">
         <div class="profile-top">
             <div class="info-right">
@@ -142,7 +151,6 @@
     <!-- ================= منوی پایین ================= -->
     <nav class="bottom-nav">
         
-        <!-- سایر (آیکون سه خطِ ضخیم و جدید) -->
         <div class="nav-item" onclick="setActive(this)">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="4" y1="6" x2="20" y2="6"></line>
@@ -173,11 +181,9 @@
         </div>
     </nav>
 
-    <!-- 👇 لینک آهنگ از سرور گیت هاب (تست شده و تضمینی باز میشه) -->
+    <!-- آهنگ واقعی و حماسی (Pixabay) -->
     <audio id="bgMusic" loop>
-        <source src="https://raw.githubusercontent.com/anars/blank-audio/master/10-seconds-of-silence.mp3" type="audio/mpeg">
-        <!-- برای اینکه آهنگ واقعی پخش بشه، لینک زیر رو فعال کن و لینک بالا رو پاک کن (آهنگ حماسی رایگان) -->
-        <!-- <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=epic-cinematic-trailer-113858.mp3" type="audio/mpeg"> -->
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=epic-cinematic-trailer-113858.mp3" type="audio/mpeg">
     </audio>
 
     <script>
@@ -186,8 +192,7 @@
         tg.setHeaderColor('#060910'); 
         tg.setBackgroundColor('#060910');
 
-        // 👇 درخواست دسترسی صوتی از تلگرام (برای اینکه پخش نشه)
-        // از نسخه‌های جدید تلگرام، این کد دسترسی لازم رو میگیره
+        // درخواست دسترسی برای پخش صدا (برای بعضی نسخه‌های تلگرام)
         if (tg.requestWriteAccess) {
             tg.requestWriteAccess(); 
         }
@@ -200,19 +205,17 @@
         // ------------------ کدهای مربوط به آهنگ ------------------
         const music = document.getElementById('bgMusic');
         const btn = document.getElementById('musicBtn');
-        const icon = document.getElementById('musicIcon');
         let isPlaying = false;
 
         function toggleMusic() {
             if (isPlaying) {
                 music.pause();
-                btn.classList.add('muted');
-                icon.innerHTML = `<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line>`;
+                // وقتی قطع میشه، شفافیت ایموجی رو کم میکنیم که معلوم بشه قطعه
+                btn.style.opacity = '0.5'; 
             } else {
-                // پخش آهنگ
                 music.play().then(() => {
-                    btn.classList.remove('muted');
-                    icon.innerHTML = `<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>`;
+                    // وقتی پخش میشه، شفافیت رو کامل میکنیم
+                    btn.style.opacity = '1'; 
                 }).catch(error => {
                     console.log("خطا در پخش:", error);
                     alert("لطفا دکمه پخش را دوباره لمس کنید.");
@@ -221,7 +224,7 @@
             isPlaying = !isPlaying;
         }
 
-        // ------------------ سفید شدن دکمه‌های منو ------------------
+        // ------------------ کدهای مربوط به منوی پایین ------------------
         function setActive(element) {
             const items = document.querySelectorAll('.nav-item');
             items.forEach(item => item.classList.remove('active'));
