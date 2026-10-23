@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World War | جنگ جهانی</title>
+    <title>World War</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap');
 
-        /* پس‌زمینه اصلی سایت (آبی تیره) */
+        /* 👇 رنگ آبی تیره برای کل سایت (دقیقا مثل مینی اپ) */
         body {
             margin: 0;
             padding: 0;
@@ -21,9 +21,10 @@
             min-height: 100vh;
             padding-bottom: 100px; 
             box-sizing: border-box;
+            overflow-x: hidden;
         }
 
-        /* هدر بالا */
+        /* ------------------ هدر بالا ------------------ */
         .top-header {
             width: 100%;
             max-width: 500px;
@@ -52,27 +53,28 @@
         .brand-title { color: #ffffff; font-size: 1.2rem; font-weight: 900; margin: 0; }
         .brand-subtitle { color: #8b949e; font-size: 0.75rem; margin: 0; }
 
-        /* ------------------ بنر جنگنده (تنظیم دقیق برای مینی اپ) ------------------ */
+        /* ------------------ بنر جنگنده (بزرگ و بدون بریدگی) ------------------ */
         .hero-banner {
             width: 100%;
             max-width: 500px;
-            height: 200px; /* ارتفاع ثابت */
-            background-color: #0b0e14; /* رنگ تیره برای فضای خالی */
+            height: 220px; /* ارتفاع بنر */
+            background-color: #0f172a; 
             background-image: url('https://uploadkon.ir/uploads/5e4d23_26file-00000000922c8246908a4987443fcf6c.png'); 
             
-            /* این دو خط کل عکس رو بدون بریدگی وسط‌چین نشون میدن */
-            background-size: contain; 
-            background-position: center;
+            /* 👇 این دو خط عکس رو بزرگ می‌کنه و از سمت راست تنظیم می‌کنه که متن دیده بشه */
+            background-size: cover;
+            background-position: right center;
             
             background-repeat: no-repeat;
-            border-bottom: 1px solid #d4af37;
+            border-bottom: 2px solid #d4af37;
         }
 
-        /* کارت پروفایل */
+        /* ------------------ کارت پروفایل ------------------ */
         .profile-card {
-            width: 90%; max-width: 460px; background: rgba(30, 41, 59, 0.8);
+            width: 90%; max-width: 460px; background: rgba(30, 41, 59, 0.6);
             border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px;
             margin-top: 20px; display: flex; flex-direction: column; overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
         .profile-top { display: flex; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
         .info-right { flex: 2; padding: 20px; display: flex; flex-direction: column; justify-content: center; }
@@ -83,7 +85,7 @@
         .level-number { color: #ffffff; font-size: 1.8rem; font-weight: 900; }
         .profile-bottom { padding: 20px; display: flex; flex-direction: column; align-items: flex-start; }
 
-        /* منوی پایین */
+        /* ------------------ منوی پایین ------------------ */
         .bottom-nav {
             position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
             width: 95%; max-width: 460px; background: rgba(30, 41, 59, 0.95);
@@ -98,6 +100,7 @@
 </head>
 <body>
 
+    <!-- هدر بالا -->
     <header class="top-header">
         <div class="header-profile-btn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
@@ -113,8 +116,10 @@
         </div>
     </header>
 
+    <!-- بنر جنگنده -->
     <div class="hero-banner"></div>
 
+    <!-- کارت پروفایل -->
     <div class="profile-card">
         <div class="profile-top">
             <div class="info-right">
@@ -138,6 +143,7 @@
         </div>
     </div>
 
+    <!-- منوی پایین -->
     <nav class="bottom-nav">
         <a href="#" class="nav-item"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="4" y1="8" x2="20" y2="8"></line><line x1="4" y1="16" x2="20" y2="16"></line></svg>سایر</a>
         <a href="#" class="nav-item"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>تنظیمات</a>
@@ -150,10 +156,11 @@
         const tg = window.Telegram.WebApp;
         tg.expand(); 
         
-        // ست کردن رنگ هدر و پس‌زمینه تلگرام با رنگ سایت
+        // 👇 این خط رنگ هدر تلگرام رو با سایت ست میکنه (متن اضافه بالای تلگرام حذف میشه)
         tg.setHeaderColor('#0f172a'); 
         tg.setBackgroundColor('#0f172a');
 
+        // گرفتن اسم کاربر
         const user = tg.initDataUnsafe?.user;
         if (user) {
             document.getElementById('user-name').innerText = user.first_name;
