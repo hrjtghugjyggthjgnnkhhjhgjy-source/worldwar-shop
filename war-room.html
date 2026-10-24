@@ -17,7 +17,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow: hidden; /* جلوگیری از اسکرول */
+            overflow: hidden;
             -webkit-user-select: none;
             user-select: none;
             -webkit-tap-highlight-color: transparent;
@@ -28,16 +28,20 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
         }
 
-        /* لوگوی بازی با انیمیشن نبض (Pulse) */
+        /* 👇 دایره لوگو با عکس جنگنده (کادر دایره‌ای) */
         .loader-logo {
-            width: 130px;
-            height: auto;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             border: 3px solid #d4af37;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+            background-image: url('https://uploadkon.ir/uploads/5e4d23_26file-00000000922c8246908a4987443fcf6c.png');
+            background-size: 250%; /* بزرگنمایی عکس برای اینکه فقط متن دیده بشه */
+            background-position: right center; /* رفتن به سمت راست عکس (محل لوگو) */
+            background-repeat: no-repeat;
             animation: pulse 1.5s infinite;
         }
 
@@ -80,8 +84,8 @@
 <body>
 
     <div class="loader-container">
-        <!-- عکس لوگو (همون عکس جنگنده یا لوگوی خودت) -->
-        <img src="https://uploadkon.ir/uploads/5e4d23_26file-00000000922c8246908a4987443fcf6c.png" alt="Loading..." class="loader-logo">
+        <!-- دایره لوگو (حالا فقط بخش متن WORLD WAR دیده میشه) -->
+        <div class="loader-logo"></div>
         
         <div class="spinner"></div>
         
@@ -89,7 +93,6 @@
     </div>
 
     <script>
-        // تنظیمات ظاهری بله/تلگرام
         const tg = window.Telegram.WebApp;
         if (tg) {
             tg.expand(); 
