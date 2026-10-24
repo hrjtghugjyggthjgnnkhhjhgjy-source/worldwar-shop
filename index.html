@@ -4,7 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World War</title>
+
+    <!-- 👇 این کد چک میکنه که آیا کاربر صفحه لودینگ (اتاق جنگ) رو دیده یا نه -->
+    <script>
+        if (!sessionStorage.getItem('war-room-loaded')) {
+            sessionStorage.setItem('war-room-loaded', 'true');
+            window.location.href = 'war-room.html';
+        }
+    </script>
+
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap');
 
@@ -22,7 +32,7 @@
             box-sizing: border-box;
             overflow-x: hidden;
             
-            /* قوانین طلایی */
+            /* قوانین طلایی (بدون کپی، بدون هایلایت) */
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
@@ -31,7 +41,7 @@
             -webkit-tap-highlight-color: transparent; 
         }
 
-        /* بنر جنگنده */
+        /* بنر جنگنده (فقط یکبار در بالای صفحه) */
         .hero-banner {
             width: 100%; max-width: 500px; aspect-ratio: 21 / 9; 
             background-color: #060910; 
@@ -177,7 +187,6 @@
                 <span class="title">دعوت از دوستان</span>
             </div>
             
-            <!-- دکمه‌های جدید با آیدی‌های ارسالی تو -->
             <a href="https://ble.ir/worldwar2037" target="_blank" class="other-btn">
                 <span class="emoji">💬</span>
                 <span class="title">گپ رسمی</span>
