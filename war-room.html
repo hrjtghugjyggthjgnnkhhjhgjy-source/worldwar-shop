@@ -12,7 +12,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Vazirmatn', sans-serif;
-            background-color: #060910;
+            background-color: #000;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -23,78 +23,123 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        .loader-container {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .loader-wrapper {
+            position: relative;
             width: 100%;
-            /* کادر رو کلاً حذف کردم که عکس کامل و بدون حاشیه بشه */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end; /* محتوا رو میبره پایین */
+            align-items: center;
+            padding-bottom: 50px; /* فاصله از پایین */
+            box-sizing: border-box;
         }
 
-        /* 👇 عکس کامل، بدون کادر و حاشیه */
-        .loader-logo {
-            width: 100%; /* عرض رو 100 درصد صفحه میکنه */
-            height: auto;
-            display: block;
-            animation: pulse 1.5s infinite;
+        /* عکس پس‌زمینه (کامل و پوشش کل صفحه) */
+        .bg-image {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://uploadkon.ir/uploads/5e4d23_26file-00000000922c8246908a4987443fcf6c.png');
+            background-size: cover; /* پر کردن کل صفحه */
+            background-position: center;
+            animation: zoomIn 15s ease-out forwards; /* زوم آرام سینمایی */
+            z-index: 1;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); filter: brightness(1); }
-            50% { transform: scale(1.02); filter: brightness(1.2); }
-            100% { transform: scale(1); filter: brightness(1); }
+        @keyframes zoomIn {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
         }
 
-        /* بخش پایین (لودینگ و متن) با یه فاصله */
-        .loading-section {
-            margin-top: 30px;
+        /* لایه تیره برای اینکه متن‌ها دیده بشن */
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.9) 100%);
+            z-index: 2;
+        }
+
+        /* محتوای لودینگ */
+        .content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            padding: 0 30px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
         }
 
-        /* دایره چرخان */
-        .spinner {
-            width: 45px;
-            height: 45px;
-            border: 4px solid rgba(212, 175, 55, 0.2);
-            border-top: 4px solid #d4af37;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* متن لودینگ */
         .loading-text {
-            color: #8b949e;
+            color: #ffffff;
             font-size: 1.1rem;
-            font-weight: bold;
-            margin: 0;
-            animation: blink 1.5s infinite;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+            animation: blink 2s infinite;
         }
 
         @keyframes blink {
             0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+            50% { opacity: 0.6; }
         }
+
+        /* نوار لودینگ طلایی */
+        .progress-bar-container {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #b8860b, #d4af37, #ffd700);
+            border-radius: 10px;
+            animation: loadProgress 3s ease-in-out forwards;
+            box-shadow: 0 0 10px #d4af37;
+        }
+
+        @keyframes loadProgress {
+            0% { width: 0%; }
+            50% { width: 60%; }
+            100% { width: 100%; }
+        }
+
+        /* لوگوی کوچیک بالای نوار (اختیاری) */
+        .logo-text {
+            color: #d4af37;
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
     </style>
 </head>
 <body>
 
-    <div class="loader-container">
-        <!-- کل عکس جنگنده (بدون حاشیه، فیت صفحه) -->
-        <img src="https://uploadkon.ir/uploads/5e4d23_26file-00000000922c8246908a4987443fcf6c.png" alt="World War" class="loader-logo">
-        
-        <!-- بخش پایینی (چرخ و متن) -->
-        <div class="loading-section">
-            <div class="spinner"></div>
+    <div class="loader-wrapper">
+        <!-- عکس پس‌زمینه با زوم سینمایی -->
+        <div class="bg-image"></div>
+        <!-- لایه تیره -->
+        <div class="overlay"></div>
+
+        <!-- محتوا (پایین صفحه) -->
+        <div class="content">
+            <div class="logo-text">⚜️ WORLD WAR ⚜️</div>
             <h2 class="loading-text">در حال آماده‌سازی میدان نبرد...</h2>
+            
+            <div class="progress-bar-container">
+                <div class="progress-bar"></div>
+            </div>
         </div>
     </div>
 
@@ -102,11 +147,11 @@
         const tg = window.Telegram.WebApp;
         if (tg) {
             tg.expand(); 
-            tg.setHeaderColor('#060910'); 
-            tg.setBackgroundColor('#060910');
+            tg.setHeaderColor('#000000'); 
+            tg.setBackgroundColor('#000000');
         }
 
-        // بعد از ۳ ثانیه، کاربر رو می‌فرستیم به سایت اصلی (index.html)
+        // بعد از ۳ ثانیه، میره به سایت اصلی
         setTimeout(function() {
             window.location.href = 'index.html';
         }, 3000);
