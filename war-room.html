@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loading...</title>
+    <title>World War | War Room</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap');
@@ -20,6 +20,7 @@
             overflow: hidden; /* جلوگیری از اسکرول */
             -webkit-user-select: none;
             user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .loader-container {
@@ -30,7 +31,7 @@
             gap: 20px;
         }
 
-        /* لوگو با انیمیشن نبض */
+        /* لوگوی بازی با انیمیشن نبض (Pulse) */
         .loader-logo {
             width: 130px;
             height: auto;
@@ -74,19 +75,16 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
         }
-
     </style>
 </head>
 <body>
 
     <div class="loader-container">
-        <!-- لوگوی بازی (همون بنر جنگنده) -->
+        <!-- عکس لوگو (همون عکس جنگنده یا لوگوی خودت) -->
         <img src="https://uploadkon.ir/uploads/5e4d23_26file-00000000922c8246908a4987443fcf6c.png" alt="Loading..." class="loader-logo">
         
-        <!-- دایره چرخان -->
         <div class="spinner"></div>
         
-        <!-- متن -->
         <h2 class="loading-text">در حال آماده‌سازی میدان نبرد...</h2>
     </div>
 
@@ -99,9 +97,9 @@
             tg.setBackgroundColor('#060910');
         }
 
-        // بعد از ۳ ثانیه (۳۰۰۰ میلی‌ثانیه)، کاربر رو می‌فرستیم به سایت اصلی
+        // بعد از ۳ ثانیه، کاربر رو می‌فرستیم به سایت اصلی (index.html)
         setTimeout(function() {
-            window.location.href = 'index.html'; // رفتن به صفحه اصلی
+            window.location.href = 'index.html';
         }, 3000);
     </script>
 
