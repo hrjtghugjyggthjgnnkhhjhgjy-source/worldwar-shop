@@ -28,26 +28,27 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 25px;
+            gap: 30px;
+            width: 100%;
+            max-width: 500px; /* همون سایز بنر سایت */
+            padding: 0 20px;
+            box-sizing: border-box;
         }
 
-        /* 👇 دایره لوگو با عکس جنگنده (کادر دایره‌ای) */
+        /* 👇 کل عکس با کیفیت و بدون بریدگی */
         .loader-logo {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
+            width: 100%;
+            height: auto;
+            border-radius: 16px; /* گوشه‌های گرد مثل بنر سایت */
             border: 3px solid #d4af37;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
-            background-image: url('https://uploadkon.ir/uploads/5e4d23_26file-00000000922c8246908a4987443fcf6c.png');
-            background-size: 250%; /* بزرگنمایی عکس برای اینکه فقط متن دیده بشه */
-            background-position: right center; /* رفتن به سمت راست عکس (محل لوگو) */
-            background-repeat: no-repeat;
+            box-shadow: 0 0 35px rgba(212, 175, 55, 0.6);
             animation: pulse 1.5s infinite;
+            display: block;
         }
 
         @keyframes pulse {
             0% { transform: scale(1); box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 0 40px rgba(212, 175, 55, 0.8); }
+            50% { transform: scale(1.02); box-shadow: 0 0 45px rgba(212, 175, 55, 0.8); }
             100% { transform: scale(1); box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
         }
 
@@ -84,8 +85,8 @@
 <body>
 
     <div class="loader-container">
-        <!-- دایره لوگو (حالا فقط بخش متن WORLD WAR دیده میشه) -->
-        <div class="loader-logo"></div>
+        <!-- 👇 کل عکس اینجا نمایش داده میشه -->
+        <img src="https://uploadkon.ir/uploads/5e4d23_26file-00000000922c8246908a4987443fcf6c.png" alt="World War" class="loader-logo">
         
         <div class="spinner"></div>
         
