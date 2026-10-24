@@ -29,33 +29,35 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end; /* محتوا رو میبره پایین */
+            justify-content: flex-end;
             align-items: center;
-            padding-bottom: 50px; /* فاصله از پایین */
+            padding-bottom: 50px;
             box-sizing: border-box;
+            background-color: #060910; /* رنگ تیره پشت عکس */
         }
 
-        /* عکس پس‌زمینه (کامل و پوشش کل صفحه) */
+        /* 👇 عکس کامل و بدون بریدگی */
         .bg-image {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             background-image: url('https://uploadkon.ir/uploads/5e4d23_26file-00000000922c8246908a4987443fcf6c.png');
-            background-size: cover; /* پر کردن کل صفحه */
+            background-size: contain; /* 👈 این خط باعث میشه کل عکس بدون بریدگی دیده بشه */
             background-position: center;
-            animation: zoomIn 15s ease-out forwards; /* زوم آرام سینمایی */
+            background-repeat: no-repeat;
+            animation: zoomIn 15s ease-out forwards;
             z-index: 1;
         }
 
         @keyframes zoomIn {
             from { transform: scale(1); }
-            to { transform: scale(1.1); }
+            to { transform: scale(1.05); } /* زوم خیلی ملایم که عکس از کادر بیرون نزنه */
         }
 
-        /* لایه تیره برای اینکه متن‌ها دیده بشن */
+        /* لایه تیره برای خوانایی متن */
         .overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.9) 100%);
+            background: linear-gradient(to bottom, rgba(6, 9, 16, 0.1) 0%, rgba(6, 9, 16, 0.95) 80%);
             z-index: 2;
         }
 
@@ -72,6 +74,15 @@
             align-items: center;
         }
 
+        .logo-text {
+            color: #d4af37;
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+        }
+
         .loading-text {
             color: #ffffff;
             font-size: 1.1rem;
@@ -86,7 +97,6 @@
             50% { opacity: 0.6; }
         }
 
-        /* نوار لودینگ طلایی */
         .progress-bar-container {
             width: 100%;
             height: 6px;
@@ -112,27 +122,17 @@
             100% { width: 100%; }
         }
 
-        /* لوگوی کوچیک بالای نوار (اختیاری) */
-        .logo-text {
-            color: #d4af37;
-            font-size: 1.5rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-        }
-
     </style>
 </head>
 <body>
 
     <div class="loader-wrapper">
-        <!-- عکس پس‌زمینه با زوم سینمایی -->
+        <!-- عکس پس‌زمینه -->
         <div class="bg-image"></div>
         <!-- لایه تیره -->
         <div class="overlay"></div>
 
-        <!-- محتوا (پایین صفحه) -->
+        <!-- محتوا -->
         <div class="content">
             <div class="logo-text">⚜️ WORLD WAR ⚜️</div>
             <h2 class="loading-text">در حال آماده‌سازی میدان نبرد...</h2>
@@ -147,11 +147,10 @@
         const tg = window.Telegram.WebApp;
         if (tg) {
             tg.expand(); 
-            tg.setHeaderColor('#000000'); 
-            tg.setBackgroundColor('#000000');
+            tg.setHeaderColor('#060910'); 
+            tg.setBackgroundColor('#060910');
         }
 
-        // بعد از ۳ ثانیه، میره به سایت اصلی
         setTimeout(function() {
             window.location.href = 'index.html';
         }, 3000);
