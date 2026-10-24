@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World War</title>
 
-    <!-- 👇 این کد چک میکنه که آیا کاربر صفحه لودینگ (اتاق جنگ) رو دیده یا نه -->
+    <!-- اسکریپت‌های اولیه -->
     <script>
+        // این کد چک میکنه که آیا کاربر صفحه لودینگ (اتاق جنگ) رو دیده یا نه
         if (!sessionStorage.getItem('war-room-loaded')) {
             sessionStorage.setItem('war-room-loaded', 'true');
-            window.location.href = 'war-room.html';
+            window.location.replace('war-room.html');
         }
     </script>
-
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     
     <style>
@@ -32,7 +32,7 @@
             box-sizing: border-box;
             overflow-x: hidden;
             
-            /* قوانین طلایی (بدون کپی، بدون هایلایت) */
+            /* قوانین طلایی */
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
@@ -41,7 +41,7 @@
             -webkit-tap-highlight-color: transparent; 
         }
 
-        /* بنر جنگنده (فقط یکبار در بالای صفحه) */
+        /* بنر جنگنده */
         .hero-banner {
             width: 100%; max-width: 500px; aspect-ratio: 21 / 9; 
             background-color: #060910; 
@@ -175,15 +175,15 @@
     <div id="page-other" class="page-section">
         <div class="other-grid">
             <div class="other-btn" onclick="switchPage('leaderboard', document.querySelector('.nav-item:nth-child(1)'))">
-                <span class="emoji">🏆</span>
-                <span class="title">رتبه‌بندی</span>
+                <span class="emoji">📊</span>
+                <span class="title">لیدربرد</span>
             </div>
             <div class="other-btn">
                 <span class="emoji">🎁</span>
                 <span class="title">جایزه روزانه</span>
             </div>
             <div class="other-btn">
-                <span class="emoji">🤝</span>
+                <span class="emoji">👥️</span>
                 <span class="title">دعوت از دوستان</span>
             </div>
             
