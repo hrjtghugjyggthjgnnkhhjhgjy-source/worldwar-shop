@@ -28,28 +28,31 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 30px;
             width: 100%;
-            max-width: 500px; /* همون سایز بنر سایت */
-            padding: 0 20px;
-            box-sizing: border-box;
+            /* کادر رو کلاً حذف کردم که عکس کامل و بدون حاشیه بشه */
         }
 
-        /* 👇 کل عکس با کیفیت و بدون بریدگی */
+        /* 👇 عکس کامل، بدون کادر و حاشیه */
         .loader-logo {
-            width: 100%;
+            width: 100%; /* عرض رو 100 درصد صفحه میکنه */
             height: auto;
-            border-radius: 16px; /* گوشه‌های گرد مثل بنر سایت */
-            border: 3px solid #d4af37;
-            box-shadow: 0 0 35px rgba(212, 175, 55, 0.6);
-            animation: pulse 1.5s infinite;
             display: block;
+            animation: pulse 1.5s infinite;
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
-            50% { transform: scale(1.02); box-shadow: 0 0 45px rgba(212, 175, 55, 0.8); }
-            100% { transform: scale(1); box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
+            0% { transform: scale(1); filter: brightness(1); }
+            50% { transform: scale(1.02); filter: brightness(1.2); }
+            100% { transform: scale(1); filter: brightness(1); }
+        }
+
+        /* بخش پایین (لودینگ و متن) با یه فاصله */
+        .loading-section {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
         }
 
         /* دایره چرخان */
@@ -85,12 +88,14 @@
 <body>
 
     <div class="loader-container">
-        <!-- 👇 کل عکس اینجا نمایش داده میشه -->
+        <!-- کل عکس جنگنده (بدون حاشیه، فیت صفحه) -->
         <img src="https://uploadkon.ir/uploads/5e4d23_26file-00000000922c8246908a4987443fcf6c.png" alt="World War" class="loader-logo">
         
-        <div class="spinner"></div>
-        
-        <h2 class="loading-text">در حال آماده‌سازی میدان نبرد...</h2>
+        <!-- بخش پایینی (چرخ و متن) -->
+        <div class="loading-section">
+            <div class="spinner"></div>
+            <h2 class="loading-text">در حال آماده‌سازی میدان نبرد...</h2>
+        </div>
     </div>
 
     <script>
