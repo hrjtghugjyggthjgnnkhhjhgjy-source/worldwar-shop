@@ -32,7 +32,7 @@
             -webkit-tap-highlight-color: transparent; 
         }
 
-        /* بنر جنگنده (پیش‌فرض مخفی است) */
+        /* بنر جنگنده (پیش‌فرض مخفی) */
         .hero-banner {
             width: 100%; max-width: 500px; aspect-ratio: 21 / 9; 
             background-color: #060910; 
@@ -56,53 +56,97 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* کارت پروفایل (شیشه ای) */
-        .profile-card {
+        /* ------------------ کارت پروفایل (شیشه ای) ------------------ */
+        .profile-card-new {
             width: 100%; 
-            background: rgba(255, 255, 255, 0.02); 
-            backdrop-filter: blur(30px); 
-            -webkit-backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.05); 
+            background: rgba(255, 255, 255, 0.03); 
+            backdrop-filter: blur(25px); 
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.08); 
             border-radius: 24px; 
-            display: flex; flex-direction: column; overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3); 
+            padding: 25px 20px;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4); 
         }
 
-        .profile-top { display: flex; border-bottom: 1px solid rgba(255, 255, 255, 0.03); }
-        .info-right { flex: 2; padding: 20px; display: flex; flex-direction: column; justify-content: center; }
-        .info-label { color: #8b949e; font-size: 0.8rem; display: flex; align-items: center; gap: 5px; margin-bottom: 5px; }
-        .info-label svg { width: 16px; height: 16px; color: #d4af37; }
-        .info-value { color: #ffffff; font-size: 1.1rem; font-weight: 900; margin: 0; }
-        .info-left { flex: 1; border-right: 1px solid rgba(255, 255, 255, 0.03); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; }
-        .level-number { color: #ffffff; font-size: 1.8rem; font-weight: 900; }
-        .profile-bottom { padding: 20px; display: flex; flex-direction: column; }
-        .wallet-title { color: #8b949e; font-size: 0.85rem; margin-bottom: 15px; display: flex; align-items: center; gap: 5px; }
+        /* آواتار و اسم */
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .avatar-circle {
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border: 2px solid #d4af37;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 12px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            overflow: hidden; /* برای اینکه عکس از دایره بیرون نزنه */
+        }
+
+        .avatar-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .user-name-title {
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: 900;
+            margin: 0 0 5px 0;
+        }
+
+        .user-level-badge {
+            background: rgba(212, 175, 55, 0.15);
+            color: #d4af37;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 3px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        /* موجودی منابع */
+        .wallet-title { 
+            color: #8b949e; font-size: 0.85rem; margin-bottom: 15px; 
+            display: flex; align-items: center; justify-content: center; gap: 5px; 
+            width: 100%;
+        }
         .wallet-title svg { width: 16px; height: 16px; color: #d4af37; }
 
-        /* کارت های منابع (شیشه ای) */
-        .resources-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-        .resource-box { 
-            background: rgba(255, 255, 255, 0.03); 
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+        .resources-grid-new { 
+            display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; width: 100%;
+        }
+        
+        .resource-box-new { 
+            background: rgba(0, 0, 0, 0.2); 
             border: 1px solid rgba(255, 255, 255, 0.05); 
             border-radius: 16px; 
             padding: 15px 5px; 
-            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
         }
-        .resource-box .icon { font-size: 1.4rem; }
-        .resource-box .amount { color: #ffffff; font-weight: 900; font-size: 1rem; }
-        .resource-box .name { color: #8b949e; font-size: 0.75rem; }
+        .resource-box-new .icon { font-size: 1.5rem; }
+        .resource-box-new .amount { color: #ffffff; font-weight: 900; font-size: 1rem; }
+        .resource-box-new .name { color: #8b949e; font-size: 0.7rem; }
 
-        /* بقیه صفحات */
+        /* بقیه صفحات (سایر، تنظیمات و...) */
         .other-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .other-btn { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; padding: 25px 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; color: #ffffff; cursor: pointer; }
+        .other-btn { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; padding: 25px 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; color: #ffffff; cursor: pointer; }
         .other-btn .emoji { font-size: 2.5rem; margin-bottom: 15px; }
         .other-btn .title { font-size: 0.95rem; font-weight: bold; text-align: center; }
 
-        .leaderboard-list { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; overflow: hidden; }
-        .leaderboard-item { display: flex; align-items: center; padding: 15px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.03); }
+        .leaderboard-list { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; overflow: hidden; }
+        .leaderboard-item { display: flex; align-items: center; padding: 15px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         .leaderboard-item:last-child { border-bottom: none; }
         .rank { font-size: 1.2rem; font-weight: 900; width: 40px; color: #8b949e; }
         .rank.top-1 { color: #ffd700; font-size: 1.5rem; }
@@ -111,8 +155,8 @@
         .player-name { flex: 1; color: #ffffff; font-weight: bold; font-size: 0.95rem; }
         .player-score { color: #d4af37; font-weight: 900; font-size: 0.9rem; }
 
-        .settings-list { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; overflow: hidden; }
-        .setting-item { display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.03); cursor: pointer; }
+        .settings-list { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; overflow: hidden; }
+        .setting-item { display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); cursor: pointer; }
         .setting-item:last-child { border-bottom: none; }
         .setting-info { display: flex; align-items: center; gap: 10px; color: #ffffff; font-size: 0.95rem; font-weight: bold; }
         .setting-info span { font-size: 1.2rem; }
@@ -143,37 +187,35 @@
     <!-- بنر جنگنده -->
     <div class="hero-banner" id="main-banner"></div>
 
-    <!-- صفحه اصلی -->
+    <!-- ================= صفحه 1: منو اصلی ================= -->
     <div id="page-main" class="page-section active-page">
-        <div class="profile-card">
-            <div class="profile-top">
-                <div class="info-right">
-                    <div class="info-label">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                        فرمانده
-                    </div>
-                    <p class="info-value" id="user-name">در حال دریافت...</p>
+        <div class="profile-card-new">
+            
+            <!-- بخش آواتار و اسم -->
+            <div class="profile-header">
+                <div class="avatar-circle">
+                    <!-- عکس پروفایل واقعی از بله اینجا لود میشه -->
+                    <img id="user-avatar" src="https://via.placeholder.com/85" alt="Profile">
                 </div>
-                <div class="info-left">
-                    <div class="info-label">سطح</div>
-                    <div class="level-number">۲۱</div>
-                </div>
+                <h2 class="user-name-title" id="user-name">در حال دریافت...</h2>
+                <span class="user-level-badge">سطح ۲۱</span>
             </div>
-            <div class="profile-bottom">
-                <div class="wallet-title">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                    موجودی کیف پول
-                </div>
-                <div class="resources-grid">
-                    <div class="resource-box"><span class="icon">💰</span><span class="amount">۵,۰۰۰</span><span class="name">سکه</span></div>
-                    <div class="resource-box"><span class="icon">💎</span><span class="amount">۵۰</span><span class="name">الماس</span></div>
-                    <div class="resource-box"><span class="icon">🛢️</span><span class="amount">۱۲۰</span><span class="name">نفت</span></div>
-                </div>
+
+            <!-- موجودی -->
+            <div class="wallet-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                موجودی کیف پول
+            </div>
+            
+            <div class="resources-grid-new">
+                <div class="resource-box-new"><span class="icon">💰</span><span class="amount">۵,۰۰۰</span><span class="name">سکه</span></div>
+                <div class="resource-box-new"><span class="icon">💎</span><span class="amount">۵۰</span><span class="name">الماس</span></div>
+                <div class="resource-box-new"><span class="icon">🛢️</span><span class="amount">۱۲۰</span><span class="name">نفت</span></div>
             </div>
         </div>
     </div>
 
-    <!-- صفحه سایر -->
+    <!-- ================= صفحه 2: سایر ================= -->
     <div id="page-other" class="page-section">
         <div class="other-grid">
             <div class="other-btn" onclick="switchPage('leaderboard', document.querySelector('.nav-item:nth-child(1)'))"><span class="emoji">🏆</span><span class="title">رتبه‌بندی</span></div>
@@ -185,7 +227,7 @@
         </div>
     </div>
 
-    <!-- صفحه لیدربورد -->
+    <!-- ================= صفحه 3: لیدربورد ================= -->
     <div id="page-leaderboard" class="page-section">
         <div class="leaderboard-list">
             <div class="leaderboard-item"><div class="rank top-1">🥇</div><div class="player-name">فرمانده کل</div><div class="player-score">۱۵۰,۰۰۰</div></div>
@@ -196,7 +238,7 @@
         </div>
     </div>
 
-    <!-- صفحه تنظیمات -->
+    <!-- ================= صفحه 4: تنظیمات ================= -->
     <div id="page-settings" class="page-section">
         <div class="settings-list">
             <div class="setting-item"><div class="setting-info"><span>🎵</span> موسیقی پس‌زمینه</div><div class="toggle-switch on" onclick="toggleSwitch(this)"></div></div>
@@ -207,7 +249,7 @@
         </div>
     </div>
 
-    <!-- منوی پایین -->
+    <!-- ================= منوی پایین ================= -->
     <nav class="bottom-nav">
         <div class="nav-item" onclick="switchPage('other', this)">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
@@ -232,18 +274,28 @@
     </nav>
 
     <script>
+        // ------------------ اتصال به بله و دریافت اطلاعات ------------------
         const tg = window.Bale.WebApp;
         if(tg) {
             tg.expand(); 
             tg.setHeaderColor('#060910'); 
             tg.setBackgroundColor('#060910');
+            
             const user = tg.initDataUnsafe?.user;
             if (user) {
-                document.getElementById('user-name').innerText = user.first_name;
+                // اسم کاربر
+                if (user.first_name) {
+                    document.getElementById('user-name').innerText = user.first_name;
+                }
+                
+                // عکس پروفایل کاربر
+                if (user.photo_url) {
+                    document.getElementById('user-avatar').src = user.photo_url;
+                }
             }
         }
 
-        // تابع مدیریت صفحات و بنر
+        // ------------------ مدیریت صفحات ------------------
         function switchPage(pageName, element) {
             const pages = document.querySelectorAll('.page-section');
             const banner = document.getElementById('main-banner');
@@ -251,12 +303,12 @@
             // مخفی کردن همه صفحات
             pages.forEach(page => page.classList.remove('active-page'));
 
-            // منطق نمایش بنر و صفحات
+            // نمایش بنر فقط برای صفحه اصلی
             if (pageName === 'main') {
-                banner.style.display = 'block'; // نمایش بنر فقط در منو اصلی
+                banner.style.display = 'block'; 
                 document.getElementById('page-main').classList.add('active-page');
             } else {
-                banner.style.display = 'none'; // مخفی کردن بنر در بقیه صفحات
+                banner.style.display = 'none'; 
                 if (pageName === 'other') {
                     document.getElementById('page-other').classList.add('active-page');
                 } else if (pageName === 'settings') {
@@ -264,7 +316,7 @@
                 } else if (pageName === 'leaderboard') {
                     document.getElementById('page-leaderboard').classList.add('active-page');
                 } else {
-                    // برای بقیه صفحات (مثل فروشگاه) فعلا صفحه اصلی باز میشه
+                    // برای بخش‌هایی که هنوز ساخته نشدن، فعلا صفحه اصلی باز میشه
                     document.getElementById('page-main').classList.add('active-page');
                     banner.style.display = 'block'; 
                 }
@@ -278,11 +330,11 @@
             }
         }
 
-        // روشن/خاموش کردن کلید تنظیمات
+        // ------------------ کلیدهای تنظیمات ------------------
         function toggleSwitch(element) {
             element.classList.toggle('on');
         }
     </script>
 
 </body>
-              </html>
+    </html>
